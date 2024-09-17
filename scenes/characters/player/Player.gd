@@ -1,12 +1,4 @@
 extends CharacterBody2D
-## This character controller was created with the intent of being a decent starting point for Platformers.
-## 
-## Instead of teaching the basics, I tried to implement more advanced considerations.
-## That's why I call it 'Movement 2'. This is a sequel to learning demos of similar a kind.
-## Beyond coyote time and a jump buffer I go through all the things listed in the following video:
-## https://www.youtube.com/watch?v=2S3g8CgBG1g
-## Except for separate air and ground acceleration, as I don't think it's necessary.
-
 
 # BASIC MOVEMENT VARAIABLES ---------------- #
 var face_direction := 1
@@ -38,12 +30,10 @@ var jump_buffer_timer : float = 0
 var is_jumping := false
 # ----------------------------------- #
 
-
-# All iputs we want to keep track of
 func get_input() -> Dictionary:
 	return {
-		"x": int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left")),
-		"y": int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up")),
+		"x": int(Input.is_action_pressed("input_right")) - int(Input.is_action_pressed("input_left")),
+		"y": int(Input.is_action_pressed("input_down")) - int(Input.is_action_pressed("input_up")),
 		"just_jump": Input.is_action_just_pressed("input_jump") == true,
 		"jump": Input.is_action_pressed("input_jump") == true,
 		"released_jump": Input.is_action_just_released("input_jump") == true
