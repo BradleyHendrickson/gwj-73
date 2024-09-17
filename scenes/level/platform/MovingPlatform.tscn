@@ -1,18 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyq8g35t6hsjf"]
+[gd_scene load_steps=3 format=3 uid="uid://dyq8g35t6hsjf"]
 
 [ext_resource type="Script" path="res://scenes/level/platform/MovingPlatform.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cx00vf1020u2a" path="res://sprites/moving_platform.png" id="2_10y4a"]
 
 [node name="Platform" type="Node2D"]
-modulate = Color(0.376471, 0.976471, 0.596078, 1)
 script = ExtResource("1")
 move_to = Vector2(0, -64)
 
 [node name="ActualPlatform" type="AnimatableBody2D" parent="."]
-position = Vector2(0, 39.902)
+position = Vector2(0, -64)
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ActualPlatform"]
-polygon = PackedVector2Array(-80, -16, 80, -16, 80, 16, -80, 16)
+polygon = PackedVector2Array(-24, -8, 24, -8, 24, 8, -24, 8)
 
 [node name="Polygon2D" type="Polygon2D" parent="ActualPlatform"]
+visible = false
 polygon = PackedVector2Array(-80, -16, 80, -16, 80, 16, -80, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="ActualPlatform"]
+texture = ExtResource("2_10y4a")

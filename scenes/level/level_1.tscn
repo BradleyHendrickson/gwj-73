@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=4 uid="uid://cmcudxjyqowjy"]
 
 [ext_resource type="PackedScene" uid="uid://c0uxds6ngem4m" path="res://scenes/ui/fps_counter.tscn" id="1_q65p1"]
+[ext_resource type="PackedScene" uid="uid://dyq8g35t6hsjf" path="res://scenes/level/platform/MovingPlatform.tscn" id="2_cl4i3"]
 [ext_resource type="PackedScene" uid="uid://dxeva15lnv7wm" path="res://scenes/level/platform/TileMap.tscn" id="3_ordwp"]
 [ext_resource type="PackedScene" uid="uid://cvboky6pqlyk0" path="res://scenes/characters/player/Player.tscn" id="4_ast7w"]
 [ext_resource type="Texture2D" uid="uid://3esr8rokqhhc" path="res://sprites/tileset.png" id="4_qqr0k"]
 [ext_resource type="PackedScene" uid="uid://dqha0eiactgkx" path="res://scenes/level/background/parallax_background.tscn" id="5_q7fur"]
-[ext_resource type="PackedScene" uid="uid://dpjg0ppuwx42t" path="res://scenes/projectiles/bullet.tscn" id="6_8oryl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8japf"]
 texture = ExtResource("4_qqr0k")
@@ -64,13 +64,7 @@ tile_set = SubResource("TileSet_h0yni")
 [node name="ParallaxBackground" parent="." instance=ExtResource("5_q7fur")]
 
 [node name="Player" parent="." instance=ExtResource("4_ast7w")]
-position = Vector2(3, 109)
-max_speed = 150.0
-acceleration = 1100.0
-turning_acceleration = 2000.0
-gravity_acceleration = 1100.0
-jump_force = 400.0
-jump_cut = 0.5
+position = Vector2(3, 136)
 
-[node name="Bullet" parent="." instance=ExtResource("6_8oryl")]
-position = Vector2(-63, 59)
+[node name="Platform" parent="." instance=ExtResource("2_cl4i3")]
+position = Vector2(-96, -96)

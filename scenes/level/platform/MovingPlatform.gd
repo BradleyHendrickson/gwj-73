@@ -29,7 +29,7 @@ func _process(_delta: float) -> void:
 
 func _draw() -> void:
 	if line_width == 0: return
-	draw_line(move_to, -move_to, Color.WHITE, line_width)
+	draw_line(move_to, -move_to, Color("#141013"), line_width)
 
 func start_tween(Moved) -> void:
 	Moved.position = move_to

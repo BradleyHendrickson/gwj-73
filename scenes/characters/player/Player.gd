@@ -64,7 +64,7 @@ func shoot(delta):
 		var newBullet = starBullet.instantiate()
 		get_tree().root.add_child(newBullet)
 		var aimVector = Vector2(0,-1)
-		newBullet.transform = Transform2D( aimVector.angle() , position)
+		newBullet.transform = Transform2D( aimVector.angle() , position + Vector2(0,-10))
 
 func animations(delta):
 	animated_sprite_2d.play("default")
