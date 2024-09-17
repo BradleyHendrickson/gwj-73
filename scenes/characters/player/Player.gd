@@ -4,7 +4,7 @@ extends CharacterBody2D
 var face_direction := 1
 var x_dir := 1
 
-@export var max_speed: float = 560
+@export var max_speed: float = 320
 @export var acceleration: float = 2880
 @export var turning_acceleration : float = 9600
 @export var deceleration: float = 3200
@@ -16,7 +16,7 @@ var x_dir := 1
 # ------------- #
 
 # JUMP VARAIABLES ------------------- #
-@export var jump_force : float = 1400
+@export var jump_force : float = 1000
 @export var jump_cut : float = 0.25
 @export var jump_gravity_max : float = 500
 @export var jump_hang_treshold : float = 2.0
