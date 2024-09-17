@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://cmcudxjyqowjy"]
+[gd_scene load_steps=3 format=3 uid="uid://cmcudxjyqowjy"]
+
+[ext_resource type="PackedScene" uid="uid://cvboky6pqlyk0" path="res://scenes/characters/player/Player.tscn" id="1_3y3dh"]
+[ext_resource type="PackedScene" uid="uid://dyq8g35t6hsjf" path="res://scenes/level/platform/MovingPlatform.tscn" id="2_cl4i3"]
 
 [node name="Level1" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_3y3dh")]
+position = Vector2(101, 43)
+
+[node name="Platform" parent="." instance=ExtResource("2_cl4i3")]
+position = Vector2(89, 361)
+
+[node name="Platform2" parent="." instance=ExtResource("2_cl4i3")]
+position = Vector2(435, 377)
+
+[node name="Platform3" parent="." instance=ExtResource("2_cl4i3")]
+position = Vector2(720, 221)
