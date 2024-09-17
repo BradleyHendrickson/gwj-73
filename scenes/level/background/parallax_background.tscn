@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqha0eiactgkx"]
+
+[ext_resource type="Texture2D" uid="uid://cajh24p14gs1f" path="res://sprites/background_blank.png" id="1_tv6s3"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(100, 100)
+repeat_times = 200
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_tv6s3")

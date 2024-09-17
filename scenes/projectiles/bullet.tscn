@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://dpjg0ppuwx42t"]
+
+[ext_resource type="Script" path="res://scenes/projectiles/bullet.gd" id="1_h1gry"]
+[ext_resource type="Texture2D" uid="uid://c5j1o4kjxx72" path="res://sprites/bullet_player.png" id="1_xkifv"]
+[ext_resource type="PackedScene" uid="uid://nofs1fk6o248" path="res://scenes/effects/bullet_hit_med.tscn" id="2_th3vh"]
+[ext_resource type="PackedScene" uid="uid://bootvvsk2xjov" path="res://scenes/effects/smoke_particle.tscn" id="3_kq7rd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ql58a"]
+radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s85ll"]
+atlas = ExtResource("1_xkifv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkw0c"]
+atlas = ExtResource("1_xkifv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7m86b"]
+atlas = ExtResource("1_xkifv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pvdf"]
+atlas = ExtResource("1_xkifv")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_30tjh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s85ll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkw0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7m86b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pvdf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Bullet" type="Area2D" groups=["Bullet"]]
+collision_layer = 2
+collision_mask = 6
+script = ExtResource("1_h1gry")
+hitEffect = ExtResource("2_th3vh")
+smokeParticle = ExtResource("3_kq7rd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ql58a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_30tjh")
+frame_progress = 0.433745
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

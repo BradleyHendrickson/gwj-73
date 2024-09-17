@@ -4,6 +4,11 @@ extends CharacterBody2D
 var face_direction := 1
 var x_dir := 1
 
+@export var starBullet : PackedScene
+
+@onready var animated_sprite_2d = $Sprite/AnimatedSprite2D
+@onready var shot_timer: Timer = $ShotTimer
+
 @export var max_speed: float = 320
 @export var acceleration: float = 2880
 @export var turning_acceleration : float = 9600
@@ -30,25 +35,46 @@ var jump_buffer_timer : float = 0
 var is_jumping := false
 # ----------------------------------- #
 
+#creates a dictionary of all current inputs at the current state
 func get_input() -> Dictionary:
 	return {
 		"x": int(Input.is_action_pressed("input_right")) - int(Input.is_action_pressed("input_left")),
 		"y": int(Input.is_action_pressed("input_down")) - int(Input.is_action_pressed("input_up")),
 		"just_jump": Input.is_action_just_pressed("input_jump") == true,
 		"jump": Input.is_action_pressed("input_jump") == true,
-		"released_jump": Input.is_action_just_released("input_jump") == true
+		"released_jump": Input.is_action_just_released("input_jump") == true,
+		"shoot" : Input.is_action_pressed("input_shoot") == true
 	}
 
 
-func _physics_process(delta: float) -> void:
+
+
+func _physics_process(delta: float) -> void:	
 	x_movement(delta)
 	jump_logic(delta)
 	apply_gravity(delta)
-	
 	timers(delta)
+	shoot(delta)
+	animations(delta)
 	move_and_slide()
 
+func shoot(delta):
+	if get_input()["shoot"] and shot_timer.is_stopped():
+		shot_timer.start(0.25)	
+		var newBullet = starBullet.instantiate()
+		get_tree().root.add_child(newBullet)
+		var aimVector = Vector2(0,-1)
+		newBullet.transform = Transform2D( aimVector.angle() , position)
 
+func animations(delta):
+	animated_sprite_2d.play("default")
+	animated_sprite_2d.speed_scale = (abs(velocity.x)/max_speed) * 1.2
+	
+	if !is_on_floor():
+		animated_sprite_2d.frame = 1
+	elif abs(velocity.x) <= 0.1*delta:
+		animated_sprite_2d.frame = 0
+		
 func x_movement(delta: float) -> void:
 	x_dir = get_input()["x"]
 	
@@ -69,6 +95,8 @@ func x_movement(delta: float) -> void:
 	
 	# Accelerate
 	velocity.x += x_dir * accel_rate * delta
+	
+	
 	
 	set_direction(x_dir) # This is purely for visuals
 

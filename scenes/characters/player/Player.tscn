@@ -1,14 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvboky6pqlyk0"]
+[gd_scene load_steps=16 format=3 uid="uid://cvboky6pqlyk0"]
 
 [ext_resource type="Script" path="res://scenes/characters/player/Player.gd" id="1"]
 [ext_resource type="Script" path="res://scenes/characters/player/Sprite.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://c714640csmlw" path="res://sprites/player-placeholder.png" id="2_j44xb"]
+[ext_resource type="PackedScene" uid="uid://dpjg0ppuwx42t" path="res://scenes/projectiles/bullet.tscn" id="2_s1ujb"]
+[ext_resource type="Texture2D" uid="uid://cbik76u8gbrw8" path="res://sprites/player_walk.png" id="4_n8rlu"]
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(32, 28)
+size = Vector2(16, 14)
 
 [sub_resource type="SeparationRayShape2D" id="1"]
-length = 4.0
+length = 2.0
 
 [sub_resource type="Animation" id="3"]
 resource_name = "Jump"
@@ -38,7 +40,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(0.8, 1, 1),
+"transitions": PackedFloat32Array(0.5, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.4, 1), Vector2(1, 1)]
 }
@@ -49,27 +51,72 @@ _data = {
 "Land": SubResource("4")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_b65lg"]
+atlas = ExtResource("4_n8rlu")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0tmm"]
+atlas = ExtResource("4_n8rlu")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trcf0"]
+atlas = ExtResource("4_n8rlu")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxyx1"]
+atlas = ExtResource("4_n8rlu")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6wa87"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b65lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0tmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trcf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxyx1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 10
 collision_mask = 14
 floor_snap_length = 16.0
 script = ExtResource("1")
+starBullet = ExtResource("2_s1ujb")
+max_speed = 200.0
+acceleration = 1200.0
+turning_acceleration = 2400.0
+deceleration = 1900.0
+gravity_acceleration = 1400.0
+gravity_max = 500.0
+jump_force = 600.0
+jump_gravity_max = 250.0
 jump_hang_gravity_mult = 0.05
 
 [node name="SquareCollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, -1)
 shape = SubResource("2")
 
 [node name="RaycastCollider1" type="CollisionShape2D" parent="."]
-position = Vector2(-16, 12)
+position = Vector2(-8, 6)
 shape = SubResource("1")
 
 [node name="RaycastCollider2" type="CollisionShape2D" parent="."]
-position = Vector2(0, 12)
+position = Vector2(0, 6)
 shape = SubResource("1")
 
 [node name="RaycastCollider3" type="CollisionShape2D" parent="."]
-position = Vector2(16, 12)
+position = Vector2(8, 6)
 shape = SubResource("1")
 
 [node name="Sprite" type="Node2D" parent="."]
@@ -89,9 +136,18 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite"]
+visible = false
 position = Vector2(0, -8)
-scale = Vector2(2, 2)
 texture = ExtResource("2_j44xb")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite"]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_6wa87")
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_enabled = true
+offset = Vector2(0, -64)
+zoom = Vector2(2, 2)
+position_smoothing_speed = 200.0
+
+[node name="ShotTimer" type="Timer" parent="."]
+one_shot = true

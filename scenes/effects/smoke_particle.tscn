@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://bootvvsk2xjov"]
+
+[ext_resource type="Texture2D" uid="uid://dd8lwju0klmti" path="res://Sprites/spr_smoke_particle.png" id="1_wgw1q"]
+[ext_resource type="Script" path="res://Scenes/Effects/smoke_particle.gd" id="2_ln3rq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0ar7"]
+atlas = ExtResource("1_wgw1q")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4aj8"]
+atlas = ExtResource("1_wgw1q")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfe4s"]
+atlas = ExtResource("1_wgw1q")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3fmp"]
+atlas = ExtResource("1_wgw1q")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcxoq"]
+atlas = ExtResource("1_wgw1q")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvxj4"]
+atlas = ExtResource("1_wgw1q")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk3ya"]
+atlas = ExtResource("1_wgw1q")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f880u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0ar7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4aj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfe4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3fmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcxoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvxj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk3ya")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4vvsf"]
+
+[node name="SmokeParticle" type="CharacterBody2D"]
+script = ExtResource("2_ln3rq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_f880u")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4vvsf")
+disabled = true
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
