@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://horxikbid2ne"]
+[gd_scene load_steps=4 format=3 uid="uid://horxikbid2ne"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemies/path_enemy.gd" id="1_r36tq"]
+[ext_resource type="Texture2D" uid="uid://cp2c8uwo4c5g8" path="res://sprites/path_enemy.png" id="2_n0e1q"]
 
-[node name="PathEnemy" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mk2sf"]
+size = Vector2(32, 10)
+
+[node name="PathEnemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_r36tq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mk2sf")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(22, 0)
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_n0e1q")

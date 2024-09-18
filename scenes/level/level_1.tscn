@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cmcudxjyqowjy"]
+[gd_scene load_steps=10 format=4 uid="uid://cmcudxjyqowjy"]
 
 [ext_resource type="PackedScene" uid="uid://c0uxds6ngem4m" path="res://scenes/ui/fps_counter.tscn" id="1_q65p1"]
 [ext_resource type="PackedScene" uid="uid://dyq8g35t6hsjf" path="res://scenes/level/platform/MovingPlatform.tscn" id="2_cl4i3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cvboky6pqlyk0" path="res://scenes/characters/player/Player.tscn" id="4_ast7w"]
 [ext_resource type="Texture2D" uid="uid://3esr8rokqhhc" path="res://sprites/tileset.png" id="4_qqr0k"]
 [ext_resource type="PackedScene" uid="uid://dqha0eiactgkx" path="res://scenes/level/background/parallax_background.tscn" id="5_q7fur"]
+[ext_resource type="PackedScene" uid="uid://horxikbid2ne" path="res://scenes/characters/enemies/path_enemy.tscn" id="7_ce3kr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8japf"]
 texture = ExtResource("4_qqr0k")
@@ -68,3 +69,6 @@ position = Vector2(3, 136)
 
 [node name="Platform" parent="." instance=ExtResource("2_cl4i3")]
 position = Vector2(-96, -96)
+
+[node name="PathEnemy" parent="." instance=ExtResource("7_ce3kr")]
+position = Vector2(93, -2)

@@ -1,11 +1,29 @@
-extends Node2D
+extends CharacterBody2D
+
+@onready var ray = $"RayCast2D"
+@onready var INITIAL_ANGLE = 0.2 # in radians
+@onready var FORCE = 100
 
 
-# Called when the node enters the scene tree for the first time.
+@export var move_to := Vector2(0, -128): 
+	set(value):
+		move_to = value
+		position += value
+	get():
+		return move_to
+
+
 func _ready() -> void:
-	pass # Replace with function body.
+	ray.global_rotation = INITIAL_ANGLE
+	velocity = Vector2(FORCE * cos(INITIAL_ANGLE), FORCE * sin(INITIAL_ANGLE))
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	print(velocity)
+	if ray.is_colliding():
+		ray.target_position = -ray.target_position
+		print(velocity)
+		velocity = -1 * velocity
+		print(velocity)
+	else:
+		move_and_slide()
