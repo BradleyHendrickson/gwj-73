@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://nofs1fk6o248"]
 
 [ext_resource type="Texture2D" uid="uid://dmqw64lrmjfqv" path="res://sprites/bullet_player_hit.png" id="1_j4ou8"]
-[ext_resource type="Script" path="res://Scenes/Effects/Flash.gd" id="2_kr435"]
+[ext_resource type="Script" path="res://scenes/effects/Flash.gd" id="2_uan05"]
 
 [sub_resource type="Animation" id="Animation_d2fjk"]
 resource_name = "flash"
@@ -27,7 +27,7 @@ _data = {
 [node name="SmallFlash" type="Sprite2D"]
 texture = ExtResource("1_j4ou8")
 hframes = 5
-script = ExtResource("2_kr435")
+script = ExtResource("2_uan05")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

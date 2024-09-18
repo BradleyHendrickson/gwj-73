@@ -252,3 +252,14 @@ one_shot = true
 
 [node name="HitTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+offset = Vector2(0, -32)
+zoom = Vector2(2.3, 2.3)
+process_callback = 0
+limit_left = -300
+limit_right = 300
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

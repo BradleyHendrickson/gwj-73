@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ny3hct8guqcu"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_0b5r2"]
+[ext_resource type="PackedScene" uid="uid://mwfj8563dv7" path="res://scenes/ui/game_ui.tscn" id="2_dvvyf"]
+[ext_resource type="PackedScene" uid="uid://cvboky6pqlyk0" path="res://scenes/characters/player/Player.tscn" id="2_markn"]
+
+[node name="world" type="Node2D"]
+script = ExtResource("1_0b5r2")
+playerObject = ExtResource("2_markn")
+
+[node name="GameUI" parent="." instance=ExtResource("2_dvvyf")]
+
+[node name="PlayerRespawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Camera" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+zoom = Vector2(2.3, 2.3)
+process_callback = 0
+limit_left = -300
+limit_right = 300
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

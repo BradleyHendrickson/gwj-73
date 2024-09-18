@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcbnbc6wbotwi"]
+
+[ext_resource type="Texture2D" uid="uid://cny3vs3oo1ycx" path="res://sprites/half_heart.png" id="1_n63sd"]
+
+[node name="heart" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(4, 4)
+texture = ExtResource("1_n63sd")
+stretch_mode = 2

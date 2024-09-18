@@ -6,9 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5cd1l"]
 size = Vector2(16, 8)
 
-[node name="spikes_small" type="StaticBody2D"]
-collision_layer = 4
-collision_mask = 0
+[node name="spikes_small" type="Node2D"]
 script = ExtResource("1_o7cdv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

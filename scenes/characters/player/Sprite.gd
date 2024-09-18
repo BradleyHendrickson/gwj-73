@@ -8,6 +8,7 @@ extends Node2D
 @export var player_path : NodePath
 @onready var Player := get_node(player_path)
 @onready var Animator := $AnimationPlayer
+@onready var sprite_animation_player: AnimationPlayer = $AnimatedSprite2D/SpriteAnimationPlayer
 
 var previous_frame_velocity := Vector2(0,0)
 
@@ -18,12 +19,18 @@ func _ready() -> void:
 		print("Sprite.gd is missing player_path")
 		set_process(false)
 
+func shootAnimation():
+	Animator.play("Shoot")
+	
+func hitAnimation():
+	sprite_animation_player.play("hit")
+	
 
 func _process(_delta: float) -> void:
 	if previous_frame_velocity.y >= 0 and Player.velocity.y < 0:
 		Animator.play("Jump")
 	elif previous_frame_velocity.y > 0 and Player.is_on_floor():
 		Animator.play("Land")
-	
+
 	# It's important that this is the last thing done
 	previous_frame_velocity = Player.velocity

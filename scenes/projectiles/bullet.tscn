@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scenes/projectiles/bullet.gd" id="1_h1gry"]
 [ext_resource type="Texture2D" uid="uid://c5j1o4kjxx72" path="res://sprites/bullet_player.png" id="1_xkifv"]
-[ext_resource type="PackedScene" path="res://scenes/effects/bullet_hit_med.tscn" id="2_th3vh"]
-[ext_resource type="PackedScene" path="res://scenes/effects/smoke_particle.tscn" id="3_kq7rd"]
+[ext_resource type="PackedScene" uid="uid://nofs1fk6o248" path="res://scenes/effects/bullet_hit_med.tscn" id="2_th3vh"]
+[ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="4_lhwbn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ql58a"]
 radius = 6.0
@@ -49,7 +49,8 @@ collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_h1gry")
 hitEffect = ExtResource("2_th3vh")
-smokeParticle = ExtResource("3_kq7rd")
+
+[node name="SmokeGenerator" parent="." instance=ExtResource("4_lhwbn")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ql58a")

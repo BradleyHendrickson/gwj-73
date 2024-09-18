@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://mwfj8563dv7"]
+
+[ext_resource type="PackedScene" uid="uid://c0uxds6ngem4m" path="res://scenes/ui/fps_counter.tscn" id="1_6uiqv"]
+[ext_resource type="Script" path="res://scenes/ui/game_ui.gd" id="1_h34c1"]
+[ext_resource type="PackedScene" uid="uid://b3ss2d3xffv06" path="res://scenes/ui/heart.tscn" id="2_sfist"]
+[ext_resource type="PackedScene" uid="uid://bcbnbc6wbotwi" path="res://scenes/ui/half_heart.tscn" id="3_ek62d"]
+
+[node name="GameUI" type="CanvasLayer"]
+script = ExtResource("1_h34c1")
+heart = ExtResource("2_sfist")
+half_heart = ExtResource("3_ek62d")
+
+[node name="GameUIContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="FPSCounter" parent="GameUIContainer" instance=ExtResource("1_6uiqv")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 576.0
+offset_bottom = 324.0
+scale = Vector2(3, 3)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUIContainer"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -534.0
+offset_bottom = -282.0

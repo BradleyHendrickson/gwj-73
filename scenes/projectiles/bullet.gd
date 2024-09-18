@@ -5,12 +5,13 @@ extends Area2D
 @export var damage = 1
 
 var damagable_targets: Array
+@onready var smoke_generator: Node2D = $SmokeGenerator
 
 @onready var timer = $Timer
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
 @export var hitEffect : PackedScene
-@export var smokeParticle : PackedScene
+
 
 func longTime():
 	timer.start(2)
@@ -23,12 +24,7 @@ func die():
 	get_tree().root.add_child(f)
 	f.transform = Transform2D((randi() % 4) * PI / 2, position) # BLACK MAGIC
 	
-	if smokeParticle:
-		for i in 3:
-			var x = smokeParticle.instantiate()
-			get_tree().root.add_child(x)
-			x.position = position
-			x.moveRand()
+	smoke_generator.smoke(3)
 	
 	queue_free()
 	pass

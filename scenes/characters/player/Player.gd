@@ -8,15 +8,14 @@ var x_dir := 1
 @export var health: int = 9001:
 	set(value):
 		health = value
-		print(health)
-		if health < 1:
-			get_tree().reload_current_scene()
 	get():
 		return health
-
+		
+@onready var smoke_generator: Node2D = $SmokeGenerator
 @onready var animated_sprite_2d = $Sprite/AnimatedSprite2D
 @onready var shot_timer: Timer = $ShotTimer
 @onready var hit_timer: Timer = $HitTimer
+@onready var sprite: Node2D = $Sprite
 
 
 @export var max_speed: float = 320
@@ -39,11 +38,20 @@ var x_dir := 1
 # Timers
 @export var jump_coyote : float = 0.08
 @export var jump_buffer : float = 0.1
+@onready var camera_2d: Camera2D = $Camera2D
 
 var jump_coyote_timer : float = 0
 var jump_buffer_timer : float = 0
 var is_jumping := false
 # ----------------------------------- #
+
+func _ready() -> void:
+	setShader(false)
+
+func die():
+	#get_tree().reload_current_scene()
+	get_parent().startRespawnTimer(position)
+	queue_free()
 
 #creates a dictionary of all current inputs at the current state
 func get_input() -> Dictionary:
@@ -60,6 +68,10 @@ func get_input() -> Dictionary:
 
 
 func _physics_process(delta: float) -> void:	
+
+	if get_parent().health <= 0:
+		die()
+
 	x_movement(delta)
 	jump_logic(delta)
 	apply_gravity(delta)
@@ -68,8 +80,13 @@ func _physics_process(delta: float) -> void:
 	animations(delta)
 	move_and_slide()
 
+
+func setShader(value):
+	animated_sprite_2d.material.set("shader_param/active", value);
+
 func shoot(delta):
 	if get_input()["shoot"] and shot_timer.is_stopped():
+		sprite.shootAnimation()
 		shot_timer.start(0.25)	
 		var newBullet = starBullet.instantiate()
 		get_tree().root.add_child(newBullet)
@@ -87,10 +104,12 @@ func animations(delta):
 		animated_sprite_2d.frame = 0
 
 
-func hit():
+func hit(dmgTaken):
 	if hit_timer.is_stopped():
+		smoke_generator.smoke(3)
+		sprite.hitAnimation()
 		hit_timer.start(1)
-		health -= 1
+		get_parent().health -= dmgTaken
 
 
 func x_movement(delta: float) -> void:
