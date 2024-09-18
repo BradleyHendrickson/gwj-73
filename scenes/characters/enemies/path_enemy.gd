@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var ray = $"RayCast2D"
-@onready var INITIAL_ANGLE = 0.2 # in radians
+@export var INITIAL_ANGLE = 0.2 # in radians
 @onready var FORCE = 100
 
 

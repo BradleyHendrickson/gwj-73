@@ -146,13 +146,13 @@ position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_6wa87")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -64)
+offset = Vector2(0, -32)
 zoom = Vector2(2.3, 2.3)
 limit_left = -300
 limit_right = 300
 limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 20.0
+position_smoothing_speed = 10.0
 
 [node name="ShotTimer" type="Timer" parent="."]
 one_shot = true

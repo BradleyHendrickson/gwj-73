@@ -23,12 +23,12 @@ func die():
 	get_tree().root.add_child(f)
 	f.transform = Transform2D((randi() % 4) * PI / 2, position) # BLACK MAGIC
 	
-	#if smokeParticle:
-	#	for i in 3:
-	#		var x = smokeParticle.instantiate()
-	#		get_tree().root.add_child(x)
-	#		x.position = position
-	#		x.moveRand()
+	if smokeParticle:
+		for i in 3:
+			var x = smokeParticle.instantiate()
+			get_tree().root.add_child(x)
+			x.position = position
+			x.moveRand()
 	
 	queue_free()
 	pass
