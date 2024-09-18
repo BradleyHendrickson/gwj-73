@@ -19,11 +19,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	print(velocity)
 	if ray.is_colliding():
 		ray.target_position = -ray.target_position
-		print(velocity)
 		velocity = -1 * velocity
-		print(velocity)
 	else:
 		move_and_slide()

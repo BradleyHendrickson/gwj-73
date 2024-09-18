@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cmcudxjyqowjy"]
+[gd_scene load_steps=11 format=4 uid="uid://cmcudxjyqowjy"]
 
 [ext_resource type="PackedScene" uid="uid://c0uxds6ngem4m" path="res://scenes/ui/fps_counter.tscn" id="1_q65p1"]
 [ext_resource type="PackedScene" uid="uid://dyq8g35t6hsjf" path="res://scenes/level/platform/MovingPlatform.tscn" id="2_cl4i3"]
@@ -64,13 +64,13 @@ tile_map_data = PackedByteArray("AAAAAAkAAAAKAAcAAAD+/wkAAAAKAAcAAAACAAkAAAAKAAc
 tile_set = SubResource("TileSet_h0yni")
 
 [node name="Player" parent="Interaction Stuff" instance=ExtResource("4_ast7w")]
-position = Vector2(3, 136)
+position = Vector2(106, -148)
 
 [node name="Platform" parent="Interaction Stuff" instance=ExtResource("2_cl4i3")]
 position = Vector2(-96, -96)
 
 [node name="PathEnemy" parent="." instance=ExtResource("7_ce3kr")]
-position = Vector2(93, -2)
+position = Vector2(-50, 136)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("5_q7fur")]
 

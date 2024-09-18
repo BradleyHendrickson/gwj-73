@@ -7,12 +7,20 @@
 size = Vector2(16, 8)
 
 [node name="spikes_small" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_o7cdv")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 12)
-shape = SubResource("RectangleShape2D_5cd1l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
 texture = ExtResource("1_7a0uv")
+
+[node name="HurtArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+position = Vector2(8, 12)
+shape = SubResource("RectangleShape2D_5cd1l")
+
+[connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]
+[connection signal="body_exited" from="HurtArea" to="." method="_on_hurt_area_body_exited"]

@@ -5,9 +5,19 @@ var face_direction := 1
 var x_dir := 1
 
 @export var starBullet : PackedScene
+@export var health: int = 9001:
+	set(value):
+		health = value
+		print(health)
+		if health < 1:
+			get_tree().reload_current_scene()
+	get():
+		return health
 
 @onready var animated_sprite_2d = $Sprite/AnimatedSprite2D
 @onready var shot_timer: Timer = $ShotTimer
+@onready var hit_timer: Timer = $HitTimer
+
 
 @export var max_speed: float = 320
 @export var acceleration: float = 2880
@@ -66,6 +76,7 @@ func shoot(delta):
 		var aimVector = Vector2(0,-1)
 		newBullet.transform = Transform2D( aimVector.angle() , position + Vector2(0,-10))
 
+
 func animations(delta):
 	animated_sprite_2d.play("default")
 	animated_sprite_2d.speed_scale = (abs(velocity.x)/max_speed) * 1.2
@@ -74,7 +85,14 @@ func animations(delta):
 		animated_sprite_2d.frame = 1
 	elif abs(velocity.x) <= 0.1*delta:
 		animated_sprite_2d.frame = 0
-		
+
+
+func hit():
+	if hit_timer.is_stopped():
+		hit_timer.start(1)
+		health -= 1
+
+
 func x_movement(delta: float) -> void:
 	x_dir = get_input()["x"]
 	
