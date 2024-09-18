@@ -65,8 +65,6 @@ func get_input() -> Dictionary:
 	}
 
 
-
-
 func _physics_process(delta: float) -> void:	
 
 	if get_parent().health <= 0:
