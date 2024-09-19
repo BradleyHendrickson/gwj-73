@@ -24,7 +24,7 @@ func die():
 	get_tree().root.add_child(f)
 	f.transform = Transform2D((randi() % 4) * PI / 2, position) # BLACK MAGIC
 	
-	smoke_generator.smoke(3)
+	# smoke_generator.smoke(3)
 	
 	queue_free()
 	pass

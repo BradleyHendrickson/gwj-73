@@ -3,9 +3,6 @@
 [ext_resource type="Script" path="res://scenes/characters/enemies/path_enemy.gd" id="1_r36tq"]
 [ext_resource type="Texture2D" uid="uid://dvsisg7ybqgn6" path="res://sprites/enemy_buzz.png" id="2_ke0b2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mk2sf"]
-size = Vector2(12, 12)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_asmu5"]
 atlas = ExtResource("2_ke0b2")
 region = Rect2(0, 0, 24, 24)
@@ -28,6 +25,21 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="Animation" id="Animation_axo3h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_qpf7y"]
 resource_name = "hover"
 length = 2.0
@@ -45,34 +57,19 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, 3), Vector2(0, 0), Vector2(0, -3)]
 }
 
-[sub_resource type="Animation" id="Animation_axo3h"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h68e1"]
 _data = {
 "RESET": SubResource("Animation_axo3h"),
 "hover": SubResource("Animation_qpf7y")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mk2sf"]
+size = Vector2(12, 12)
+
 [node name="PathEnemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_r36tq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_mk2sf")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(12, 0)
@@ -90,3 +87,6 @@ autoplay = "hover"
 
 [node name="BounceTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="HurtCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mk2sf")

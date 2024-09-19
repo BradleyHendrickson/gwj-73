@@ -6,13 +6,20 @@ extends CharacterBody2D
 @export var INITIAL_ANGLE = 0.0 # in degrees
 @export var FORCE = 50
 
-
 @export var move_to := Vector2(0, -128): 
 	set(value):
 		move_to = value
 		position += value
 	get():
 		return move_to
+		
+@export var health: int = 2: 
+	set(value):
+		health = value
+		if health <= 0:
+			queue_free()
+	get():
+		return health
 
 
 func _ready() -> void:
@@ -34,3 +41,6 @@ func _process(delta: float) -> void:
 		velocity = -1 * velocity
 	else:
 		move_and_slide()
+
+func hit(dmgTaken):
+	health -= dmgTaken

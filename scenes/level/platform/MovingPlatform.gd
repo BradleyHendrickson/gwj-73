@@ -24,6 +24,7 @@ func _ready() -> void:
 		set_process(false)
 		for child in get_children():
 			start_tween(child)
+
 func _process(_delta: float) -> void:
 	queue_redraw()
 

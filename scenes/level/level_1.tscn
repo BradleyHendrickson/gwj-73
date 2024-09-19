@@ -90,3 +90,4 @@ position = Vector2(144, -112)
 
 [node name="PathEnemy" parent="world" instance=ExtResource("7_ce3kr")]
 position = Vector2(112, 48)
+INITIAL_ANGLE = 45.0

@@ -4,7 +4,7 @@ extends Node2D
 @onready var label: Label = $Label
 @onready var targets: Array
 
-@export var damage: float = 10		
+@export var damage: float = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -5,9 +5,11 @@ var face_direction := 1
 var x_dir := 1
 
 @export var starBullet : PackedScene
-@export var health: int = 9001:
+@export var health: int = 10:
 	set(value):
 		health = value
+		if health <= 0:
+			die()
 	get():
 		return health
 		
@@ -49,7 +51,6 @@ func _ready() -> void:
 	setShader(false)
 
 func die():
-	#get_tree().reload_current_scene()
 	get_parent().startRespawnTimer(position)
 	queue_free()
 
@@ -67,8 +68,8 @@ func get_input() -> Dictionary:
 
 func _physics_process(delta: float) -> void:	
 
-	if get_parent().health <= 0:
-		die()
+	#if get_parent().health <= 0:
+		#die()
 
 	x_movement(delta)
 	jump_logic(delta)
@@ -104,10 +105,11 @@ func animations(delta):
 
 func hit(dmgTaken):
 	if hit_timer.is_stopped():
-		smoke_generator.smoke(3)
+		# smoke_generator.smoke(3)
 		sprite.hitAnimation()
 		hit_timer.start(1)
-		get_parent().health -= dmgTaken
+		#get_parent().health -= dmgTaken
+		health -= dmgTaken
 
 
 func x_movement(delta: float) -> void:
