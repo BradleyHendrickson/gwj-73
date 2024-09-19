@@ -24,7 +24,7 @@ extends CharacterBody2D
 		health = value
 		if health <= 0:
 			queue_free()
-			smoke_generator.smoke(100)
+			smoke_generator.smoke(3)
 	get():
 		return health
 
