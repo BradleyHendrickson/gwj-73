@@ -35,11 +35,10 @@ func setShader(value):
 	animated_sprite_2d.material.set("shader_param/active", value);
 
 func _process(delta: float) -> void:
-	if velocity.x > 0:
+	if 0 < velocity.x:
 		animated_sprite_2d.flip_h = true
-	else:
+	elif velocity.x < 0:
 		animated_sprite_2d.flip_h = false
-	print(velocity)
 	move_and_slide()
 	
 	for target in targets:

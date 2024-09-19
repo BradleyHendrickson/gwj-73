@@ -1,23 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcfyhh3otqw4j"]
+[gd_scene load_steps=6 format=3 uid="uid://dcfyhh3otqw4j"]
 
 [ext_resource type="Texture2D" uid="uid://dvhf7dq1dtj4s" path="res://sprites/teleporter.png" id="1_h6lln"]
 [ext_resource type="Script" path="res://scenes/level/state/teleporter.gd" id="1_lm62s"]
+[ext_resource type="Shader" path="res://scenes/level/state/gray.gdshader" id="2_qj7ub"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tnp52"]
+shader = ExtResource("2_qj7ub")
+shader_parameter/active = false
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qacpx"]
-radius = 3.0
-height = 20.0
+radius = 5.0
+height = 24.0
 
 [node name="Teleporter" type="Node2D"]
 script = ExtResource("1_lm62s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tnp52")
 texture = ExtResource("1_h6lln")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 5)
+position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_qacpx")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

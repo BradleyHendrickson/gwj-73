@@ -13,9 +13,14 @@ extends Node2D
 	set(value):
 		health = value
 		game_ui.setHealth(health)
-		#player.die()
 	get():
 		return health
+@export var destination_zone : Node2D:
+	set(value):
+		destination_zone = value
+		$"Teleporter".setShader(false)
+	get():
+		return destination_zone
 
 var target_camera_position = Vector2(0,0)
 

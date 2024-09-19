@@ -1,18 +1,21 @@
 extends Node2D
 
-@export var destination_zone : Node2D
+@onready var sprite: Sprite2D = $Sprite2D
+
 @onready var targets: Array
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	setShader(!get_parent().destination_zone)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	for target in targets:
-		target.teleport(destination_zone.position)
+	if get_parent().destination_zone:
+		for target in targets:
+			target.teleport(get_parent().destination_zone.position)
 
+
+func setShader(value):
+	sprite.material.set("shader_param/active", value)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

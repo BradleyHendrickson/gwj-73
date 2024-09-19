@@ -71,7 +71,7 @@ func _physics_process(delta: float) -> void:
 
 
 func setShader(value):
-	animated_sprite_2d.material.set("shader_param/active", value);
+	animated_sprite_2d.material.set("shader_param/active", value)
 
 func teleport(new_position):
 	if position != new_position:

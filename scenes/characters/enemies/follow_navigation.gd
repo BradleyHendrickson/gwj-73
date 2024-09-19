@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 		return
 	set_target_position(closest_target.global_position)
 	set_target_position(closest_target.global_position)
-	# Needs DELTA
+	# Needs delta
 	parent.velocity = parent.FORCE * parent.global_position.direction_to(get_next_path_position())
 
 
@@ -31,3 +31,4 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	if (targets.has(body)):
 		targets.erase(body)
+	parent.velocity = Vector2(0,0)
