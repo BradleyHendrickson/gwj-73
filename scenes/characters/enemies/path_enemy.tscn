@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://horxikbid2ne"]
+[gd_scene load_steps=17 format=3 uid="uid://horxikbid2ne"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemies/path_enemy.gd" id="1_r36tq"]
 [ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="2_go5nw"]
@@ -126,6 +126,8 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mk2sf"]
 size = Vector2(12, 12)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_p2daj"]
+
 [node name="PathEnemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
@@ -156,5 +158,13 @@ libraries = {
 [node name="BounceTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="HurtCollision" type="CollisionShape2D" parent="."]
+[node name="HitBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mk2sf")
+
+[node name="HurtArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+shape = SubResource("CircleShape2D_p2daj")
+
+[connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]
+[connection signal="body_exited" from="HurtArea" to="." method="_on_hurt_area_body_exited"]
