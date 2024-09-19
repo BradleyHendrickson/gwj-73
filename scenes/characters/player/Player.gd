@@ -5,14 +5,6 @@ var face_direction := 1
 var x_dir := 1
 
 @export var starBullet : PackedScene
-@export var health: int = 10:
-	set(value):
-		health = value
-		if health <= 0:
-			die()
-	get():
-		return health
-		
 @onready var smoke_generator: Node2D = $SmokeGenerator
 @onready var animated_sprite_2d = $Sprite/AnimatedSprite2D
 @onready var shot_timer: Timer = $ShotTimer
@@ -66,10 +58,9 @@ func get_input() -> Dictionary:
 	}
 
 
-func _physics_process(delta: float) -> void:	
-
-	#if get_parent().health <= 0:
-		#die()
+func _physics_process(delta: float) -> void:
+	if get_parent().health <= 0:
+		die()
 
 	x_movement(delta)
 	jump_logic(delta)
@@ -108,8 +99,7 @@ func hit(dmgTaken):
 		# smoke_generator.smoke(3)
 		sprite.hitAnimation()
 		hit_timer.start(1)
-		#get_parent().health -= dmgTaken
-		health -= dmgTaken
+		get_parent().health -= dmgTaken
 
 
 func x_movement(delta: float) -> void:
@@ -132,9 +122,6 @@ func x_movement(delta: float) -> void:
 	
 	# Accelerate
 	velocity.x += x_dir * accel_rate * delta
-	
-	
-	
 	set_direction(x_dir) # This is purely for visuals
 
 

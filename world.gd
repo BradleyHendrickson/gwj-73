@@ -9,7 +9,7 @@ extends Node2D
 @export var follow_smoothing = 7	
 @export var playerObject : PackedScene
 @export var player_die_pos : Vector2
-@export var health = 10	
+@export var health = 10
 @onready var player = $Player
 
 var target_camera_position = Vector2(0,0)
