@@ -1,7 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://horxikbid2ne"]
+[gd_scene load_steps=15 format=3 uid="uid://horxikbid2ne"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemies/path_enemy.gd" id="1_r36tq"]
+[ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="2_go5nw"]
 [ext_resource type="Texture2D" uid="uid://dvsisg7ybqgn6" path="res://sprites/enemy_buzz.png" id="2_ke0b2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c8lxd"]
+shader = ExtResource("2_go5nw")
+shader_parameter/active = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_asmu5"]
 atlas = ExtResource("2_ke0b2")
@@ -63,6 +68,60 @@ _data = {
 "hover": SubResource("Animation_qpf7y")
 }
 
+[sub_resource type="Animation" id="Animation_ivcwp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5e0et"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1.10957, 1),
+"update": 0,
+"values": [-0.261799, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"setShader"
+}, {
+"args": [false],
+"method": &"setShader"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hw1o3"]
+_data = {
+"RESET": SubResource("Animation_ivcwp"),
+"hit": SubResource("Animation_5e0et")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mk2sf"]
 size = Vector2(12, 12)
 
@@ -76,6 +135,7 @@ target_position = Vector2(12, 0)
 collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_c8lxd")
 sprite_frames = SubResource("SpriteFrames_8l0nw")
 autoplay = "default"
 
@@ -84,6 +144,11 @@ libraries = {
 "": SubResource("AnimationLibrary_h68e1")
 }
 autoplay = "hover"
+
+[node name="SpriteAnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_hw1o3")
+}
 
 [node name="BounceTimer" type="Timer" parent="."]
 one_shot = true
