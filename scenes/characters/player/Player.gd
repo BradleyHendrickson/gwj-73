@@ -96,7 +96,7 @@ func animations(delta):
 
 func hit(dmgTaken):
 	if hit_timer.is_stopped():
-		# smoke_generator.smoke(3)
+		smoke_generator.smoke(3)
 		sprite.hitAnimation()
 		hit_timer.start(1)
 		get_parent().health -= dmgTaken

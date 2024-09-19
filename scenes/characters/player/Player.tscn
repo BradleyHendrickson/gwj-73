@@ -198,8 +198,6 @@ jump_cut = 0.5
 jump_gravity_max = 250.0
 jump_hang_gravity_mult = 0.05
 
-[node name="SmokeGenerator" parent="." instance=ExtResource("3_pi8rx")]
-
 [node name="SquareCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("2")
@@ -252,3 +250,5 @@ one_shot = true
 
 [node name="HitTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="SmokeGenerator" parent="." instance=ExtResource("3_pi8rx")]

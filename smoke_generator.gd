@@ -10,10 +10,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-#func smoke(amount):
-	#if smokeParticle:
-		#for i in amount:
-			#var x = smokeParticle.instantiate()
-			#get_tree().root.add_child(x)
-			#x.position = get_parent().position
-			#x.moveRand()
+func smoke(amount):
+	if smokeParticle:
+		for i in amount:
+			var x = smokeParticle.instantiate()
+			get_tree().root.add_child(x)
+			x.position = get_parent().position
+			x.moveRand()
