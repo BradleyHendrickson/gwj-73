@@ -2,17 +2,16 @@ extends CharacterBody2D
 
 @onready var bounce_timer: Timer = $BounceTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var ray = $"RayCast2D"
 @onready var smoke_generator: Node2D = $SmokeGenerator
 
 @onready var targets: Array
+@onready var follow_targets: Array
 
-@export var INITIAL_ANGLE = 0.0 # in degrees
 @export var FORCE = 50
 @onready var sprite_animation_player: AnimationPlayer = $AnimatedSprite2D/SpriteAnimationPlayer
 @export var damage: float = 1
 
-@export var move_to := Vector2(0, -128): 
+@export var move_to := Vector2(0, -128):
 	set(value):
 		move_to = value
 		position += value
@@ -31,9 +30,6 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	setShader(false)
-	var radAngle = INITIAL_ANGLE * PI / 180
-	ray.global_rotation = radAngle
-	velocity = FORCE * Vector2(cos(radAngle), sin(radAngle))
 
 func setShader(value):
 	animated_sprite_2d.material.set("shader_param/active", value);
@@ -43,14 +39,9 @@ func _process(delta: float) -> void:
 		animated_sprite_2d.flip_h = true
 	else:
 		animated_sprite_2d.flip_h = false
+	print(velocity)
+	move_and_slide()
 	
-	if ray.is_colliding() and bounce_timer.is_stopped():
-		bounce_timer.start(0.2)
-		ray.target_position = -ray.target_position
-		velocity = -1 * velocity
-	else:
-		move_and_slide()
-		
 	for target in targets:
 		target.hit(damage)
 

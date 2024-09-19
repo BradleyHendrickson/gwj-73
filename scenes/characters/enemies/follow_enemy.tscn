@@ -1,21 +1,22 @@
-[gd_scene load_steps=17 format=3 uid="uid://horxikbid2ne"]
+[gd_scene load_steps=19 format=3 uid="uid://illkk1wwmjq5"]
 
-[ext_resource type="Script" path="res://scenes/characters/enemies/path_enemy.gd" id="1_r36tq"]
-[ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="2_go5nw"]
-[ext_resource type="Texture2D" uid="uid://dvsisg7ybqgn6" path="res://sprites/enemy_buzz.png" id="2_ke0b2"]
-[ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="2_ok40o"]
+[ext_resource type="Script" path="res://scenes/characters/enemies/follow_enemy.gd" id="1_ixdwh"]
+[ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="2_q3brg"]
+[ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="3_6kpwm"]
+[ext_resource type="Texture2D" uid="uid://dvsisg7ybqgn6" path="res://sprites/enemy_buzz.png" id="4_rqstb"]
+[ext_resource type="Script" path="res://scenes/characters/enemies/follow_navigation.gd" id="5_48qvd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c8lxd"]
 resource_local_to_scene = true
-shader = ExtResource("2_go5nw")
+shader = ExtResource("3_6kpwm")
 shader_parameter/active = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_asmu5"]
-atlas = ExtResource("2_ke0b2")
+atlas = ExtResource("4_rqstb")
 region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_16g75"]
-atlas = ExtResource("2_ke0b2")
+atlas = ExtResource("4_rqstb")
 region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8l0nw"]
@@ -153,16 +154,15 @@ size = Vector2(12, 12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2daj"]
 
-[node name="PathEnemy" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_pcx7k"]
+radius = 193.065
+
+[node name="FollowEnemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_r36tq")
+script = ExtResource("1_ixdwh")
 
-[node name="SmokeGenerator" parent="." instance=ExtResource("2_ok40o")]
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(12, 0)
-collision_mask = 2
+[node name="SmokeGenerator" parent="." instance=ExtResource("2_q3brg")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_c8lxd")
@@ -192,5 +192,17 @@ shape = SubResource("RectangleShape2D_mk2sf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
 shape = SubResource("CircleShape2D_p2daj")
 
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_pcx7k")
+
+[node name="FollowNavigation" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+script = ExtResource("5_48qvd")
+
 [connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]
 [connection signal="body_exited" from="HurtArea" to="." method="_on_hurt_area_body_exited"]
+[connection signal="body_entered" from="DetectionArea" to="FollowNavigation" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="FollowNavigation" method="_on_detection_area_body_exited"]
