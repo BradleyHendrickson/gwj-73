@@ -31,9 +31,12 @@ func moveRand():
 	var dir= deg_to_rad(randf_range(0,360))
 	velocity = Vector2(cos(dir), sin(dir))* mag
 
-func _physics_process(delta):
+func _process(delta: float) -> void:
 	if !animated_sprite_2d.is_playing():
 		queue_free()
+
+func _physics_process(delta):
+
 		
 	# Apply friction
 	velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
