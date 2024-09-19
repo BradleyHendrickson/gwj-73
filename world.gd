@@ -2,21 +2,26 @@ extends Node2D
 
 
 @onready var game_ui: CanvasLayer = $GameUI
-@onready var death_camera: Camera2D = $DeathCamera
 @onready var player_respawn_timer: Timer = $PlayerRespawnTimer
 @onready var camera: Camera2D = $Camera
+@onready var player = $Player
 
-@export var follow_smoothing = 7	
+@export var follow_smoothing = 7
 @export var playerObject : PackedScene
 @export var player_die_pos : Vector2
-@export var health = 10
-@onready var player = $Player
+@export var health: int = 10:
+	set(value):
+		health = value
+		game_ui.setHealth(health)
+		#player.die()
+	get():
+		return health
 
 var target_camera_position = Vector2(0,0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	game_ui.setHealth(health)
 
 
 func startRespawnTimer(diepos):
@@ -26,7 +31,6 @@ func startRespawnTimer(diepos):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-
 	if is_instance_valid(player):
 		target_camera_position = player.global_position
 	else:
@@ -39,7 +43,3 @@ func _process(delta: float) -> void:
 	
 	#target_position_clamped = target_position.clamped(level_bounds)
 	camera.global_position = camera.global_position.lerp(target_camera_position, delta * follow_smoothing)
-	
-	game_ui.setHealth(health)
-	
-	pass

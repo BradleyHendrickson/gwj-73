@@ -22,7 +22,7 @@ func destroy():
 func die():
 	var f = hitEffect.instantiate()
 	get_tree().root.add_child(f)
-	f.transform = Transform2D((randi() % 4) * PI / 2, position) # BLACK MAGIC
+	f.transform = Transform2D((randf()) * 2 * PI, position) # BLACK MAGIC
 	
 	#smoke_generator.smoke(3)
 	

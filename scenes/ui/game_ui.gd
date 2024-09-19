@@ -18,7 +18,7 @@ func setHealth(amount):
 	for n in h_box_container.get_children():
 		h_box_container.remove_child(n)
 		n.queue_free()
-		
+	
 	var hearts = float(amount/2.0)
 	while hearts > 0:
 		if hearts >= 1:
