@@ -1,7 +1,6 @@
 extends Node2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var label: Label = $Label
 @onready var targets: Array
 
 @export var damage: float = 10

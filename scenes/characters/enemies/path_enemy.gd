@@ -50,6 +50,7 @@ func _process(delta: float) -> void:
 		velocity = -1 * velocity
 	else:
 		move_and_slide()
+		
 	for target in targets:
 		target.hit(damage)
 

@@ -32,7 +32,6 @@ var x_dir := 1
 # Timers
 @export var jump_coyote : float = 0.08
 @export var jump_buffer : float = 0.1
-@onready var camera_2d: Camera2D = $Camera2D
 
 var jump_coyote_timer : float = 0
 var jump_buffer_timer : float = 0
@@ -73,6 +72,11 @@ func _physics_process(delta: float) -> void:
 
 func setShader(value):
 	animated_sprite_2d.material.set("shader_param/active", value);
+
+func teleport(new_position):
+	if position != new_position:
+		position = new_position
+		smoke_generator.smoke(4)
 
 func shoot(delta):
 	if get_input()["shoot"] and shot_timer.is_stopped():

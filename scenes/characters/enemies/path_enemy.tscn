@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="2_ok40o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c8lxd"]
+resource_local_to_scene = true
 shader = ExtResource("2_go5nw")
 shader_parameter/active = false
 
@@ -60,7 +61,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 3), Vector2(0, 0), Vector2(0, -3)]
+"values": [Vector2(0, 0), Vector2(0, 4), Vector2(0, 0), Vector2(0, -4)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h68e1"]
@@ -69,22 +70,7 @@ _data = {
 "hover": SubResource("Animation_qpf7y")
 }
 
-[sub_resource type="Animation" id="Animation_ivcwp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_5e0et"]
+[sub_resource type="Animation" id="Animation_7qkde"]
 resource_name = "hit"
 length = 0.2
 tracks/0/type = "value"
@@ -116,11 +102,50 @@ tracks/1/keys = {
 "method": &"setShader"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.267943, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.9), Vector2(1, 1)]
+}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hw1o3"]
+[sub_resource type="Animation" id="Animation_2swfp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uyx11"]
 _data = {
-"RESET": SubResource("Animation_ivcwp"),
-"hit": SubResource("Animation_5e0et")
+"RESET": SubResource("Animation_2swfp"),
+"hit": SubResource("Animation_7qkde")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mk2sf"]
@@ -152,8 +177,9 @@ autoplay = "hover"
 
 [node name="SpriteAnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {
-"": SubResource("AnimationLibrary_hw1o3")
+"": SubResource("AnimationLibrary_uyx11")
 }
+autoplay = "RESET"
 
 [node name="BounceTimer" type="Timer" parent="."]
 one_shot = true
