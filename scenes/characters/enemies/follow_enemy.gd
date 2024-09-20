@@ -9,7 +9,7 @@ extends CharacterBody2D
 @onready var follow_timer: Timer = $FollowTimer
 
 @export var resting = false
-@export var FORCE = 50
+@export var FORCE = 65
 @export var damage: float = 1
 @export var move_to := Vector2(0, -128):
 	set(value):
@@ -27,7 +27,7 @@ extends CharacterBody2D
 		return health
 
 @onready var targets: Array
-@onready var bounce_velocity = 300
+@export var bounce_velocity = 300
 
 func wake():
 	resting = false
