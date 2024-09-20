@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://illkk1wwmjq5"]
+[gd_scene load_steps=20 format=3 uid="uid://illkk1wwmjq5"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemies/follow_enemy.gd" id="1_ixdwh"]
 [ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="2_q3brg"]
@@ -157,6 +157,9 @@ size = Vector2(12, 12)
 [sub_resource type="CircleShape2D" id="CircleShape2D_pcx7k"]
 radius = 151.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ompnf"]
+size = Vector2(20, 5)
+
 [node name="FollowEnemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
@@ -204,7 +207,15 @@ debug_enabled = true
 debug_use_custom = true
 script = ExtResource("5_48qvd")
 
+[node name="JumpHitBox" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpHitBox"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_ompnf")
+
 [connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]
 [connection signal="body_exited" from="HurtArea" to="." method="_on_hurt_area_body_exited"]
 [connection signal="body_entered" from="DetectionArea" to="FollowNavigation" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="FollowNavigation" method="_on_detection_area_body_exited"]
+[connection signal="body_shape_entered" from="JumpHitBox" to="." method="_on_jump_hit_box_body_shape_entered"]

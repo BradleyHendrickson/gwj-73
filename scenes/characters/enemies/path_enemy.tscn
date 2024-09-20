@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://horxikbid2ne"]
+[gd_scene load_steps=18 format=3 uid="uid://horxikbid2ne"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemies/path_enemy.gd" id="1_r36tq"]
 [ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="2_go5nw"]
@@ -151,7 +151,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mk2sf"]
 size = Vector2(12, 12)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p2daj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1ny0"]
+size = Vector2(16, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f26d7"]
+size = Vector2(20, 5)
 
 [node name="PathEnemy" type="CharacterBody2D"]
 collision_layer = 4
@@ -190,7 +194,16 @@ shape = SubResource("RectangleShape2D_mk2sf")
 [node name="HurtArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
-shape = SubResource("CircleShape2D_p2daj")
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_i1ny0")
+
+[node name="JumpHitBox" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpHitBox"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_f26d7")
 
 [connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]
 [connection signal="body_exited" from="HurtArea" to="." method="_on_hurt_area_body_exited"]
+[connection signal="body_shape_entered" from="JumpHitBox" to="." method="_on_jump_hit_box_body_shape_entered"]
