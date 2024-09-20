@@ -1,0 +1,215 @@
+[gd_scene load_steps=19 format=3 uid="uid://bnm4cfha64ngn"]
+
+[ext_resource type="Script" path="res://scenes/characters/enemies/wall_crawl_enemy.gd" id="1_dqxgg"]
+[ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="2_63t46"]
+[ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="3_wnoss"]
+[ext_resource type="Texture2D" uid="uid://dvsisg7ybqgn6" path="res://sprites/enemy_buzz.png" id="4_ogulv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c8lxd"]
+resource_local_to_scene = true
+shader = ExtResource("3_wnoss")
+shader_parameter/active = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asmu5"]
+atlas = ExtResource("4_ogulv")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16g75"]
+atlas = ExtResource("4_ogulv")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8l0nw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asmu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16g75")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="Animation" id="Animation_axo3h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qpf7y"]
+resource_name = "hover"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 4), Vector2(0, 0), Vector2(0, -4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h68e1"]
+_data = {
+"RESET": SubResource("Animation_axo3h"),
+"hover": SubResource("Animation_qpf7y")
+}
+
+[sub_resource type="Animation" id="Animation_2swfp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7qkde"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1.10957, 1),
+"update": 0,
+"values": [-0.261799, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"setShader"
+}, {
+"args": [false],
+"method": &"setShader"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.267943, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.9), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uyx11"]
+_data = {
+"RESET": SubResource("Animation_2swfp"),
+"hit": SubResource("Animation_7qkde")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mk2sf"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1ny0"]
+size = Vector2(16, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f26d7"]
+size = Vector2(20, 5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0lyis"]
+radius = 151.0
+
+[node name="StaticEnemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_dqxgg")
+
+[node name="SmokeGenerator" parent="." instance=ExtResource("2_63t46")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_c8lxd")
+sprite_frames = SubResource("SpriteFrames_8l0nw")
+autoplay = "default"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_h68e1")
+}
+autoplay = "hover"
+
+[node name="SpriteAnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_uyx11")
+}
+autoplay = "RESET"
+
+[node name="BounceTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mk2sf")
+
+[node name="HurtArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+shape = SubResource("RectangleShape2D_i1ny0")
+
+[node name="JumpHitBox" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpHitBox"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_f26d7")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_0lyis")
+
+[connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]
+[connection signal="body_exited" from="HurtArea" to="." method="_on_hurt_area_body_exited"]
+[connection signal="body_shape_entered" from="JumpHitBox" to="." method="_on_jump_hit_box_body_shape_entered"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
