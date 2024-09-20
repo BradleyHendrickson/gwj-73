@@ -3,21 +3,16 @@ extends CharacterBody2D
 @onready var bounce_timer: Timer = $BounceTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var smoke_generator: Node2D = $SmokeGenerator
-
-@onready var targets: Array
-@onready var follow_targets: Array
+@onready var sprite_animation_player: AnimationPlayer = $AnimatedSprite2D/SpriteAnimationPlayer
 
 @export var FORCE = 50
-@onready var sprite_animation_player: AnimationPlayer = $AnimatedSprite2D/SpriteAnimationPlayer
 @export var damage: float = 1
-
 @export var move_to := Vector2(0, -128):
 	set(value):
 		move_to = value
 		position += value
 	get():
 		return move_to
-
 @export var health: int = 3: 
 	set(value):
 		health = value
@@ -26,6 +21,9 @@ extends CharacterBody2D
 			smoke_generator.smoke(6)
 	get():
 		return health
+
+@onready var targets: Array
+@onready var bounce_velocity = 500
 
 
 func _ready() -> void:
@@ -57,3 +55,9 @@ func _on_hurt_area_body_exited(body: Node2D) -> void:
 func hit(dmgTaken):
 	sprite_animation_player.play("hit")
 	health -= dmgTaken
+
+
+func _on_jump_hit_box_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if body.has_method("hit") and 0 < body.velocity.y:
+		hit(health)
+		body.velocity.y = -bounce_velocity
