@@ -8,7 +8,13 @@ func _ready() -> void:
 	pass
 
 
-func _process(delta: float) -> void:
+func playerInRange():
+	if targets.size() > 0:
+		return true
+	else:
+		return false
+
+func follow(delta: float) -> void:
 	# Dude... This is going to be resource intensive. Maybe only check once a second?
 	var closest_target
 	for target in targets:

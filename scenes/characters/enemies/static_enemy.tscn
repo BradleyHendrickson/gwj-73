@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bnm4cfha64ngn"]
+[gd_scene load_steps=19 format=3 uid="uid://u5qng31o4xat"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemies/wall_crawl_enemy.gd" id="1_dqxgg"]
 [ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="2_63t46"]

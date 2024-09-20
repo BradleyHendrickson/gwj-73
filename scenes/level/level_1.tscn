@@ -20,14 +20,14 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
 agent_radius = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ht8su"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v0ee5"]
 texture = ExtResource("4_vs2u7")
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_dqrtr")
 
 [sub_resource type="TileSet" id="TileSet_hq87w"]
 navigation_layer_0/layers = 1
-sources/0 = SubResource("TileSetAtlasSource_ht8su")
+sources/0 = SubResource("TileSetAtlasSource_v0ee5")
 
 [node name="Level1" type="Node2D"]
 

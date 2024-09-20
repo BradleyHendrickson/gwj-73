@@ -20,7 +20,7 @@ extends CharacterBody2D
 	get():
 		return move_to
 
-@export var health: int = 3: 
+@export var health: int = 2: 
 	set(value):
 		health = value
 		if health <= 0:
