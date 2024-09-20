@@ -48,3 +48,6 @@ func _process(delta: float) -> void:
 	
 	#target_position_clamped = target_position.clamped(level_bounds)
 	camera.global_position = camera.global_position.lerp(target_camera_position, delta * follow_smoothing)
+	
+	if Input.is_action_just_pressed("quit_game"):
+		get_tree().quit()
