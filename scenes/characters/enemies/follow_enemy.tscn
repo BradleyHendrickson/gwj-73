@@ -203,8 +203,6 @@ shape = SubResource("CircleShape2D_pcx7k")
 
 [node name="FollowNavigation" type="NavigationAgent2D" parent="."]
 path_postprocessing = 1
-debug_enabled = true
-debug_use_custom = true
 script = ExtResource("5_48qvd")
 
 [node name="JumpHitBox" type="Area2D" parent="."]
