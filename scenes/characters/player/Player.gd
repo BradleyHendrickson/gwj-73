@@ -10,7 +10,7 @@ var x_dir := 1
 @onready var shot_timer: Timer = $ShotTimer
 @onready var hit_timer: Timer = $HitTimer
 @onready var sprite: Node2D = $Sprite
-
+@onready var blink_animation_player: AnimationPlayer = $BlinkAnimationPlayer
 
 @export var max_speed: float = 320
 @export var acceleration: float = 2880
@@ -58,7 +58,14 @@ func get_input() -> Dictionary:
 
 
 func _physics_process(delta: float) -> void:
-	if get_parent().health <= 0:
+
+	if !hit_timer.is_stopped() && sprite.hitAnimationIsPlaying() && !blink_animation_player.is_playing():
+		blink_animation_player.play("blink")
+	if hit_timer.is_stopped():
+		blink_animation_player.stop()
+		visible = true
+	
+	if get_parent() and get_parent().health <= 0:
 		die()
 
 	x_movement(delta)

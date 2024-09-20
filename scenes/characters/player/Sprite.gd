@@ -9,9 +9,9 @@ extends Node2D
 @onready var Player := get_node(player_path)
 @onready var Animator := $AnimationPlayer
 @onready var sprite_animation_player: AnimationPlayer = $AnimatedSprite2D/SpriteAnimationPlayer
+@onready var blink_animation_player: AnimationPlayer = $AnimatedSprite2D/BlinkAnimationPlayer
 
 var previous_frame_velocity := Vector2(0,0)
-
 
 # Avoid errors
 func _ready() -> void:
@@ -24,7 +24,9 @@ func shootAnimation():
 	
 func hitAnimation():
 	sprite_animation_player.play("hit")
-	
+
+func hitAnimationIsPlaying():
+	return sprite_animation_player.is_playing()
 
 func _process(_delta: float) -> void:
 	if previous_frame_velocity.y >= 0 and Player.velocity.y < 0:

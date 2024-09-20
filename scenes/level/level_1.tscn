@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://cmcudxjyqowjy"]
+[gd_scene load_steps=17 format=4 uid="uid://cmcudxjyqowjy"]
 
 [ext_resource type="PackedScene" uid="uid://ny3hct8guqcu" path="res://scenes/level/state/world.tscn" id="1_yi4x6"]
 [ext_resource type="PackedScene" uid="uid://dyq8g35t6hsjf" path="res://scenes/level/platform/MovingPlatform.tscn" id="2_cl4i3"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bomd1xcpoednd" path="res://scenes/level/obstacle/spikes_small.tscn" id="8_x4hmv"]
 [ext_resource type="PackedScene" uid="uid://dcfyhh3otqw4j" path="res://scenes/level/state/teleporter.tscn" id="9_e3eip"]
 [ext_resource type="PackedScene" uid="uid://j6dssgoyjtcg" path="res://scenes/level/state/teleporter_destination.tscn" id="10_qmiyn"]
-[ext_resource type="PackedScene" uid="uid://illkk1wwmjq5" path="res://scenes/characters/enemies/follow_enemy.tscn" id="11_r0ica"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8japf"]
 texture = ExtResource("4_qqr0k")
@@ -127,12 +126,6 @@ position = Vector2(122, -304)
 
 [node name="teleporter_destination" parent="world" instance=ExtResource("10_qmiyn")]
 position = Vector2(177, -392)
-
-[node name="FollowEnemy" parent="world" instance=ExtResource("11_r0ica")]
-position = Vector2(174, -155)
-
-[node name="FollowEnemy2" parent="world" instance=ExtResource("11_r0ica")]
-position = Vector2(-161, -106)
 
 [node name="teleporter_destination2" parent="world" instance=ExtResource("10_qmiyn")]
 position = Vector2(-180, -61)

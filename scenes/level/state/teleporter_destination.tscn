@@ -5,6 +5,7 @@
 [ext_resource type="Shader" path="res://scenes/level/state/gray.gdshader" id="2_lmgbp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_obyrh"]
+resource_local_to_scene = true
 shader = ExtResource("2_lmgbp")
 shader_parameter/active = false
 

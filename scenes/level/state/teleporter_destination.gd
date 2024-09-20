@@ -10,7 +10,6 @@ func _ready() -> void:
 
 
 func setShader(value):
-	sprite.material = sprite.material.duplicate()
 	sprite.material.set("shader_param/active", value)
 
 
