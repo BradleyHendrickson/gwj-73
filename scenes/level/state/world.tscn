@@ -15,6 +15,7 @@ one_shot = true
 
 [node name="Camera" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
+offset = Vector2(0, -32)
 zoom = Vector2(2.3, 2.3)
 process_callback = 0
 limit_left = -300

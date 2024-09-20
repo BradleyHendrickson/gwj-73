@@ -58,7 +58,7 @@ sprite_frames = SubResource("SpriteFrames_30tjh")
 frame_progress = 0.433745
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.4
 one_shot = true
 autostart = true
 

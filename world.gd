@@ -38,7 +38,10 @@ func startRespawnTimer(diepos):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_instance_valid(player):
-		target_camera_position = player.global_position
+		# Bias the camera towards the horizontal center of the screen
+		var screen_center_x = 0.0
+		target_camera_position.x = lerp(player.global_position.x, screen_center_x, 0.1) # Horizontal bias factor
+		target_camera_position.y = player.global_position.y # Keep vertical alignment with the player
 	else:
 		if player_respawn_timer.is_stopped():
 			var p = playerObject.instantiate()
@@ -47,8 +50,9 @@ func _process(delta: float) -> void:
 			health = 10
 			p.position = Vector2(0, 56)
 	
-	#target_position_clamped = target_position.clamped(level_bounds)
+	# Smoothly move the camera towards the biased target position
 	camera.global_position = camera.global_position.lerp(target_camera_position, delta * follow_smoothing)
+
 	
 	if Input.is_action_just_pressed("quit_game"):
 		get_tree().quit()

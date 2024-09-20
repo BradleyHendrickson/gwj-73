@@ -14,7 +14,7 @@ extends CharacterBody2D
 @export var damage: float = 1
 
 @onready var targets: Array
-@onready var bounce_velocity = 500
+@onready var bounce_velocity = 300
 
 @export var move_to := Vector2(0, -128): 
 	set(value):

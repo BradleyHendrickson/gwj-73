@@ -23,7 +23,7 @@ extends CharacterBody2D
 		return health
 
 @onready var targets: Array
-@onready var bounce_velocity = 500
+@onready var bounce_velocity = 300
 
 
 func _ready() -> void:
