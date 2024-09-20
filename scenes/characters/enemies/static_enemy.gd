@@ -20,6 +20,8 @@ extends CharacterBody2D
 @onready var targets: Array
 @onready var bounce_velocity = 500
 
+var myRotation = 0.0
+
 @export var move_to := Vector2(0, -128): 
 	set(value):
 		move_to = value

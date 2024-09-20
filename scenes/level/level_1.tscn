@@ -106,7 +106,7 @@ position = Vector2(-129, -496)
 INITIAL_ANGLE = 45.0
 
 [node name="StaticEnemy2" parent="world" instance=ExtResource("14_iregv")]
-position = Vector2(-183, -375)
+position = Vector2(-168, -376)
 end_angle = 90.0
 distance = 300
 
