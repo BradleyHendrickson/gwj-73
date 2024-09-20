@@ -1,22 +1,21 @@
-[gd_scene load_steps=20 format=3 uid="uid://drb58nxmshj8k"]
+[gd_scene load_steps=19 format=3 uid="uid://bnm4cfha64ngn"]
 
-[ext_resource type="Script" path="res://scenes/characters/enemies/follow_enemy.gd" id="1_ixdwh"]
-[ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="2_q3brg"]
-[ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="3_6kpwm"]
-[ext_resource type="Texture2D" uid="uid://dvsisg7ybqgn6" path="res://sprites/enemy_buzz.png" id="4_rqstb"]
-[ext_resource type="Script" path="res://scenes/characters/enemies/follow_navigation.gd" id="5_48qvd"]
+[ext_resource type="Script" path="res://scenes/characters/enemies/wall_crawl_enemy.gd" id="1_dqxgg"]
+[ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="2_63t46"]
+[ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="3_wnoss"]
+[ext_resource type="Texture2D" uid="uid://dvsisg7ybqgn6" path="res://sprites/enemy_buzz.png" id="4_ogulv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c8lxd"]
 resource_local_to_scene = true
-shader = ExtResource("3_6kpwm")
+shader = ExtResource("3_wnoss")
 shader_parameter/active = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_asmu5"]
-atlas = ExtResource("4_rqstb")
+atlas = ExtResource("4_ogulv")
 region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_16g75"]
-atlas = ExtResource("4_rqstb")
+atlas = ExtResource("4_ogulv")
 region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8l0nw"]
@@ -152,20 +151,21 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mk2sf"]
 size = Vector2(12, 12)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p2daj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1ny0"]
+size = Vector2(16, 11)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pcx7k"]
-radius = 151.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ompnf"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f26d7"]
 size = Vector2(20, 5)
 
-[node name="FollowEnemy" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0lyis"]
+radius = 151.0
+
+[node name="StaticEnemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_ixdwh")
+script = ExtResource("1_dqxgg")
 
-[node name="SmokeGenerator" parent="." instance=ExtResource("2_q3brg")]
+[node name="SmokeGenerator" parent="." instance=ExtResource("2_63t46")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_c8lxd")
@@ -193,27 +193,23 @@ shape = SubResource("RectangleShape2D_mk2sf")
 [node name="HurtArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
-shape = SubResource("CircleShape2D_p2daj")
-
-[node name="DetectionArea" type="Area2D" parent="."]
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_pcx7k")
-
-[node name="FollowNavigation" type="NavigationAgent2D" parent="."]
-path_postprocessing = 1
-script = ExtResource("5_48qvd")
+shape = SubResource("RectangleShape2D_i1ny0")
 
 [node name="JumpHitBox" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpHitBox"]
 position = Vector2(0, -7.5)
-shape = SubResource("RectangleShape2D_ompnf")
+shape = SubResource("RectangleShape2D_f26d7")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_0lyis")
 
 [connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]
 [connection signal="body_exited" from="HurtArea" to="." method="_on_hurt_area_body_exited"]
-[connection signal="body_entered" from="DetectionArea" to="FollowNavigation" method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="DetectionArea" to="FollowNavigation" method="_on_detection_area_body_exited"]
 [connection signal="body_shape_entered" from="JumpHitBox" to="." method="_on_jump_hit_box_body_shape_entered"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
