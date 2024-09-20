@@ -3,6 +3,7 @@ extends Area2D
 @export var friction = 1000
 @export var speed = 400
 @export var damage = 1
+@export var time = 0.4
 
 var damagable_targets: Array
 @onready var smoke_generator: Node2D = $SmokeGenerator
@@ -12,9 +13,8 @@ var damagable_targets: Array
 
 @export var hitEffect : PackedScene
 
-
-func longTime():
-	timer.start(2)
+func _ready() -> void:
+	timer.start(time)
 
 func destroy():
 	queue_free()

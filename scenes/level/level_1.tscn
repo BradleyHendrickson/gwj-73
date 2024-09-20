@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cmcudxjyqowjy"]
+[gd_scene load_steps=18 format=4 uid="uid://cmcudxjyqowjy"]
 
 [ext_resource type="PackedScene" uid="uid://ny3hct8guqcu" path="res://scenes/level/state/world.tscn" id="1_yi4x6"]
 [ext_resource type="PackedScene" uid="uid://dyq8g35t6hsjf" path="res://scenes/level/platform/MovingPlatform.tscn" id="2_cl4i3"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://j6dssgoyjtcg" path="res://scenes/level/state/teleporter_destination.tscn" id="10_qmiyn"]
 [ext_resource type="PackedScene" uid="uid://drb58nxmshj8k" path="res://scenes/characters/enemies/follow_enemy.tscn" id="11_r0ica"]
 [ext_resource type="PackedScene" uid="uid://dfvdwjsifgite" path="res://scenes/characters/enemies/wall_crawl_enemy.tscn" id="13_4oldj"]
+[ext_resource type="PackedScene" uid="uid://u5qng31o4xat" path="res://scenes/characters/enemies/static_enemy.tscn" id="14_iregv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dqrtr"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -95,7 +96,7 @@ position = Vector2(-180, -61)
 position = Vector2(-120, -624)
 
 [node name="FollowEnemy" parent="world" instance=ExtResource("11_r0ica")]
-position = Vector2(-166, -120)
+position = Vector2(-167, -192)
 
 [node name="FollowEnemy2" parent="world" instance=ExtResource("11_r0ica")]
 position = Vector2(119, -405)
@@ -104,8 +105,13 @@ position = Vector2(119, -405)
 position = Vector2(-129, -496)
 INITIAL_ANGLE = 45.0
 
-[node name="spikes_small" parent="." instance=ExtResource("8_x4hmv")]
+[node name="StaticEnemy2" parent="world" instance=ExtResource("14_iregv")]
+position = Vector2(-183, -375)
+end_angle = 90.0
+distance = 300
+
+[node name="spikes_small8" parent="world" instance=ExtResource("8_x4hmv")]
 position = Vector2(14, 128)
 
-[node name="WallCrawlEnemy" parent="." instance=ExtResource("13_4oldj")]
+[node name="WallCrawlEnemy" parent="world" instance=ExtResource("13_4oldj")]
 position = Vector2(-59, 136)

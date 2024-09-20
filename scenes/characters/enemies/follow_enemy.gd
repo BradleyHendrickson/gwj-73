@@ -44,9 +44,6 @@ func _ready() -> void:
 	
 	setShader(false)
 
-func setShader(value):
-	animated_sprite_2d.material.set("shader_param/active", value);
-
 func _process(delta: float) -> void:
 	
 	if follow_navigation and !resting:
@@ -63,6 +60,10 @@ func _process(delta: float) -> void:
 	
 	for target in targets:
 		target.hit(damage)
+
+
+func setShader(value):
+	animated_sprite_2d.material.set("shader_param/active", value)
 
 
 func _on_hurt_area_body_entered(body: Node2D) -> void:

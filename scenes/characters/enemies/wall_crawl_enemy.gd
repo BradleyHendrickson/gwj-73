@@ -5,7 +5,6 @@ extends CharacterBody2D
 @onready var right_ray: RayCast2D = $"RightRay"
 @onready var up_ray: RayCast2D = $"UpRay"
 @onready var down_right_ray: RayCast2D = $DownRightRay
-
 @onready var smoke_generator: Node2D = $SmokeGenerator
 @onready var sprite_animation_player: AnimationPlayer = $AnimatedSprite2D/SpriteAnimationPlayer
 
@@ -38,9 +37,6 @@ func _ready() -> void:
 	setShader(false)
 	velocity = FORCE * Vector2(0,-1)
 
-func setShader(value):
-	animated_sprite_2d.material.set("shader_param/active", value);
-
 func _process(delta: float) -> void:
 	if !right_ray.is_colliding() and down_right_ray.is_colliding():
 		rotate(PI/2)
@@ -52,6 +48,10 @@ func _process(delta: float) -> void:
 	
 	for target in hurt_targets:
 		target.hit(damage)
+
+
+func setShader(value):
+	animated_sprite_2d.material.set("shader_param/active", value)
 
 
 func _on_hurt_area_body_entered(body: Node2D) -> void:

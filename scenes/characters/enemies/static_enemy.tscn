@@ -1,6 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://u5qng31o4xat"]
 
-[ext_resource type="Script" path="res://scenes/characters/enemies/wall_crawl_enemy.gd" id="1_dqxgg"]
+[ext_resource type="Script" path="res://scenes/characters/enemies/static_enemy.gd" id="1_0ndbu"]
+[ext_resource type="PackedScene" uid="uid://dpjg0ppuwx42t" path="res://scenes/projectiles/bullet.tscn" id="2_6pqcc"]
 [ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="2_63t46"]
 [ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="3_wnoss"]
 [ext_resource type="Texture2D" uid="uid://dvsisg7ybqgn6" path="res://sprites/enemy_buzz.png" id="4_ogulv"]
@@ -157,13 +158,13 @@ size = Vector2(16, 11)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f26d7"]
 size = Vector2(20, 5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0lyis"]
-radius = 151.0
-
 [node name="StaticEnemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_dqxgg")
+script = ExtResource("1_0ndbu")
+bullet = ExtResource("2_6pqcc")
+new_rotation = 90.0
+end_angle = 135.0
 
 [node name="SmokeGenerator" parent="." instance=ExtResource("2_63t46")]
 
@@ -205,8 +206,10 @@ shape = SubResource("RectangleShape2D_f26d7")
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_0lyis")
+[node name="DetectionCollisionPolygon" type="CollisionPolygon2D" parent="DetectionArea"]
+
+[node name="ShotTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]
 [connection signal="body_exited" from="HurtArea" to="." method="_on_hurt_area_body_exited"]

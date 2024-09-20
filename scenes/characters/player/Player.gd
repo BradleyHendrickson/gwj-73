@@ -88,7 +88,7 @@ func teleport(new_position):
 func shoot(delta):
 	if get_input()["shoot"] and shot_timer.is_stopped():
 		sprite.shootAnimation()
-		shot_timer.start(0.25)	
+		shot_timer.start(0.25)
 		var newBullet = starBullet.instantiate()
 		get_tree().root.add_child(newBullet)
 		var aimVector = Vector2(0,-1)
@@ -137,13 +137,11 @@ func x_movement(delta: float) -> void:
 
 
 func set_direction(hor_direction) -> void:
-	# This is purely for visuals
-	# Turning relies on the scale of the player
-	# To animate, only scale the sprite
-	if hor_direction == 0:
+	if hor_direction == 0 or hor_direction * face_direction != -1:
 		return
-	apply_scale(Vector2(hor_direction * face_direction, 1)) # flip
-	face_direction = hor_direction # remember direction
+	
+	animated_sprite_2d.flip_h = !animated_sprite_2d.flip_h
+	face_direction = hor_direction
 
 
 func jump_logic(_delta: float) -> void:
