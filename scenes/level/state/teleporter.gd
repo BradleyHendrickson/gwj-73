@@ -15,7 +15,8 @@ func _process(delta: float) -> void:
 
 
 func setShader(value):
-	sprite.material.set("shader_param/active", value)
+	if sprite:
+		sprite.material.set("shader_param/active", value)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
