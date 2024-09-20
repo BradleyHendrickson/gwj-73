@@ -18,7 +18,8 @@ extends Node2D
 @export var destination_zone : Node2D:
 	set(value):
 		destination_zone = value
-		$"Teleporter".setShader(false)
+		if $"Teleporter":
+			$"Teleporter".setShader(false)
 	get():
 		return destination_zone
 
