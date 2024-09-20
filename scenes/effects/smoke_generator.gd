@@ -11,9 +11,12 @@ func _process(delta: float) -> void:
 	pass
 
 func smoke(amount):
-	if smokeParticle:
-		for i in amount:
-			var x = smokeParticle.instantiate()
-			get_tree().root.add_child(x)
-			x.position = get_parent().position
-			x.moveRand()
+	# Use call_deferred to handle the smoke instantiation after the current processing
+	call_deferred("_spawn_smoke", amount)
+
+func _spawn_smoke(amount):
+	for i in range(amount):
+		var x = smokeParticle.instantiate()
+		get_tree().root.add_child(x)
+		x.position = get_parent().position
+		x.moveRand()

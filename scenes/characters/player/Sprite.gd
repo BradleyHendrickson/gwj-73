@@ -9,7 +9,6 @@ extends Node2D
 @onready var Player := get_node(player_path)
 @onready var Animator := $AnimationPlayer
 @onready var sprite_animation_player: AnimationPlayer = $AnimatedSprite2D/SpriteAnimationPlayer
-@onready var blink_animation_player: AnimationPlayer = $AnimatedSprite2D/BlinkAnimationPlayer
 
 var previous_frame_velocity := Vector2(0,0)
 

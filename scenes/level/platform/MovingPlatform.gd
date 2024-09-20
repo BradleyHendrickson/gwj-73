@@ -1,4 +1,4 @@
-@tool
+
 extends Node2D
 ## Script controlling a moving platform (or spike, or anything else you might want to move).
 ##

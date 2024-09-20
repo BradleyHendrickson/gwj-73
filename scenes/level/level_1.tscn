@@ -48,6 +48,8 @@ position = Vector2(-40, 87)
 
 [node name="Platform" parent="world" instance=ExtResource("2_cl4i3")]
 position = Vector2(-96, -96)
+speed = 32
+delay = 0.2
 
 [node name="ParallaxBackground" parent="world" instance=ExtResource("5_q7fur")]
 
@@ -84,15 +86,13 @@ position = Vector2(-131, 120)
 
 [node name="Platform2" parent="world" instance=ExtResource("2_cl4i3")]
 position = Vector2(122, -304)
-
-[node name="teleporter_destination" parent="world" instance=ExtResource("10_qmiyn")]
-position = Vector2(177, -392)
+speed = 32
 
 [node name="teleporter_destination2" parent="world" instance=ExtResource("10_qmiyn")]
 position = Vector2(-180, -61)
 
 [node name="teleporter_destination3" parent="world" instance=ExtResource("10_qmiyn")]
-position = Vector2(-165, -422)
+position = Vector2(-120, -624)
 
 [node name="FollowEnemy" parent="world" instance=ExtResource("11_r0ica")]
 position = Vector2(-166, -120)

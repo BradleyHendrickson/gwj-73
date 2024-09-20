@@ -1,14 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyq8g35t6hsjf"]
+[gd_scene load_steps=3 format=3 uid="uid://6vkmnxo532nl"]
 
-[ext_resource type="Script" path="res://scenes/level/platform/MovingPlatform.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://cx00vf1020u2a" path="res://sprites/moving_platform.png" id="2_10y4a"]
+[ext_resource type="Script" path="res://scenes/level/platform/MovingPlatform.gd" id="1_vd70q"]
+[ext_resource type="Texture2D" uid="uid://cx00vf1020u2a" path="res://sprites/moving_platform.png" id="2_wlgh2"]
 
 [node name="Platform" type="Node2D"]
-script = ExtResource("1")
-move_to = Vector2(0, -64)
+script = ExtResource("1_vd70q")
+move_to = Vector2(-64, 0)
+speed = 32
 
 [node name="ActualPlatform" type="AnimatableBody2D" parent="."]
-position = Vector2(0, 15.3231)
+position = Vector2(0, 56.5734)
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ActualPlatform"]
@@ -19,4 +20,4 @@ visible = false
 polygon = PackedVector2Array(-80, -16, 80, -16, 80, 16, -80, 16)
 
 [node name="Sprite2D" type="Sprite2D" parent="ActualPlatform"]
-texture = ExtResource("2_10y4a")
+texture = ExtResource("2_wlgh2")
