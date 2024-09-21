@@ -65,7 +65,7 @@ func get_input() -> Dictionary:
 
 func duck_logic(delta):	
 	if get_input()["duck"]:
-		position.y += 1
+		position.y += 2
 
 func _physics_process(delta: float) -> void:
 

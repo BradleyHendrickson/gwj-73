@@ -9,10 +9,10 @@
 [ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="5_ofwe1"]
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(12, 12)
+size = Vector2(12, 13)
 
 [sub_resource type="SeparationRayShape2D" id="1"]
-length = 2.0
+length = 1.0
 
 [sub_resource type="Animation" id="3"]
 resource_name = "Jump"
@@ -238,18 +238,19 @@ jump_gravity_max = 250.0
 jump_hang_gravity_mult = 0.05
 
 [node name="SquareCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("2")
 
 [node name="RaycastCollider1" type="CollisionShape2D" parent="."]
-position = Vector2(-6, 6)
+position = Vector2(-6, 7)
 shape = SubResource("1")
 
 [node name="RaycastCollider2" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(0, 7)
 shape = SubResource("1")
 
 [node name="RaycastCollider3" type="CollisionShape2D" parent="."]
-position = Vector2(6, 6)
+position = Vector2(6, 7)
 shape = SubResource("1")
 
 [node name="Sprite" type="Node2D" parent="."]

@@ -27,6 +27,7 @@ sources/0 = SubResource("TileSetAtlasSource_q8wlx")
 [node name="world" parent="." instance=ExtResource("1_2pn28")]
 
 [node name="Navigation" type="TileMapLayer" parent="world"]
+visible = false
 tile_set = SubResource("TileSet_mcmuw")
 
 [node name="ParallaxBackground" parent="world" instance=ExtResource("3_mj8f5")]
