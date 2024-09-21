@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyj3h3s6smhqn"]
+[gd_scene load_steps=3 format=3 uid="uid://cki0tup14qphm"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_gv4qk"]
 [ext_resource type="FontFile" uid="uid://d1u3vto1ntkuo" path="res://pixelized.ttf" id="2_88ekl"]
@@ -24,4 +24,14 @@ theme_override_fonts/font = ExtResource("2_88ekl")
 theme_override_font_sizes/font_size = 30
 text = "Settings"
 
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 479.0
+offset_top = 221.0
+offset_right = 696.0
+offset_bottom = 277.0
+theme_override_fonts/font = ExtResource("2_88ekl")
+theme_override_font_sizes/font_size = 30
+text = "PLAY"
+
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
