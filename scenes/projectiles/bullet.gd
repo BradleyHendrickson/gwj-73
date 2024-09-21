@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var friction = 1000
-@export var speed = 400
+@export var speed = 200
 @export var damage = 1
 @export var time = 0.4
 

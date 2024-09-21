@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbo5oxxfcowee"]
+
+[ext_resource type="Script" path="res://scenes/projectiles/bullet.gd" id="1_m3opx"]
+[ext_resource type="PackedScene" uid="uid://gpisbgm7lfpt" path="res://scenes/effects/enemy_bullet_hit_round.tscn" id="2_uwet7"]
+[ext_resource type="Texture2D" uid="uid://bdgkkeyvde58b" path="res://sprites/enemy_bullet_1.png" id="3_67in4"]
+[ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="4_lk7yr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ql58a"]
+radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cjoe"]
+atlas = ExtResource("3_67in4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xrbe"]
+atlas = ExtResource("3_67in4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_30tjh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cjoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xrbe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="EnemyBulletRound" type="Area2D" groups=["Bullet"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_m3opx")
+hitEffect = ExtResource("2_uwet7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ql58a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_30tjh")
+frame_progress = 0.399148
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+autostart = true
+
+[node name="SmokeGenerator" parent="." instance=ExtResource("4_lk7yr")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

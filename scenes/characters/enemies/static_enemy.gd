@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var smoke_generator: Node2D = $SmokeGenerator
 @onready var sprite_animation_player: AnimationPlayer = $AnimatedSprite2D/SpriteAnimationPlayer
 @onready var shot_timer: Timer = $ShotTimer
+@onready var animation_player: AnimationPlayer = $AnimatedSprite2D/AnimationPlayer
 
 @export var bullet : PackedScene
 
@@ -14,7 +15,8 @@ extends CharacterBody2D
 @export var end_angle = 0.0 # in degrees
 @export var distance = 150
 @export var damage: float = 1
-@export var shot_delay: float = 0.25
+@export var shot_delay: float = 0.75		
+@export var shot_life: float = 1.2
 
 @onready var aim_target
 @onready var targets: Array
@@ -57,22 +59,42 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	# Apply damage to all targets
 	for target in targets:
 		target.hit(damage)
-	if aim_target and sprite.rotation != aim_target.get_angle_to(position):
-		var rotation_to_target = aim_target.get_angle_to(position) + PI/2
-		sprite.rotation = rotation_to_target + PI/2
+
+	# Check if there is an aim target
+	if aim_target:
+		# Get the angle to the aim target
+		var rotation_to_target = self.get_angle_to(aim_target.position) + PI / 2
+		
+		# Rotate sprite only if not already aligned
+		if sprite.rotation != rotation_to_target:
+			sprite.rotation = rotation_to_target
+		
+		# Shoot towards the aim target
 		shoot(delta, rotation_to_target)
+
+
 
 func shoot(delta, rotation_to_target):
 	if shot_timer.is_stopped():
+		animation_player.stop()
+		animation_player.play("shoot")
 		shot_timer.start(shot_delay)
+
 		var newBullet = bullet.instantiate()
-		newBullet.collision_mask &= ~(1 << 2)
-		newBullet.collision_mask |= (1 << 0)
-		newBullet.time = 1.0
-		add_child(newBullet)
-		newBullet.transform = Transform2D(rotation_to_target, 10 * delta * Vector2(cos(rotation_to_target), sin(rotation_to_target)))
+		newBullet.time = shot_life
+		
+		# Calculate the bullet's position based on the sprite's position and rotation
+		var bullet_position = position + Vector2(cos(rotation_to_target), sin(rotation_to_target)) * 10
+
+		# Set the position and rotation of the bullet
+		newBullet.transform = Transform2D(rotation_to_target, bullet_position)
+
+		# Add the bullet to the scene
+		get_tree().root.add_child(newBullet)
+
 
 
 func setShader(value):

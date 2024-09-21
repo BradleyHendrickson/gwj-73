@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://gpisbgm7lfpt"]
+
+[ext_resource type="Texture2D" uid="uid://tr5ep5famguw" path="res://sprites/enemy_bullet_1_hit.png" id="1_mjpmm"]
+[ext_resource type="Script" path="res://scenes/effects/Flash.gd" id="2_5jkcc"]
+
+[sub_resource type="Animation" id="Animation_d2fjk"]
+resource_name = "flash"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.1001, 0.1002, 0.1003, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4sqe2"]
+_data = {
+"flash": SubResource("Animation_d2fjk")
+}
+
+[node name="SmallFlash" type="Sprite2D"]
+texture = ExtResource("1_mjpmm")
+hframes = 4
+script = ExtResource("2_5jkcc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4sqe2")
+}
+autoplay = "flash"
+speed_scale = 6.0
