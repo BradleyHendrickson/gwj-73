@@ -159,7 +159,7 @@ size = Vector2(20, 5)
 
 [node name="PathEnemy" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("1_r36tq")
 
 [node name="SmokeGenerator" parent="." instance=ExtResource("2_ok40o")]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://u5qng31o4xat"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemies/static_enemy.gd" id="1_0ndbu"]
-[ext_resource type="PackedScene" uid="uid://bbo5oxxfcowee" path="res://scenes/projectiles/enemy_bullet_round.tscn" id="2_51wvm"]
+[ext_resource type="PackedScene" path="res://scenes/projectiles/enemy_bullet_round.tscn" id="2_51wvm"]
 [ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="2_63t46"]
 [ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="3_wnoss"]
 [ext_resource type="Texture2D" uid="uid://iaqt2efaoqpt" path="res://sprites/enemy_plant_shooter.png" id="5_j4uxe"]

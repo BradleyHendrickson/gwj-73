@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyj3h3s6smhqn"]
+
+[ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_gv4qk"]
+[ext_resource type="FontFile" uid="uid://d1u3vto1ntkuo" path="res://pixelized.ttf" id="2_88ekl"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_gv4qk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 648.0
+color = Color(0.0823529, 0.0941176, 0.160784, 1)
+
+[node name="SettingsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 479.0
+offset_top = 399.0
+offset_right = 696.0
+offset_bottom = 455.0
+theme_override_fonts/font = ExtResource("2_88ekl")
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

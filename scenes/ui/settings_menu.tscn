@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://di1fwi0drp1vs"]
+
+[ext_resource type="FontFile" uid="uid://d1u3vto1ntkuo" path="res://pixelized.ttf" id="1_e70f1"]
+[ext_resource type="Script" path="res://scenes/ui/settings_menu.gd" id="1_g22pk"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g22pk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1153.0
+offset_bottom = 648.0
+color = Color(0.0823529, 0.0941176, 0.160784, 1)
+
+[node name="TabBar" type="TabBar" parent="."]
+layout_mode = 0
+offset_right = 364.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("1_e70f1")
+theme_override_font_sizes/font_size = 25
+current_tab = 0
+tab_count = 2
+tab_0/title = "Keybinding"
+tab_1/title = "Nothing"
+tab_1/disabled = true
+
+[node name="JumpBinding" type="Button" parent="TabBar"]
+layout_mode = 0
+offset_top = 89.0
+offset_right = 47.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("1_e70f1")
+theme_override_font_sizes/font_size = 15
+text = "Jump"
+
+[node name="ShootBinding" type="Button" parent="TabBar"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 125.0
+offset_right = 90.0
+offset_bottom = 157.0
+theme_override_fonts/font = ExtResource("1_e70f1")
+theme_override_font_sizes/font_size = 15
+text = "Shoot"
+
+[connection signal="pressed" from="TabBar/JumpBinding" to="." method="_on_jump_binding_pressed"]
+[connection signal="pressed" from="TabBar/ShootBinding" to="." method="_on_shoot_binding_pressed"]

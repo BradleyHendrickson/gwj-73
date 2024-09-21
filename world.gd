@@ -52,7 +52,6 @@ func _process(delta: float) -> void:
 	
 	# Smoothly move the camera towards the biased target position
 	camera.global_position = camera.global_position.lerp(target_camera_position, delta * follow_smoothing)
-
 	
 	if Input.is_action_just_pressed("quit_game"):
 		get_tree().quit()

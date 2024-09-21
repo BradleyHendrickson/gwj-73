@@ -76,7 +76,7 @@ position = Vector2(176, -112)
 position = Vector2(144, -112)
 
 [node name="PathEnemy" parent="world" instance=ExtResource("7_ce3kr")]
-position = Vector2(112, 48)
+position = Vector2(96, 109)
 INITIAL_ANGLE = 45.0
 
 [node name="PathEnemy2" parent="world" instance=ExtResource("7_ce3kr")]
@@ -109,9 +109,11 @@ INITIAL_ANGLE = 45.0
 position = Vector2(-168, -376)
 end_angle = 90.0
 distance = 300
+shot_delay = 0.01
+shot_delay_variance = 0.1
 
 [node name="spikes_small8" parent="world" instance=ExtResource("8_x4hmv")]
 position = Vector2(14, 128)
 
 [node name="WallCrawlEnemy" parent="world" instance=ExtResource("13_4oldj")]
-position = Vector2(-59, 136)
+position = Vector2(-96, 136)
