@@ -5,8 +5,8 @@ extends Node2D
 @onready var player_respawn_timer: Timer = $PlayerRespawnTimer
 @onready var camera: Camera2D = $Camera
 @onready var player = $Player
-@onready var collision_layer: TileMapLayer = $CollisionLayer
-@onready var navigation_layer: TileMapLayer = $NavigationLayer
+@onready var navigation_layer: TileMapLayer = $Navigation
+@onready var tile_map_layer: TileMapLayer = $TileMapLayer
 
 @export var follow_smoothing = 7
 @export var playerObject : PackedScene
@@ -61,6 +61,9 @@ func startRespawnTimer(diepos):
 
 
 func generate_navigation():
-	for tile in collision_layer.get_used_cells():
-		navigation_layer.erase_cell(tile)
-	
+	var get_rekt = tile_map_layer.get_used_rect()
+	for x in range(get_rekt.position.x, get_rekt.position.x + get_rekt.size.x):
+		for y in range(get_rekt.position.y, get_rekt.position.y + get_rekt.size.y):
+			if tile_map_layer.get_cell_source_id(Vector2(x,y)) == -1:
+				navigation_layer.set_cell(Vector2(x,y), 0, Vector2i(0, 0))
+				print(navigation_layer.get_cell_source_id(Vector2(x,y)))
