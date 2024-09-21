@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpycgc72j3l5q"
-path="res://.godot/imported/Tower_Closeup_v1.png-ce5ef49e383004526007ccfa34500c95.ctex"
+path="res://.godot/imported/Tower_Closeup_v1.png-5fc5416fdc23ec013d1c26f4b6bf1b79.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/editor files/Tower_Closeup_v1.png"
-dest_files=["res://.godot/imported/Tower_Closeup_v1.png-ce5ef49e383004526007ccfa34500c95.ctex"]
+source_file="res://sprites/Tower_Closeup_v1.png"
+dest_files=["res://.godot/imported/Tower_Closeup_v1.png-5fc5416fdc23ec013d1c26f4b6bf1b79.ctex"]
 
 [params]
 
