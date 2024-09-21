@@ -5,6 +5,8 @@ extends Node2D
 @onready var player_respawn_timer: Timer = $PlayerRespawnTimer
 @onready var camera: Camera2D = $Camera
 @onready var player = $Player
+@onready var collision_layer: TileMapLayer = $CollisionLayer
+@onready var navigation_layer: TileMapLayer = $NavigationLayer
 
 @export var follow_smoothing = 7
 @export var playerObject : PackedScene
@@ -28,12 +30,7 @@ var target_camera_position = Vector2(0,0)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	game_ui.setHealth(health)
-
-
-func startRespawnTimer(diepos):
-	#die_sound.play()
-	player_die_pos = diepos
-	player_respawn_timer.start(1.5)
+	generate_navigation()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -55,3 +52,15 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("quit_game"):
 		get_tree().quit()
+
+
+func startRespawnTimer(diepos):
+	#die_sound.play()
+	player_die_pos = diepos
+	player_respawn_timer.start(1.5)
+
+
+func generate_navigation():
+	for tile in collision_layer.get_used_cells():
+		navigation_layer.erase_cell(tile)
+	
