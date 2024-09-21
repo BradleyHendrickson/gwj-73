@@ -107,6 +107,12 @@ texture = ExtResource("1_1srkb")
 1:8/0 = 0
 1:7/0 = 0
 1:6/0 = 0
+16:0/size_in_atlas = Vector2i(16, 8)
+16:0/0 = 0
+16:0/0/texture_origin = Vector2i(-120, -56)
+16:8/size_in_atlas = Vector2i(16, 8)
+16:8/0 = 0
+16:8/0/texture_origin = Vector2i(-120, -56)
 
 [resource]
 physics_layer_0/collision_layer = 2
