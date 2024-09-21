@@ -64,6 +64,5 @@ func generate_navigation():
 	var get_rekt = tile_map_layer.get_used_rect()
 	for x in range(get_rekt.position.x, get_rekt.position.x + get_rekt.size.x):
 		for y in range(get_rekt.position.y, get_rekt.position.y + get_rekt.size.y):
-			if tile_map_layer.get_cell_source_id(Vector2(x,y)) == -1:
+			if tile_map_layer.get_cell_source_id(Vector2(x,y)) != 0:
 				navigation_layer.set_cell(Vector2(x,y), 0, Vector2i(0, 0))
-				print(navigation_layer.get_cell_source_id(Vector2(x,y)))
