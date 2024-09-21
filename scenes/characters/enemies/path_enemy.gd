@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @onready var bounce_timer: Timer = $BounceTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var ray = $"RayCast2D"
 @onready var smoke_generator: Node2D = $SmokeGenerator
 @onready var sprite_animation_player: AnimationPlayer = $AnimatedSprite2D/SpriteAnimationPlayer
 
@@ -33,7 +32,6 @@ extends CharacterBody2D
 func _ready() -> void:
 	setShader(false)
 	var radAngle = INITIAL_ANGLE * PI / 180
-	ray.global_rotation = radAngle
 	velocity = FORCE * Vector2(cos(radAngle), sin(radAngle))
 
 func setShader(value):
@@ -45,13 +43,10 @@ func _process(delta: float) -> void:
 	else:
 		animated_sprite_2d.flip_h = false
 	
-	if ray.is_colliding() and bounce_timer.is_stopped():
-		bounce_timer.start(0.2)
-		ray.target_position = -ray.target_position
-		velocity = -1 * velocity
-	else:
-		move_and_slide()
-		
+	var collision_info = move_and_collide(velocity * delta)
+	if collision_info:
+		velocity = velocity.bounce(collision_info.get_normal())
+	
 	for target in targets:
 		target.hit(damage)
 
