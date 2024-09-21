@@ -1,19 +1,3 @@
 # gwj-73
 
-## TODOS
-- Make Tower level
-    - Basic
-- Bad guys
-- Traps
-    - Spikes
-    - Moving spike ball
-- Teleporters
-- Starting area 
-    - To enter tower
-
-
-## Later
-- Starting area (to enter tower)
-    - Tutorial
-    - Show controls
-- 
+This is a game about a frog climbing a tower. It mixes platforming and fighting evenly.
