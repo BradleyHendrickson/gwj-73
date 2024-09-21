@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://7hrchy8clhct"]
+
+[ext_resource type="Script" path="res://scenes/level/platform/MovingPlatform.gd" id="1_g03xp"]
+[ext_resource type="Texture2D" uid="uid://dbhw6gsacd28n" path="res://sprites/spike_ball.png" id="2_45ff7"]
+[ext_resource type="Script" path="res://scenes/level/obstacle/spike_ball_sprite.gd" id="3_b53uf"]
+[ext_resource type="PackedScene" uid="uid://fiq1g06iprau" path="res://scenes/level/obstacle/spiky_thing.tscn" id="4_xyry5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aamtq"]
+radius = 8.0
+
+[node name="MovingSpikeBall" type="Node2D"]
+script = ExtResource("1_g03xp")
+move_to = Vector2(0, -64)
+speed = 20
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+texture = ExtResource("2_45ff7")
+script = ExtResource("3_b53uf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("CircleShape2D_aamtq")
+
+[node name="SpikyThing" parent="." instance=ExtResource("4_xyry5")]
