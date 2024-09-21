@@ -1,19 +1,15 @@
 # gwj-73
 
 ## TODOS
-- Make Tower level
-    - Basic
-- Bad guys
-- Traps
-    - Spikes
-    - Moving spike ball
-- Teleporters
-- Starting area 
-    - To enter tower
-
-
-## Later
-- Starting area (to enter tower)
-    - Tutorial
-    - Show controls
-- 
+- Boss
+- Spikes don't kill from side
+- 1,000 following guys
+- Beam guy
+- Caterpillar guy
+- Bouncy guy
+- Bouncy path guy
+- Spiky pair guy
+- Auto generate navigation layer on startup
+- Title Screen
+- Pause screen
+- Key bindings
