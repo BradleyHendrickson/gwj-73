@@ -21,6 +21,10 @@ window/size/mode=4
 window/stretch/mode="canvas_items"
 window/physics_jitter_fix=0.5
 
+[dotnet]
+
+project/assembly_name="GWJ-73"
+
 [input]
 
 input_jump={
