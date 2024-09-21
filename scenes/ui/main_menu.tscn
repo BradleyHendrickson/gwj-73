@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cki0tup14qphm"]
+[gd_scene load_steps=3 format=3 uid="uid://c3c60k8qta4pn"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_gv4qk"]
 [ext_resource type="FontFile" uid="uid://d1u3vto1ntkuo" path="res://pixelized.ttf" id="2_88ekl"]
@@ -25,6 +25,7 @@ theme_override_font_sizes/font_size = 30
 text = "Settings"
 
 [node name="PlayButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 479.0
 offset_top = 221.0
 offset_right = 696.0
