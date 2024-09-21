@@ -59,11 +59,17 @@ func get_input() -> Dictionary:
 		"just_jump": Input.is_action_just_pressed("input_jump") == true,
 		"jump": Input.is_action_pressed("input_jump") == true,
 		"released_jump": Input.is_action_just_released("input_jump") == true,
-		"shoot" : Input.is_action_pressed("input_shoot") == true
+		"shoot" : Input.is_action_pressed("input_shoot") == true,
+		"duck" : Input.is_action_just_pressed("input_down")
 	}
 
+func duck_logic(delta):	
+	if get_input()["duck"]:
+		position.y += 1
 
 func _physics_process(delta: float) -> void:
+
+
 
 	if !hit_timer.is_stopped() && sprite.hitAnimationIsPlaying() && !blink_animation_player.is_playing():
 		blink_animation_player.play("blink")
@@ -73,13 +79,16 @@ func _physics_process(delta: float) -> void:
 	
 	if get_parent() and get_parent().health <= 0:
 		die()
-
+	
 	x_movement(delta)
 	jump_logic(delta)
 	apply_gravity(delta)
 	timers(delta)
 	shoot(delta)
+	duck_logic(delta)
 	animations(delta)
+
+
 	move_and_slide()
 
 
