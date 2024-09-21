@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsaqcsyndugqm"]
+
+[ext_resource type="Script" path="res://scenes/level/obstacle/spikes_small_left.gd" id="1_is1wm"]
+[ext_resource type="Texture2D" uid="uid://vb7c6d52jxr4" path="res://sprites/spikes_small.png" id="2_6rb8q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5cd1l"]
+size = Vector2(16, 8)
+
+[node name="spikes_small_left" type="Node2D"]
+script = ExtResource("1_is1wm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(0, -4)
+texture = ExtResource("2_6rb8q")
+
+[node name="HurtArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+shape = SubResource("RectangleShape2D_5cd1l")
+
+[connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]
+[connection signal="body_exited" from="HurtArea" to="." method="_on_hurt_area_body_exited"]

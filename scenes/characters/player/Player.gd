@@ -36,6 +36,7 @@ var x_dir := 1
 var jump_coyote_timer : float = 0
 var jump_buffer_timer : float = 0
 var is_jumping := false
+var knockback_value := Vector2(0, 0)
 # ----------------------------------- #
 
 func _ready() -> void:
@@ -43,7 +44,12 @@ func _ready() -> void:
 
 func die():
 	get_parent().startRespawnTimer(position)
+	get_parent().health = 0
 	queue_free()
+
+func insta_death():
+	hit(INF + 1)
+	die()
 
 #creates a dictionary of all current inputs at the current state
 func get_input() -> Dictionary:
@@ -104,6 +110,9 @@ func animations(delta):
 	elif abs(velocity.x) <= 0.1*delta:
 		animated_sprite_2d.frame = 0
 
+func knockback(collision_point: Vector2):
+	var force_multiplier = 200
+	knockback_value = collision_point.normalized() * force_multiplier
 
 func hit(dmgTaken):
 	if hit_timer.is_stopped():
@@ -114,6 +123,16 @@ func hit(dmgTaken):
 
 
 func x_movement(delta: float) -> void:
+	if knockback_value != Vector2.ZERO:
+		if knockback_value.length() < 1:
+			knockback_value = Vector2.ZERO
+		else:
+			# apply current knockback
+			velocity += knockback_value
+			print(knockback_value, delta)
+			# REDUCE KNOCKBACK VALUE
+			knockback_value *= delta
+			return
 	x_dir = get_input()["x"]
 	
 	# Stop if we're not doing movement inputs.
