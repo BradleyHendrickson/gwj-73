@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://dt6fn33tro06n"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/sounds/bullet_sound.gd" id="1_2bul1"]
-[ext_resource type="AudioStream" uid="uid://bthkd2bq3w2us" path="res://scenes/characters/sounds/bullet2.wav" id="3_u4lm8"]
-[ext_resource type="AudioStream" uid="uid://dhb17pk666dtr" path="res://scenes/characters/sounds/bullet3.wav" id="4_6jvwo"]
-[ext_resource type="AudioStream" uid="uid://bqwyer1f6x5sp" path="res://scenes/characters/sounds/bullet4.wav" id="5_lyi1g"]
-[ext_resource type="AudioStream" uid="uid://b8g58t06qbcpu" path="res://scenes/characters/sounds/bullet5.wav" id="6_ihgcl"]
+[ext_resource type="AudioStream" uid="uid://dpworw38mmjur" path="res://scenes/projectiles/sounds/bullet2.wav" id="3_u4lm8"]
+[ext_resource type="AudioStream" uid="uid://dk7b2k0byryg7" path="res://scenes/projectiles/sounds/bullet3.wav" id="4_6jvwo"]
+[ext_resource type="AudioStream" uid="uid://cvmp8br5pgfmp" path="res://scenes/projectiles/sounds/bullet4.wav" id="5_lyi1g"]
+[ext_resource type="AudioStream" uid="uid://x1cdhwt6p77y" path="res://scenes/projectiles/sounds/bullet5.wav" id="6_ihgcl"]
 
 [node name="BulletSound" type="Node"]
 script = ExtResource("1_2bul1")

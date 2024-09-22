@@ -176,7 +176,7 @@ collision_mask = 2
 script = ExtResource("1_rpoos")
 bullet = ExtResource("2_mkqff")
 shot_delay = 4.0
-health = 10
+health = 7
 
 [node name="SmokeGenerator" parent="." instance=ExtResource("3_kmcas")]
 
