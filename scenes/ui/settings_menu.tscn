@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://di1fwi0drp1vs"]
+[gd_scene load_steps=4 format=3 uid="uid://dla0jat2guc6l"]
 
 [ext_resource type="FontFile" uid="uid://d1u3vto1ntkuo" path="res://pixelized.ttf" id="1_e70f1"]
 [ext_resource type="Script" path="res://scenes/ui/settings_menu.gd" id="1_g22pk"]
+
+[sub_resource type="Theme" id="Theme_m0ixc"]
+default_font = ExtResource("1_e70f1")
+default_font_size = 15
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -10,9 +14,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_m0ixc")
 script = ExtResource("1_g22pk")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 1153.0
 offset_bottom = 648.0
 color = Color(0.0823529, 0.0941176, 0.160784, 1)
@@ -31,8 +37,9 @@ tab_1/disabled = true
 
 [node name="JumpBinding" type="Button" parent="TabBar"]
 layout_mode = 0
+offset_left = 1.0
 offset_top = 89.0
-offset_right = 47.0
+offset_right = 91.0
 offset_bottom = 121.0
 theme_override_fonts/font = ExtResource("1_e70f1")
 theme_override_font_sizes/font_size = 15
@@ -42,11 +49,69 @@ text = "Jump"
 layout_mode = 0
 offset_left = 1.0
 offset_top = 125.0
-offset_right = 90.0
+offset_right = 91.0
 offset_bottom = 157.0
 theme_override_fonts/font = ExtResource("1_e70f1")
 theme_override_font_sizes/font_size = 15
 text = "Shoot"
 
+[node name="LeftBinding" type="Button" parent="TabBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.115
+anchor_top = 4.125
+anchor_right = 0.115
+anchor_bottom = 4.125
+offset_left = -40.86
+offset_top = -38.0
+offset_right = 49.14
+offset_bottom = -7.0
+theme_override_fonts/font = ExtResource("1_e70f1")
+theme_override_font_sizes/font_size = 15
+text = "Left"
+
+[node name="RightBinding" type="Button" parent="TabBar"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 196.0
+offset_right = 92.0
+offset_bottom = 227.0
+theme_override_fonts/font = ExtResource("1_e70f1")
+theme_override_font_sizes/font_size = 15
+text = "Right"
+
+[node name="UpBinding" type="Button" parent="TabBar"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 231.0
+offset_right = 92.0
+offset_bottom = 262.0
+theme_override_fonts/font = ExtResource("1_e70f1")
+theme_override_font_sizes/font_size = 15
+text = "Up"
+
+[node name="DownBinding" type="Button" parent="TabBar"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 265.0
+offset_right = 92.0
+offset_bottom = 296.0
+theme_override_fonts/font = ExtResource("1_e70f1")
+theme_override_font_sizes/font_size = 15
+text = "Down"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 613.0
+offset_right = 67.0
+offset_bottom = 644.0
+text = "<- Back"
+
 [connection signal="pressed" from="TabBar/JumpBinding" to="." method="_on_jump_binding_pressed"]
 [connection signal="pressed" from="TabBar/ShootBinding" to="." method="_on_shoot_binding_pressed"]
+[connection signal="pressed" from="TabBar/LeftBinding" to="." method="_on_left_binding_pressed"]
+[connection signal="pressed" from="TabBar/RightBinding" to="." method="_on_right_binding_pressed"]
+[connection signal="pressed" from="TabBar/UpBinding" to="." method="_on_up_binding_pressed"]
+[connection signal="pressed" from="TabBar/DownBinding" to="." method="_on_down_binding_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
