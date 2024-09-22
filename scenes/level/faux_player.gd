@@ -57,6 +57,11 @@ func _physics_process(delta: float) -> void:
 	animations(delta)
 	move_and_slide()
 	shoot(delta)
+	
+	if Input.is_action_just_pressed("reset_room"):
+		get_tree().reload_current_scene()
+	if Input.is_action_just_pressed("quit_game"):
+		get_tree().quit()
 
 
 func animations(delta):

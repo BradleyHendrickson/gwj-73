@@ -1,25 +1,97 @@
-[gd_scene load_steps=5 format=4 uid="uid://cwouequtm7kcd"]
+[gd_scene load_steps=10 format=4 uid="uid://cwouequtm7kcd"]
 
+[ext_resource type="Script" path="res://scenes/level/level_start.gd" id="1_j0rhh"]
 [ext_resource type="PackedScene" uid="uid://dqha0eiactgkx" path="res://scenes/level/background/parallax_background.tscn" id="1_spxoy"]
+[ext_resource type="Texture2D" uid="uid://djwoclvnasxsg" path="res://sprites/tileset_extra_assets.png" id="3_g2yyk"]
 [ext_resource type="TileSet" uid="uid://criiatmkh28jo" path="res://scenes/level/tileset/game.tres" id="3_ioroq"]
 [ext_resource type="PackedScene" uid="uid://bq5rgdrs0o1eb" path="res://scenes/characters/player/faux_player.tscn" id="4_r5uhn"]
-[ext_resource type="Texture2D" uid="uid://cctg667imcnos" path="res://sprites/Tower_Closeup_v2.png" id="5_a6cv5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fx5kt"]
+texture = ExtResource("3_g2yyk")
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+11:0/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+12:1/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+11:2/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+10:3/0 = 0
+12:3/0 = 0
+14:3/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+12:5/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+13:7/0 = 0
+13:8/0 = 0
+12:8/0 = 0
+12:7/0 = 0
+13:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_c4bn7"]
+sources/0 = SubResource("TileSetAtlasSource_fx5kt")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7at7t"]
+size = Vector2(35, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ynb5"]
+size = Vector2(12, 112)
 
 [node name="level_start" type="Node2D"]
+script = ExtResource("1_j0rhh")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_spxoy")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAcAAAABABEAAAABAAcAAAABABEAAAACAAcAAAABABEAAAADAAcAAAABABEAAAAEAAcAAAABABEAAAAFAAcAAAABABEAAAAGAAcAAAABABEAAAD//wcAAAABABEAAAAHAAcAAAABABEAAAAIAAcAAAABABEAAAAJAAcAAAABABEAAAAKAAcAAAABABEAAAD+/wcAAAABABEAAAD9/wcAAAABABEAAAAIAAIAAAABAAEAAAAJAAIAAAABAAEAAAAKAAIAAAABAAEAAAAIAAEAAAABAAEAAAAJAAEAAAABAAEAAAAKAAEAAAABAAEAAAALAAEAAAABAAEAAAALAAIAAAABAAEAAAAIAAAAAAABAAEAAAAJAAAAAAABAAEAAAAKAAAAAAABAAEAAAALAAAAAAABAAEAAAALAAcAAAABABEAAAD7/wcAAAABABEAAAD7/wYAAAABABEAAAD7/wUAAAABABEAAAD7/wQAAAABABEAAAD7/wMAAAABABEAAAD7/wIAAAABABEAAAD7/wEAAAABABEAAAD7/wAAAAABABEAAAAMAAcAAAABABEAAAAMAAYAAAABABEAAAAMAAUAAAABABEAAAAMAAQAAAABABEAAAAMAAMAAAABABEAAAAMAAIAAAABABEAAAAMAAEAAAABABEAAAAMAAAAAAABABEAAAD8/wcAAAABABEAAAA=")
+tile_map_data = PackedByteArray("AAAAAAcAAAACAAQAAAABAAcAAAACAAQAAAACAAcAAAACAAQAAAADAAcAAAACAAQAAAAEAAcAAAACAAQAAAAFAAcAAAACAAQAAAAGAAcAAAACAAQAAAD//wcAAAACAAQAAAAHAAcAAAACAAQAAAAIAAcAAAACAAQAAAAJAAcAAAACAAQAAAAKAAcAAAACAAQAAAD+/wcAAAACAAQAAAD9/wcAAAACAAQAAAALAAcAAAACAAQAAAD8/wcAAAACAAQAAAD7/wcAAAACAAIAAAD7/wYAAAACAAIAAAD7/wUAAAACAAIAAAD7/wQAAAACAAIAAAD7/wMAAAACAAIAAAD7/wIAAAACAAIAAAD7/wEAAAACAAIAAAD7/wAAAAACAAIAAAAMAAcAAAABAAIAAAAMAAYAAAABAAIAAAAMAAUAAAABAAIAAAAMAAQAAAABAAIAAAAMAAMAAAABAAIAAAAMAAIAAAABAAIAAAAMAAEAAAABAAIAAAAMAAAAAAABAAIAAAA=")
 tile_set = ExtResource("3_ioroq")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(148, 80)
-texture = ExtResource("5_a6cv5")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAcAAAADAAkAAAABAAcAAAADAAkAAAACAAcAAAACAAkAAAADAAcAAAACAAkAAAAEAAcAAAADAAkAAAAFAAcAAAACAAkAAAAGAAcAAAADAAkAAAD//wcAAAADAAkAAAAHAAcAAAACAAkAAAAIAAcAAAADAAkAAAAJAAcAAAACAAkAAAAKAAcAAAACAAkAAAD+/wcAAAADAAkAAAD9/wcAAAADAAkAAAD8/wcAAAADAAkAAAALAAcAAAACAAkAAAA=")
 tile_set = ExtResource("3_ioroq")
+
+[node name="ClosedDoor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAJAAMAAAAMAAUAAAAJAAQAAAAMAAYAAAAJAAUAAAAMAAcAAAAJAAYAAAAMAAgAAAAIAAYAAAAOAAMAAAAHAAYAAAAOAAMAAAAHAAUAAAAOAAMAAAAHAAQAAAAOAAMAAAAHAAMAAAAOAAMAAAAHAAIAAAAOAAMAAAAHAAEAAAAOAAMAAAAHAAAAAAAOAAMAAAAIAAAAAAAOAAMAAAAJAAAAAAAOAAMAAAAKAAAAAAAOAAMAAAALAAAAAAAOAAMAAAALAAEAAAAOAAMAAAALAAIAAAAOAAMAAAALAAMAAAAOAAMAAAALAAQAAAAOAAMAAAALAAUAAAAOAAMAAAALAAYAAAAOAAMAAAAKAAIAAAAOAAMAAAAKAAEAAAAOAAMAAAAJAAEAAAAOAAMAAAAIAAEAAAAOAAMAAAAIAAIAAAAOAAMAAAAIAAMAAAAOAAMAAAAIAAQAAAAOAAMAAAAIAAUAAAAOAAMAAAAJAAIAAAAOAAMAAAAGAAYAAAAFAAAAAAA=")
+tile_set = SubResource("TileSet_c4bn7")
+
+[node name="OpenDoor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAHAAIAAAAOAAMAAAAIAAIAAAAOAAMAAAAJAAIAAAAOAAMAAAAKAAIAAAAOAAMAAAALAAIAAAAOAAMAAAALAAEAAAAOAAMAAAALAAAAAAAOAAMAAAAKAAAAAAAOAAMAAAAJAAAAAAAOAAMAAAAIAAAAAAAOAAMAAAAHAAAAAAAOAAMAAAAHAAEAAAAOAAMAAAAIAAEAAAAOAAMAAAAJAAEAAAAOAAMAAAAKAAEAAAAOAAMAAAALAAMAAAAOAAMAAAALAAQAAAAOAAMAAAALAAUAAAAOAAMAAAALAAYAAAAOAAMAAAAJAAMAAAAOAAUAAAAJAAQAAAAOAAYAAAAJAAUAAAAOAAcAAAAJAAYAAAAOAAgAAAAKAAMAAAAPAAUAAAAKAAQAAAAPAAYAAAAKAAUAAAAPAAcAAAAKAAYAAAAPAAgAAAAIAAMAAAAOAAMAAAAHAAMAAAAOAAMAAAAHAAQAAAAOAAMAAAAHAAUAAAAOAAMAAAAHAAYAAAAOAAMAAAAIAAYAAAAOAAMAAAAIAAUAAAAOAAMAAAAIAAQAAAAOAAMAAAAHAP//AAAOAAMAAAAIAP//AAAOAAMAAAAJAP//AAAOAAMAAAAKAP//AAAOAAMAAAALAP//AAAOAAMAAAA=")
+tile_set = SubResource("TileSet_c4bn7")
 
 [node name="Camera" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
@@ -28,3 +100,25 @@ zoom = Vector2(5, 5)
 position_smoothing_speed = 10.0
 
 [node name="FauxPlayer" parent="." instance=ExtResource("4_r5uhn")]
+position = Vector2(-28, 104)
+
+[node name="ClosedDoor2" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAKAAMAAAANAAUAAAAKAAQAAAANAAYAAAAKAAUAAAANAAcAAAAKAAYAAAANAAgAAAAKAAAAAAAOAAMAAAALAAAAAAAOAAMAAAALAAEAAAAOAAMAAAALAAIAAAAOAAMAAAALAAMAAAAOAAMAAAALAAQAAAAOAAMAAAALAAUAAAAOAAMAAAALAAYAAAAOAAMAAAAKAAIAAAAOAAMAAAAKAAEAAAAOAAMAAAAGAAYAAAAFAAAAAAA=")
+tile_set = SubResource("TileSet_c4bn7")
+
+[node name="OpenDoorArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpenDoorArea"]
+position = Vector2(129.5, 57)
+shape = SubResource("RectangleShape2D_7at7t")
+
+[node name="NextLevelArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextLevelArea"]
+position = Vector2(186, 57)
+shape = SubResource("RectangleShape2D_8ynb5")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_shape_entered" from="OpenDoorArea" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_entered" from="NextLevelArea" to="." method="_on_next_level_area_body_shape_entered"]
