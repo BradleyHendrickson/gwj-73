@@ -86,7 +86,7 @@ func shoot(delta, rotation_to_target):
 		newBullet.transform = Transform2D(0, bullet_position)
 
 		# Add the bullet to the scene
-		get_tree().root.add_child(newBullet)
+		get_parent().add_child(newBullet)
 
 
 

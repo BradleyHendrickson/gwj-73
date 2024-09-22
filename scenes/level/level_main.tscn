@@ -301,41 +301,41 @@ position = Vector2(-176, -4128)
 [node name="LockBlock12" parent="world" instance=ExtResource("14_vlnrl")]
 position = Vector2(-192, -4128)
 
-[node name="FollowEnemy11" parent="world" instance=ExtResource("12_58yhd")]
-position = Vector2(64, -3864)
-
-[node name="MovingSpikeBall" parent="." instance=ExtResource("17_68tun")]
+[node name="MovingSpikeBall" parent="world" instance=ExtResource("17_68tun")]
 position = Vector2(-8, -3728)
 move_to = Vector2(0, -96)
 speed = 40
 delay = 0.5
 
-[node name="MovingSpikeBall2" parent="." instance=ExtResource("17_68tun")]
+[node name="MovingSpikeBall2" parent="world" instance=ExtResource("17_68tun")]
 position = Vector2(104, -3728)
 move_to = Vector2(0, 96)
 speed = 40
 delay = 0.5
 
-[node name="spikes_small3" parent="." instance=ExtResource("11_xwdlb")]
+[node name="spikes_small5" parent="world" instance=ExtResource("11_xwdlb")]
 position = Vector2(96, -3600)
 
-[node name="spikes_small4" parent="." instance=ExtResource("11_xwdlb")]
+[node name="spikes_small6" parent="world" instance=ExtResource("11_xwdlb")]
 position = Vector2(128, -3600)
 
-[node name="spikes_small" parent="." instance=ExtResource("11_xwdlb")]
+[node name="spikes_small7" parent="world" instance=ExtResource("11_xwdlb")]
 position = Vector2(160, -3600)
 
-[node name="LockBlock" parent="." instance=ExtResource("14_vlnrl")]
+[node name="LockBlock13" parent="world" instance=ExtResource("14_vlnrl")]
 position = Vector2(128, -3936)
 
-[node name="LockBlock2" parent="." instance=ExtResource("14_vlnrl")]
+[node name="LockBlock14" parent="world" instance=ExtResource("14_vlnrl")]
 position = Vector2(144, -3936)
 
-[node name="LockBlock3" parent="." instance=ExtResource("14_vlnrl")]
+[node name="LockBlock15" parent="world" instance=ExtResource("14_vlnrl")]
 position = Vector2(160, -3936)
 
-[node name="LockBlock4" parent="." instance=ExtResource("14_vlnrl")]
+[node name="LockBlock16" parent="world" instance=ExtResource("14_vlnrl")]
 position = Vector2(176, -3936)
 
-[node name="FollowEnemy" parent="." instance=ExtResource("12_58yhd")]
+[node name="FollowEnemy12" parent="world" instance=ExtResource("12_58yhd")]
 position = Vector2(96, -3544)
+
+[node name="FollowEnemy11" parent="world" instance=ExtResource("12_58yhd")]
+position = Vector2(64, -3864)
