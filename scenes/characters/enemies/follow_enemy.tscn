@@ -257,6 +257,7 @@ visible = false
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+visible = false
 shape = SubResource("CircleShape2D_pcx7k")
 
 [node name="WakeArea" type="Area2D" parent="."]

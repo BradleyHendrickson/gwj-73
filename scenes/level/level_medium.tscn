@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://j6dssgoyjtcg" path="res://scenes/level/state/teleporter_destination.tscn" id="7_vawn3"]
 [ext_resource type="PackedScene" uid="uid://drb58nxmshj8k" path="res://scenes/characters/enemies/follow_enemy.tscn" id="9_egsmj"]
 [ext_resource type="PackedScene" uid="uid://u5qng31o4xat" path="res://scenes/characters/enemies/static_enemy.tscn" id="9_fwlg7"]
-[ext_resource type="PackedScene" uid="uid://bpyuda83ilnfc" path="res://scenes/level/platform/MovingPlatformLocked.tscn" id="11_0f5kh"]
-[ext_resource type="PackedScene" uid="uid://dtvekg2qsjip" path="res://scenes/level/obstacle/LockBlock.tscn" id="12_kxss8"]
+[ext_resource type="PackedScene" path="res://scenes/level/platform/MovingPlatformLocked.tscn" id="11_0f5kh"]
+[ext_resource type="PackedScene" path="res://scenes/level/obstacle/LockBlock.tscn" id="12_kxss8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dqrtr"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
