@@ -15,7 +15,6 @@ var previous_frame_velocity := Vector2(0,0)
 # Avoid errors
 func _ready() -> void:
 	if Player == null:
-		print("Sprite.gd is missing player_path")
 		set_process(false)
 
 func shootAnimation():

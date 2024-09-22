@@ -46,7 +46,6 @@ func _ready() -> void:
 		generate_next_segment(segment_count)
 
 func generate_next_segment(segment_count: int) -> void:
-	print('running new segment')
 	# Create a new segment (duplicate of the current one)
 	var new_segment = self.duplicate()
 	# Initialize properties BEFORE adding to the scene

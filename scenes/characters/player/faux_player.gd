@@ -8,7 +8,6 @@ var x_dir := 1
 @onready var smoke_generator: Node2D = $SmokeGenerator
 @onready var animated_sprite_2d = $Sprite/AnimatedSprite2D
 @onready var shot_timer: Timer = $ShotTimer
-@onready var hit_timer: Timer = $HitTimer
 @onready var sprite: Node2D = $Sprite
 @onready var blink_animation_player: AnimationPlayer = $BlinkAnimationPlayer
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -40,18 +39,6 @@ var is_jumping := false
 var knockback_value := Vector2(0, 0)
 # ----------------------------------- #
 
-func _ready() -> void:
-	setShader(false)
-
-func die():
-	get_parent().startRespawnTimer(position)
-	get_parent().health = 0
-	queue_free()
-
-func insta_death():
-	hit(INF + 1)
-	die()
-
 #creates a dictionary of all current inputs at the current state
 func get_input() -> Dictionary:
 	return {
@@ -64,48 +51,18 @@ func get_input() -> Dictionary:
 		"duck" : Input.is_action_just_pressed("input_down")
 	}
 
-func duck_logic(delta):	
-	if get_input()["duck"] and is_on_floor():
-		position.y += 2
-
 func _physics_process(delta: float) -> void:
-	if !hit_timer.is_stopped() && sprite.hitAnimationIsPlaying() && !blink_animation_player.is_playing():
-		blink_animation_player.play("blink")
-	if hit_timer.is_stopped():
-		blink_animation_player.stop()
-		visible = true
-	
-	if get_parent() and get_parent().health <= 0:
-		die()
-	
 	x_movement(delta)
 	jump_logic(delta)
 	apply_gravity(delta)
-	timers(delta)
-	shoot(delta)
-	duck_logic(delta)
 	animations(delta)
-
-
 	move_and_slide()
-
-
-func setShader(value):
-	animated_sprite_2d.material.set("shader_param/active", value)
-
-func teleport(new_position):
-	if position != new_position:
-		position = new_position
-		smoke_generator.smoke(4)
-
-func shoot(delta):
-	if get_input()["shoot"] and shot_timer.is_stopped():
-		sprite.shootAnimation()
-		shot_timer.start(0.25)
-		var newBullet = starBullet.instantiate()
-		get_tree().root.add_child(newBullet)
-		var aimVector = Vector2(0,-1)
-		newBullet.transform = Transform2D( aimVector.angle() , position + Vector2(0,-10))
+	shoot(delta)
+	
+	if Input.is_action_just_pressed("reset_room"):
+		get_tree().reload_current_scene()
+	if Input.is_action_just_pressed("quit_game"):
+		get_tree().quit()
 
 
 func animations(delta):
@@ -117,28 +74,17 @@ func animations(delta):
 	elif abs(velocity.x) <= 0.1*delta:
 		animated_sprite_2d.frame = 0
 
-func knockback(collision_point: Vector2):
-	var force_multiplier = 200
-	knockback_value = collision_point.normalized() * force_multiplier
-
-func hit(dmgTaken):
-	if hit_timer.is_stopped():
-		smoke_generator.smoke(3)
-		sprite.hitAnimation()
-		hit_timer.start(1)
-		get_parent().health -= dmgTaken
+func shoot(delta):
+	if get_input()["shoot"] and shot_timer.is_stopped():
+		sprite.shootAnimation()
+		shot_timer.start(0.25)
+		var newBullet = starBullet.instantiate()
+		get_tree().root.add_child(newBullet)
+		var aimVector = Vector2(0,-1)
+		newBullet.transform = Transform2D( aimVector.angle() , position + Vector2(0,-10))
 
 
 func x_movement(delta: float) -> void:
-	if knockback_value != Vector2.ZERO:
-		if knockback_value.length() < 1:
-			knockback_value = Vector2.ZERO
-		else:
-			# apply current knockback
-			velocity += knockback_value
-			# REDUCE KNOCKBACK VALUE
-			knockback_value *= delta
-			return
 	x_dir = get_input()["x"]
 	
 	# Stop if we're not doing movement inputs.
@@ -185,7 +131,7 @@ func jump_logic(_delta: float) -> void:
 		# If falling, account for that lost speed
 		if velocity.y > 0:
 			velocity.y -= velocity.y
-		
+			
 		velocity.y = -jump_force
 		audio_stream_player_2d.play()
 	
@@ -224,10 +170,3 @@ func apply_gravity(delta: float) -> void:
 		applied_gravity *= jump_hang_gravity_mult
 	
 	velocity.y += applied_gravity
-
-
-func timers(delta: float) -> void:
-	# Using timer nodes here would mean unnececary functions and node calls
-	# This way everything is contained in just 1 script with no node requirements
-	jump_coyote_timer -= delta
-	jump_buffer_timer -= delta

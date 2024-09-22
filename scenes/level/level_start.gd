@@ -15,7 +15,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if !timer.is_stopped():
-		print(time_left - timer.time_left)
 		if 0.01 < time_left - timer.time_left:
 			open_door.modulate.a -= 0.05
 			time_left = timer.time_left
