@@ -13,13 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://ckkq1qjivn5ek" path="res://scenes/level/obstacle/spikes_big.tscn" id="11_xwdlb"]
 [ext_resource type="PackedScene" uid="uid://drb58nxmshj8k" path="res://scenes/characters/enemies/follow_enemy.tscn" id="12_58yhd"]
 [ext_resource type="PackedScene" uid="uid://bpyuda83ilnfc" path="res://scenes/level/platform/MovingPlatformLocked.tscn" id="13_ud0wd"]
-[ext_resource type="PackedScene" uid="uid://dtvekg2qsjip" path="res://scenes/level/obstacle/LockBlock.tscn" id="14_vlnrl"]
+[ext_resource type="PackedScene" path="res://scenes/level/obstacle/LockBlock.tscn" id="14_vlnrl"]
 [ext_resource type="PackedScene" uid="uid://c3uw5okkpqu8o" path="res://scenes/level/state/door.tscn" id="15_b5vy3"]
 [ext_resource type="PackedScene" uid="uid://vjepi4rf2wrx" path="res://scenes/level/sign.tscn" id="16_cy4lv"]
-[ext_resource type="PackedScene" uid="uid://7hrchy8clhct" path="res://scenes/level/obstacle/MovingSpikeBall.tscn" id="17_68tun"]
+[ext_resource type="PackedScene" path="res://scenes/level/obstacle/MovingSpikeBall.tscn" id="17_68tun"]
 [ext_resource type="PackedScene" uid="uid://dbtgfdhof3pwf" path="res://scenes/characters/enemies/enemy_hive.tscn" id="17_ralle"]
 [ext_resource type="PackedScene" uid="uid://cn21d244w17d1" path="res://scenes/characters/enemies/enemy_sunflower.tscn" id="17_xgjc4"]
-[ext_resource type="PackedScene" uid="uid://djvmco7n0ybf8" path="res://scenes/level/state/final_door.tscn" id="20_qletu"]
+[ext_resource type="PackedScene" path="res://scenes/level/state/final_door.tscn" id="20_qletu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dqrtr"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)

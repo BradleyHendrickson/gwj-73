@@ -1,10 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bg7hcm26x646m"]
+[gd_scene load_steps=5 format=3 uid="uid://bg7hcm26x646m"]
 
 [ext_resource type="Script" path="res://scenes/characters/sounds/hurt_sound.gd" id="1_8hxeu"]
-[ext_resource type="AudioStream" uid="uid://cv2ohvx5y104h" path="res://scenes/characters/sounds/hurt1.wav" id="2_6obhi"]
-[ext_resource type="AudioStream" uid="uid://b81r2rxbplyl7" path="res://scenes/characters/sounds/hurt2.wav" id="3_8ix6u"]
-[ext_resource type="AudioStream" uid="uid://b2nuxkfhx4uhh" path="res://scenes/characters/sounds/hurt3.wav" id="4_wleie"]
-[ext_resource type="AudioStream" uid="uid://coof8c7ymh5by" path="res://scenes/characters/sounds/hurt4.wav" id="5_sgq4b"]
 [ext_resource type="AudioStream" uid="uid://dcfmjpvnryx5t" path="res://scenes/characters/sounds/hurt5.wav" id="6_55f6e"]
 [ext_resource type="AudioStream" uid="uid://d35qfpe0ly04u" path="res://scenes/characters/sounds/hurt6.wav" id="7_lpowp"]
 [ext_resource type="AudioStream" uid="uid://b1t44ab6om3g0" path="res://scenes/characters/sounds/hurt7.wav" id="8_fafo4"]
@@ -12,23 +8,14 @@
 [node name="HurtSound" type="Node"]
 script = ExtResource("1_8hxeu")
 
-[node name="1" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_6obhi")
-
-[node name="2" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_8ix6u")
-
-[node name="3" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_wleie")
-
-[node name="4" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_sgq4b")
-
 [node name="5" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_55f6e")
+max_distance = 1e+09
 
 [node name="6" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_lpowp")
+max_distance = 1e+09
 
 [node name="7" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_fafo4")
+max_distance = 1e+09

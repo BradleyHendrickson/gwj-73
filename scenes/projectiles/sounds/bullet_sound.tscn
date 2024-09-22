@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt6fn33tro06n"]
+[gd_scene load_steps=6 format=3 uid="uid://dt6fn33tro06n"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/sounds/bullet_sound.gd" id="1_2bul1"]
-[ext_resource type="AudioStream" uid="uid://bgr7j4x6vdrg6" path="res://scenes/characters/sounds/bullet1.wav" id="2_p0cif"]
 [ext_resource type="AudioStream" uid="uid://bthkd2bq3w2us" path="res://scenes/characters/sounds/bullet2.wav" id="3_u4lm8"]
 [ext_resource type="AudioStream" uid="uid://dhb17pk666dtr" path="res://scenes/characters/sounds/bullet3.wav" id="4_6jvwo"]
 [ext_resource type="AudioStream" uid="uid://bqwyer1f6x5sp" path="res://scenes/characters/sounds/bullet4.wav" id="5_lyi1g"]
@@ -10,17 +9,18 @@
 [node name="BulletSound" type="Node"]
 script = ExtResource("1_2bul1")
 
-[node name="1" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_p0cif")
-
 [node name="2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_u4lm8")
+max_distance = 1e+09
 
 [node name="3" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_6jvwo")
+max_distance = 1e+09
 
 [node name="4" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_lyi1g")
+max_distance = 1e+09
 
 [node name="5" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_ihgcl")
+max_distance = 1e+09

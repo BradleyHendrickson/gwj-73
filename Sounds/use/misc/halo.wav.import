@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://t60r0rnmigj0"
-path="res://.godot/imported/halo.wav-ee4966eea6c5fb5ff83c6a692c5fea4e.sample"
+path="res://.godot/imported/halo.wav-8a65f145ec8f0899fe501a7000aa97ee.sample"
 
 [deps]
 
-source_file="res://sounds/use/misc/halo.wav"
-dest_files=["res://.godot/imported/halo.wav-ee4966eea6c5fb5ff83c6a692c5fea4e.sample"]
+source_file="res://Sounds/use/misc/halo.wav"
+dest_files=["res://.godot/imported/halo.wav-8a65f145ec8f0899fe501a7000aa97ee.sample"]
 
 [params]
 
