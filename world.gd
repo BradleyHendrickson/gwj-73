@@ -41,7 +41,6 @@ func doLocks():
 	# Iterate through all objects in the 'lock_block' group
 	for lock in get_tree().get_nodes_in_group("lock_block"):
 		if lock.global_position.y > player_pos.y:
-			print('locked')
 			lock.setLocked(true)  # Lock if below the player
 		else:
 			lock.setLocked(false)  # Unlock if above the player

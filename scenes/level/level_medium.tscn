@@ -86,23 +86,20 @@ position = Vector2(0, -224)
 [node name="LockBlock4" parent="world" instance=ExtResource("12_kxss8")]
 position = Vector2(-32, -224)
 
-[node name="LockBlock3" parent="world" instance=ExtResource("12_kxss8")]
-position = Vector2(16, -224)
-
-[node name="LockBlock" parent="." instance=ExtResource("12_kxss8")]
+[node name="LockBlock5" parent="world" instance=ExtResource("12_kxss8")]
 position = Vector2(-32, -416)
 
-[node name="LockBlock" parent="LockBlock" instance=ExtResource("12_kxss8")]
-position = Vector2(-32, -416)
-
-[node name="LockBlock2" parent="." instance=ExtResource("12_kxss8")]
+[node name="LockBlock6" parent="world" instance=ExtResource("12_kxss8")]
 position = Vector2(-16, -416)
 
-[node name="LockBlock3" parent="." instance=ExtResource("12_kxss8")]
+[node name="LockBlock7" parent="world" instance=ExtResource("12_kxss8")]
 position = Vector2(0, -416)
 
-[node name="LockBlock4" parent="." instance=ExtResource("12_kxss8")]
+[node name="LockBlock8" parent="world" instance=ExtResource("12_kxss8")]
 position = Vector2(16, -416)
 
-[node name="spikes_small" parent="." instance=ExtResource("13_4ahyj")]
+[node name="spikes_small" parent="world" instance=ExtResource("13_4ahyj")]
 position = Vector2(-192, -432)
+
+[node name="LockBlock3" parent="world" instance=ExtResource("12_kxss8")]
+position = Vector2(16, -224)
