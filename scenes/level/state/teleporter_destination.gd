@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var ACTIVATED: bool = false
 
@@ -18,3 +19,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		get_parent().destination_zone = self
 		ACTIVATED = true
 		setShader(false)
+		audio_stream_player_2d.play()

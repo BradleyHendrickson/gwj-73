@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @onready var targets: Array
 
@@ -12,6 +13,7 @@ func _process(delta: float) -> void:
 	if get_parent().destination_zone:
 		for target in targets:
 			target.teleport(get_parent().destination_zone.position)
+			audio_stream_player_2d.play()
 
 
 func setShader(value):

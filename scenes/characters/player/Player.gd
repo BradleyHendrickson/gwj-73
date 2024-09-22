@@ -11,6 +11,7 @@ var x_dir := 1
 @onready var hit_timer: Timer = $HitTimer
 @onready var sprite: Node2D = $Sprite
 @onready var blink_animation_player: AnimationPlayer = $BlinkAnimationPlayer
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var max_speed: float = 150
 @export var acceleration: float = 1100
@@ -186,6 +187,7 @@ func jump_logic(_delta: float) -> void:
 			velocity.y -= velocity.y
 		
 		velocity.y = -jump_force
+		audio_stream_player_2d.play()
 	
 	# We're not actually interested in checking if the player is holding the jump button
 #	if get_input()["jump"]:pass

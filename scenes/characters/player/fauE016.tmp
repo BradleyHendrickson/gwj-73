@@ -1,18 +1,18 @@
-[gd_scene load_steps=24 format=3 uid="uid://cvboky6pqlyk0"]
+[gd_scene load_steps=24 format=3 uid="uid://bq5rgdrs0o1eb"]
 
-[ext_resource type="Script" path="res://scenes/characters/player/Player.gd" id="1"]
-[ext_resource type="Script" path="res://scenes/characters/player/Sprite.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://c714640csmlw" path="res://sprites/player-placeholder.png" id="2_j44xb"]
-[ext_resource type="PackedScene" uid="uid://dpjg0ppuwx42t" path="res://scenes/projectiles/bullet.tscn" id="2_s1ujb"]
-[ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="3_pi8rx"]
-[ext_resource type="Texture2D" uid="uid://cbik76u8gbrw8" path="res://sprites/player_walk.png" id="4_n8rlu"]
-[ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="5_ofwe1"]
+[ext_resource type="Script" path="res://scenes/characters/player/faux_player.gd" id="1_d2w2f"]
+[ext_resource type="PackedScene" uid="uid://dpjg0ppuwx42t" path="res://scenes/projectiles/bullet.tscn" id="2_lyd46"]
+[ext_resource type="Script" path="res://scenes/characters/player/Sprite.gd" id="2_yd6et"]
+[ext_resource type="Texture2D" uid="uid://c714640csmlw" path="res://sprites/player-placeholder.png" id="3_0q0tn"]
+[ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="4_qw646"]
+[ext_resource type="Texture2D" uid="uid://cbik76u8gbrw8" path="res://sprites/player_walk.png" id="5_dkral"]
+[ext_resource type="AudioStream" uid="uid://c7tpg0kc30i12" path="res://scenes/characters/player/player_jump.wav" id="7_qmxs0"]
 
-[sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(16, 14)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vko4j"]
+size = Vector2(12, 13)
 
-[sub_resource type="SeparationRayShape2D" id="1"]
-length = 2.0
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_f7gwj"]
+length = 1.0
 
 [sub_resource type="Animation" id="3"]
 resource_name = "Jump"
@@ -47,6 +47,21 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(1.26, 0.9), Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_bu813"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_2lqxj"]
 resource_name = "Shoot"
 length = 0.2
@@ -64,21 +79,6 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(1.1, 0.9), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_bu813"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1lb64"]
 _data = {
 "Jump": SubResource("3"),
@@ -87,27 +87,28 @@ _data = {
 "Shoot": SubResource("Animation_2lqxj")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_we2sv"]
-shader = ExtResource("5_ofwe1")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1jmo"]
+resource_local_to_scene = true
+shader = ExtResource("4_qw646")
 shader_parameter/active = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b65lg"]
-atlas = ExtResource("4_n8rlu")
+atlas = ExtResource("5_dkral")
 region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u0tmm"]
-atlas = ExtResource("4_n8rlu")
+atlas = ExtResource("5_dkral")
 region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_trcf0"]
-atlas = ExtResource("4_n8rlu")
+atlas = ExtResource("5_dkral")
 region = Rect2(48, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lxyx1"]
-atlas = ExtResource("4_n8rlu")
+atlas = ExtResource("5_dkral")
 region = Rect2(72, 0, 24, 24)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6wa87"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_hw38c"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -127,39 +128,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_5e0et"]
-resource_name = "hit"
-length = 0.2
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../..")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [true],
-"method": &"setShader"
-}, {
-"args": [false],
-"method": &"setShader"
-}]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.174533, 0.0]
-}
-
 [sub_resource type="Animation" id="Animation_ivcwp"]
 length = 0.001
 tracks/0/type = "value"
@@ -175,51 +143,70 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_5e0et"]
+resource_name = "hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1.10957, 1),
+"update": 0,
+"values": [-0.261799, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"setShader"
+}, {
+"args": [false],
+"method": &"setShader"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hw1o3"]
 _data = {
 "RESET": SubResource("Animation_ivcwp"),
 "hit": SubResource("Animation_5e0et")
 }
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
-z_index = 10
+[node name="FauxPlayer" type="CharacterBody2D"]
+position = Vector2(62, 608)
 collision_mask = 2
-floor_snap_length = 16.0
-script = ExtResource("1")
-starBullet = ExtResource("2_s1ujb")
-max_speed = 150.0
-acceleration = 1100.0
-turning_acceleration = 2000.0
-deceleration = 1900.0
-gravity_acceleration = 1100.0
-gravity_max = 500.0
-jump_force = 400.0
-jump_cut = 0.5
-jump_gravity_max = 250.0
-jump_hang_gravity_mult = 0.05
-
-[node name="SmokeGenerator" parent="." instance=ExtResource("3_pi8rx")]
+script = ExtResource("1_d2w2f")
+starBullet = ExtResource("2_lyd46")
 
 [node name="SquareCollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-shape = SubResource("2")
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_vko4j")
 
 [node name="RaycastCollider1" type="CollisionShape2D" parent="."]
-position = Vector2(-8, 6)
-shape = SubResource("1")
+position = Vector2(-6, 7)
+shape = SubResource("SeparationRayShape2D_f7gwj")
 
 [node name="RaycastCollider2" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
-shape = SubResource("1")
+position = Vector2(0, 7)
+shape = SubResource("SeparationRayShape2D_f7gwj")
 
 [node name="RaycastCollider3" type="CollisionShape2D" parent="."]
-position = Vector2(8, 6)
-shape = SubResource("1")
+position = Vector2(6, 7)
+shape = SubResource("SeparationRayShape2D_f7gwj")
 
 [node name="Sprite" type="Node2D" parent="."]
 position = Vector2(0, 8)
-script = ExtResource("2")
-player_path = NodePath("..")
+script = ExtResource("2_yd6et")
 
 [node name="Polygon2D" type="Polygon2D" parent="Sprite"]
 visible = false
@@ -235,12 +222,12 @@ libraries = {
 [node name="Sprite2D" type="Sprite2D" parent="Sprite"]
 visible = false
 position = Vector2(0, -8)
-texture = ExtResource("2_j44xb")
+texture = ExtResource("3_0q0tn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite"]
-material = SubResource("ShaderMaterial_we2sv")
+material = SubResource("ShaderMaterial_s1jmo")
 position = Vector2(0, -8)
-sprite_frames = SubResource("SpriteFrames_6wa87")
+sprite_frames = SubResource("SpriteFrames_hw38c")
 
 [node name="SpriteAnimationPlayer" type="AnimationPlayer" parent="Sprite/AnimatedSprite2D"]
 libraries = {
@@ -250,16 +237,5 @@ libraries = {
 [node name="ShotTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="HitTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-physics_interpolation_mode = 1
-offset = Vector2(0, -32)
-zoom = Vector2(2.3, 2.3)
-process_callback = 0
-limit_left = -300
-limit_right = 300
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_qmxs0")

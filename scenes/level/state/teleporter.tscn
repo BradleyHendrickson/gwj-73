@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcfyhh3otqw4j"]
+[gd_scene load_steps=7 format=3 uid="uid://dcfyhh3otqw4j"]
 
 [ext_resource type="Texture2D" uid="uid://dvhf7dq1dtj4s" path="res://sprites/teleporter.png" id="1_h6lln"]
 [ext_resource type="Script" path="res://scenes/level/state/teleporter.gd" id="1_lm62s"]
 [ext_resource type="Shader" path="res://scenes/level/state/gray.gdshader" id="2_qj7ub"]
+[ext_resource type="AudioStream" uid="uid://bv6bmgex2hpp0" path="res://scenes/level/state/teleporter.wav" id="4_7r1ai"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tnp52"]
 shader = ExtResource("2_qj7ub")
@@ -25,6 +26,9 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_qacpx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_7r1ai")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
