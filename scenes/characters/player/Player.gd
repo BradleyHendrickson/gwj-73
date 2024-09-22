@@ -106,6 +106,7 @@ func shoot(delta):
 		get_tree().root.add_child(newBullet)
 		var aimVector = Vector2(0,-1)
 		newBullet.transform = Transform2D( aimVector.angle() , position + Vector2(0,-10))
+		get_parent().play_bullet_sound()
 
 
 func animations(delta):
@@ -126,7 +127,7 @@ func hit(dmgTaken):
 		smoke_generator.smoke(3)
 		sprite.hitAnimation()
 		hit_timer.start(1)
-		get_parent().play_hurt_sound(true)
+		get_parent().play_hurt_sound()
 		get_parent().health -= dmgTaken
 
 

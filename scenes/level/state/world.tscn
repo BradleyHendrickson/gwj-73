@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ny3hct8guqcu"]
+[gd_scene load_steps=6 format=3 uid="uid://ny3hct8guqcu"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_0b5r2"]
 [ext_resource type="PackedScene" uid="uid://mwfj8563dv7" path="res://scenes/ui/game_ui.tscn" id="2_dvvyf"]
 [ext_resource type="PackedScene" uid="uid://cvboky6pqlyk0" path="res://scenes/characters/player/Player.tscn" id="2_markn"]
 [ext_resource type="PackedScene" uid="uid://bg7hcm26x646m" path="res://scenes/characters/sounds/hurt_sound.tscn" id="4_ocdwm"]
+[ext_resource type="PackedScene" uid="uid://dt6fn33tro06n" path="res://scenes/projectiles/sounds/bullet_sound.tscn" id="5_basm8"]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_0b5r2")
@@ -26,3 +27,5 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="HurtSound" parent="." instance=ExtResource("4_ocdwm")]
+
+[node name="BulletSound" parent="." instance=ExtResource("5_basm8")]

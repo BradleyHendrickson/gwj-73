@@ -13,9 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://ckkq1qjivn5ek" path="res://scenes/level/obstacle/spikes_big.tscn" id="11_xwdlb"]
 [ext_resource type="PackedScene" uid="uid://drb58nxmshj8k" path="res://scenes/characters/enemies/follow_enemy.tscn" id="12_58yhd"]
 [ext_resource type="PackedScene" uid="uid://bpyuda83ilnfc" path="res://scenes/level/platform/MovingPlatformLocked.tscn" id="13_ud0wd"]
-[ext_resource type="PackedScene" uid="uid://dtvekg2qsjip" path="res://scenes/level/obstacle/LockBlock.tscn" id="14_vlnrl"]
-[ext_resource type="PackedScene" uid="uid://c3uw5okkpqu8o" path="res://scenes/level/state/door.tscn" id="15_b5vy3"]
-[ext_resource type="PackedScene" uid="uid://vjepi4rf2wrx" path="res://scenes/level/sign.tscn" id="16_cy4lv"]
+[ext_resource type="PackedScene" path="res://scenes/level/obstacle/LockBlock.tscn" id="14_vlnrl"]
+[ext_resource type="PackedScene" path="res://scenes/level/state/door.tscn" id="15_b5vy3"]
+[ext_resource type="PackedScene" path="res://scenes/level/sign.tscn" id="16_cy4lv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dqrtr"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -47,7 +47,7 @@ tile_map_data = PackedByteArray("AAD0/wcAAAAKAAcAAAD2/wcAAAAKAAcAAAD4/wcAAAAKAAc
 tile_set = ExtResource("4_yqjsk")
 
 [node name="Player" parent="world" instance=ExtResource("5_nsq4w")]
-position = Vector2(0, 104)
+position = Vector2(0, 89)
 
 [node name="Platform" parent="world" instance=ExtResource("7_hakr0")]
 position = Vector2(168, 40)
@@ -68,8 +68,6 @@ position = Vector2(-136, 56)
 
 [node name="StaticEnemy" parent="world" instance=ExtResource("9_wjhrc")]
 position = Vector2(-88, -808)
-start_angle = 30.0
-end_angle = 265.0
 
 [node name="Platform2" parent="world" instance=ExtResource("7_hakr0")]
 position = Vector2(0, -945)

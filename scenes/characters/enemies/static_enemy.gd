@@ -87,6 +87,8 @@ func shoot(delta, rotation_to_target):
 		# Set the position and rotation of the bullet
 		newBullet.transform = Transform2D(rotation_to_target, bullet_position)
 
+		get_parent().play_bullet_sound()
+		
 		# Add the bullet to the scene
 		get_tree().root.add_child(newBullet)
 

@@ -5,12 +5,10 @@ extends Node
 @onready var _3: AudioStreamPlayer2D = $"3"
 @onready var _4: AudioStreamPlayer2D = $"4"
 @onready var _5: AudioStreamPlayer2D = $"5"
-@onready var _6: AudioStreamPlayer2D = $"6"
-@onready var _7: AudioStreamPlayer2D = $"7"
 
 @export var sound : AudioStreamPlayer2D:
 	get():
-		match randi_range(1, 7):
+		match randi_range(1, 5):
 			1:
 				sound = _1
 			2:
@@ -21,8 +19,4 @@ extends Node
 				sound = _4
 			5:
 				sound = _5
-			6:
-				sound = _6
-			7:
-				sound = _7
 		return sound
