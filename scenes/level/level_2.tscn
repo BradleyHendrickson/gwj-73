@@ -93,12 +93,9 @@ position = Vector2(0, -976)
 
 [node name="FollowEnemy" parent="world" instance=ExtResource("9_ju8j0")]
 position = Vector2(168, -72)
-resting = true
 
 [node name="FollowEnemy2" parent="world" instance=ExtResource("9_ju8j0")]
 position = Vector2(48, -936)
-resting = true
 
 [node name="FollowEnemy3" parent="world" instance=ExtResource("9_ju8j0")]
 position = Vector2(128, -1016)
-resting = true

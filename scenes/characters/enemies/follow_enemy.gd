@@ -8,7 +8,7 @@ extends CharacterBody2D
 @onready var follow_navigation: NavigationAgent2D = $FollowNavigation
 @onready var follow_timer: Timer = $FollowTimer
 
-@export var resting = false
+@export var resting = true
 @export var FORCE = 65
 @export var damage: float = 1
 @export var move_to := Vector2(0, -128):
