@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c3uw5okkpqu8o"]
 
-[ext_resource type="Texture2D" uid="uid://by22co641cu7n" path="res://sprites/door.png" id="1_wl2x8"]
+[ext_resource type="Texture2D" uid="uid://bhgno3olv7m6t" path="res://sprites/door.png" id="1_wl2x8"]
 
 [node name="Door" type="Node2D"]
 

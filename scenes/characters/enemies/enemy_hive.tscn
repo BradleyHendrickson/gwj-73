@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/characters/enemies/enemy_hive.gd" id="1_rpoos"]
 [ext_resource type="PackedScene" uid="uid://drb58nxmshj8k" path="res://scenes/characters/enemies/follow_enemy.tscn" id="2_mkqff"]
 [ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="3_kmcas"]
-[ext_resource type="Texture2D" uid="uid://i3q4v6owk1v1" path="res://sprites/hive.png" id="4_8sd1i"]
+[ext_resource type="Texture2D" uid="uid://drhmemxnuv212" path="res://sprites/hive.png" id="4_8sd1i"]
 [ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="4_kb344"]
 [ext_resource type="Texture2D" uid="uid://bcr71ogla1xaw" path="res://sprites/enemy_plant_shoot_base.png" id="6_7c5f0"]
 

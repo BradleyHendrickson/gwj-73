@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/projectiles/bullet.gd" id="1_xefui"]
 [ext_resource type="PackedScene" uid="uid://gpisbgm7lfpt" path="res://scenes/effects/enemy_bullet_hit_round.tscn" id="2_l048o"]
-[ext_resource type="Texture2D" uid="uid://coen61cw6er2y" path="res://sprites/enemy_bullet_2.png" id="3_rvfff"]
+[ext_resource type="Texture2D" uid="uid://bsui72gnwh3x2" path="res://sprites/enemy_bullet_2.png" id="3_rvfff"]
 [ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="4_p4ika"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uc06v"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/characters/enemies/enemy_sunflower.gd" id="1_0si23"]
 [ext_resource type="PackedScene" uid="uid://w4wnptey0l6d" path="res://scenes/projectiles/enemy_bullet_straight.tscn" id="2_fpwmc"]
 [ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="3_cbsdw"]
-[ext_resource type="Texture2D" uid="uid://d1mvfcets7581" path="res://enemy_sunflower.png" id="4_clxlw"]
+[ext_resource type="Texture2D" uid="uid://b24gufteckku4" path="res://enemy_sunflower.png" id="4_clxlw"]
 [ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="4_d1l3n"]
 [ext_resource type="Texture2D" uid="uid://bcr71ogla1xaw" path="res://sprites/enemy_plant_shoot_base.png" id="6_n17qh"]
 

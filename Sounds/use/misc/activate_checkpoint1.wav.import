@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bqynehrcmj3bo"
-path="res://.godot/imported/activate_checkpoint1.wav-831268338fe15afb14aa6e55d6721d7b.sample"
+path="res://.godot/imported/activate_checkpoint1.wav-9497279528ea372aae67072145cc7baf.sample"
 
 [deps]
 
-source_file="res://Sounds/use/misc/activate_checkpoint1.wav"
-dest_files=["res://.godot/imported/activate_checkpoint1.wav-831268338fe15afb14aa6e55d6721d7b.sample"]
+source_file="res://sounds/use/misc/activate_checkpoint1.wav"
+dest_files=["res://.godot/imported/activate_checkpoint1.wav-9497279528ea372aae67072145cc7baf.sample"]
 
 [params]
 
