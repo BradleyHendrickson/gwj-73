@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://c5mdins8uybkf"]
+[gd_scene load_steps=24 format=4 uid="uid://c5mdins8uybkf"]
 
 [ext_resource type="PackedScene" uid="uid://ny3hct8guqcu" path="res://scenes/level/state/world.tscn" id="1_2pn28"]
 [ext_resource type="Texture2D" uid="uid://0bi40atkbx7y" path="res://sprites/navigation_tile.png" id="2_8vcv4"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://7hrchy8clhct" path="res://scenes/level/obstacle/MovingSpikeBall.tscn" id="17_68tun"]
 [ext_resource type="PackedScene" uid="uid://dbtgfdhof3pwf" path="res://scenes/characters/enemies/enemy_hive.tscn" id="17_ralle"]
 [ext_resource type="PackedScene" uid="uid://cn21d244w17d1" path="res://scenes/characters/enemies/enemy_sunflower.tscn" id="17_xgjc4"]
+[ext_resource type="PackedScene" uid="uid://djvmco7n0ybf8" path="res://scenes/level/state/final_door.tscn" id="20_qletu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dqrtr"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -50,7 +51,7 @@ tile_map_data = PackedByteArray("AAD0/wcAAAAKAAcAAAD2/wcAAAAKAAcAAAD4/wcAAAAKAAc
 tile_set = ExtResource("4_yqjsk")
 
 [node name="Player" parent="world" instance=ExtResource("5_nsq4w")]
-position = Vector2(-50, -3496)
+position = Vector2(0, 104)
 
 [node name="Platform" parent="world" instance=ExtResource("7_hakr0")]
 position = Vector2(168, 40)
@@ -339,3 +340,6 @@ position = Vector2(96, -3544)
 
 [node name="FollowEnemy11" parent="world" instance=ExtResource("12_58yhd")]
 position = Vector2(64, -3864)
+
+[node name="Door2" parent="world" instance=ExtResource("20_qletu")]
+position = Vector2(128, -4152)
