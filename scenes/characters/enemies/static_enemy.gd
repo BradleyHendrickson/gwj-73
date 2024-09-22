@@ -10,7 +10,6 @@ extends CharacterBody2D
 
 @export var bullet : PackedScene
 
-@export var new_rotation = 0.0 # in degrees
 @export var start_angle = 0.0 # in degrees
 @export var end_angle = 0.0 # in degrees
 @export var distance = 150
@@ -24,13 +23,6 @@ extends CharacterBody2D
 
 var myRotation = 0.0
 
-@export var move_to := Vector2(0, -128): 
-	set(value):
-		move_to = value
-		position += value
-	get():
-		return move_to
-
 @export var health: int = 3: 
 	set(value):
 		health = value
@@ -43,8 +35,6 @@ var myRotation = 0.0
 
 func _ready() -> void:
 	setShader(false)
-	
-	rotation = deg_to_rad(new_rotation)
 	
 	var points = [Vector2.ZERO]
 	var segments = 30
@@ -66,11 +56,11 @@ func _process(delta: float) -> void:
 	# Check if there is an aim target
 	if aim_target:
 		# Get the angle to the aim target
-		var rotation_to_target = self.get_angle_to(aim_target.position) + PI / 2
+		var rotation_to_target = self.get_angle_to(aim_target.position)
 		
 		# Rotate sprite only if not already aligned
 		if sprite.rotation != rotation_to_target:
-			sprite.rotation = rotation_to_target
+			sprite.rotation = rotation_to_target + PI / 2
 		
 		# Shoot towards the aim target
 		shoot(delta, rotation_to_target)
