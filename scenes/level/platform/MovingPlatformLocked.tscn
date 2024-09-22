@@ -33,6 +33,7 @@ animations = [{
 
 [node name="PlatformLocked" type="Node2D"]
 script = ExtResource("1_ywpxl")
+move_to = Vector2(0, -64)
 
 [node name="SmokeGenerator" parent="." instance=ExtResource("2_a66o1")]
 

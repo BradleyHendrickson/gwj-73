@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cklt5vjikhrmq" path="res://sprites/teleporter_destination.png" id="1_cpdtn"]
 [ext_resource type="Script" path="res://scenes/level/state/teleporter_destination.gd" id="1_ilgx3"]
 [ext_resource type="Shader" path="res://scenes/level/state/gray.gdshader" id="2_lmgbp"]
-[ext_resource type="AudioStream" uid="uid://dtwnsa75gkkb2" path="res://scenes/level/state/teleporter_destination.wav" id="4_m5c2p"]
+[ext_resource type="AudioStream" uid="uid://c8s5b1d5x1mx8" path="res://scenes/level/state/teleporter_destination.wav" id="4_m5c2p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_obyrh"]
 resource_local_to_scene = true
