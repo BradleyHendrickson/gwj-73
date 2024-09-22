@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://barcole3m5c13"
-path="res://.godot/imported/Shoot_3.wav-39cf5233bf3fbcc9a42602c14b81447f.sample"
+path="res://.godot/imported/Shoot_3.wav-c2518521d4bae225389134922d02f985.sample"
 
 [deps]
 
-source_file="res://Sounds/Shoot_3.wav"
-dest_files=["res://.godot/imported/Shoot_3.wav-39cf5233bf3fbcc9a42602c14b81447f.sample"]
+source_file="res://sounds/Shoot_3.wav"
+dest_files=["res://.godot/imported/Shoot_3.wav-c2518521d4bae225389134922d02f985.sample"]
 
 [params]
 

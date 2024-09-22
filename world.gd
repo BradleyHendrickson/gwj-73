@@ -17,6 +17,7 @@ extends Node2D
 		game_ui.setHealth(health)
 	get():
 		return health
+		
 @export var destination_zone : Node2D:
 	set(value):
 		destination_zone = value
@@ -32,9 +33,25 @@ func _ready() -> void:
 	game_ui.setHealth(health)
 	generate_navigation()
 
+func doLocks():
+
+	var player_pos = player.global_position  # Reference the player's global position
+	
+	
+	# Iterate through all objects in the 'lock_block' group
+	for lock in get_tree().get_nodes_in_group("lock_block"):
+		if lock.global_position.y > player_pos.y:
+			print('locked')
+			lock.setLocked(true)  # Lock if below the player
+		else:
+			lock.setLocked(false)  # Unlock if above the player
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_instance_valid(player):
+
+		doLocks()
+		
 		# Bias the camera towards the horizontal center of the screen
 		var screen_center_x = 0.0
 		target_camera_position.x = lerp(player.global_position.x, screen_center_x, 0.1) # Horizontal bias factor

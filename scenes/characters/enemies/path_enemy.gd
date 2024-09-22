@@ -45,9 +45,16 @@ func _process(delta: float) -> void:
 	else:
 		animated_sprite_2d.flip_h = false
 	
-	var collision_info = move_and_collide(velocity * delta, false, 0.1)
-	if collision_info:
-		velocity = velocity.bounce(collision_info.get_normal())
+	if ray.is_colliding() and bounce_timer.is_stopped():
+		bounce_timer.start(0.2)
+		ray.target_position = -ray.target_position
+		velocity = -1 * velocity
+	else:
+		move_and_slide()
+	
+	#var collision_info = move_and_collide(velocity * delta, false, 0.1)
+	#if collision_info:
+	#	velocity = velocity.bounce(collision_info.get_normal())
 	
 	for target in targets:
 		target.hit(damage)

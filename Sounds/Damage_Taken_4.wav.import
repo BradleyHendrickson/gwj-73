@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dbjkejgfoikek"
-path="res://.godot/imported/Damage_Taken_4.wav-9e463dc427230d0890f2780f510a7c63.sample"
+path="res://.godot/imported/Damage_Taken_4.wav-4607f5fbbd7ed4f6b2a060a281ca8085.sample"
 
 [deps]
 
-source_file="res://Sounds/Damage_Taken_4.wav"
-dest_files=["res://.godot/imported/Damage_Taken_4.wav-9e463dc427230d0890f2780f510a7c63.sample"]
+source_file="res://sounds/Damage_Taken_4.wav"
+dest_files=["res://.godot/imported/Damage_Taken_4.wav-4607f5fbbd7ed4f6b2a060a281ca8085.sample"]
 
 [params]
 

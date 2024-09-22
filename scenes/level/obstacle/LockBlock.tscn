@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtvekg2qsjip"]
+
+[ext_resource type="Script" path="res://scenes/level/obstacle/lock_block.gd" id="1_2fd68"]
+[ext_resource type="Texture2D" uid="uid://b1nqn44e8ujvx" path="res://sprites/spr_lock.png" id="1_jgbid"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlseh"]
+atlas = ExtResource("1_jgbid")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2et61"]
+atlas = ExtResource("1_jgbid")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_duuo8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlseh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2et61")
+}],
+"loop": true,
+"name": &"locked",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmn86"]
+size = Vector2(16, 16)
+
+[node name="LockBlock" type="Node2D" groups=["lock_block"]]
+script = ExtResource("1_2fd68")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_duuo8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_dmn86")

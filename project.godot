@@ -24,6 +24,10 @@ window/physics_jitter_fix=0.5
 
 project/assembly_name="GWJ-73"
 
+[global_group]
+
+lock_block="Lock Blocks"
+
 [input]
 
 input_jump={

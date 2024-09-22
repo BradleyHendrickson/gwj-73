@@ -6,6 +6,8 @@ extends Node2D
 ## This code can work with moving spikes and alike, all you need is swap out the reference to MovedObject.
 ## And also Make the child an Area2D that reacts to the player collisions.
 @export var enemies: Array[CharacterBody2D]
+@onready var smoke_generator: Node2D = $SmokeGenerator
+@onready var animated_sprite_2d: AnimatedSprite2D = $ActualPlatform/AnimatedSprite2D
 
 @export var move_to := Vector2(0, -128) : set = set_move_to
 func set_move_to(new_value: Vector2) -> void:
@@ -19,7 +21,7 @@ func set_move_to(new_value: Vector2) -> void:
 @export var line_width : float = 4.0
 
 func _ready() -> void:
-
+	animated_sprite_2d.play("default")
 	if enemies_exist():
 		speed = 0
 
@@ -31,6 +33,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 
 	if !enemies_exist() and speed == 0:
+		animated_sprite_2d.play("active")
+		smoke_generator.smoke_at_position(4, position + move_to)
 		speed = 20
 		set_move_to(move_to)
 		for child in get_children():

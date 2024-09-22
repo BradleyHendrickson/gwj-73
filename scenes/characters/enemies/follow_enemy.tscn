@@ -253,6 +253,7 @@ visible = false
 shape = SubResource("CircleShape2D_p2daj")
 
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
