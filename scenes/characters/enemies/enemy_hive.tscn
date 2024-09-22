@@ -1,0 +1,237 @@
+[gd_scene load_steps=20 format=3 uid="uid://dbtgfdhof3pwf"]
+
+[ext_resource type="Script" path="res://scenes/characters/enemies/enemy_hive.gd" id="1_rpoos"]
+[ext_resource type="PackedScene" uid="uid://drb58nxmshj8k" path="res://scenes/characters/enemies/follow_enemy.tscn" id="2_mkqff"]
+[ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="3_kmcas"]
+[ext_resource type="Texture2D" uid="uid://i3q4v6owk1v1" path="res://sprites/hive.png" id="4_8sd1i"]
+[ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="4_kb344"]
+[ext_resource type="Texture2D" uid="uid://bcr71ogla1xaw" path="res://sprites/enemy_plant_shoot_base.png" id="6_7c5f0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c8lxd"]
+resource_local_to_scene = true
+shader = ExtResource("4_kb344")
+shader_parameter/active = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0uk2"]
+atlas = ExtResource("4_8sd1i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8l0nw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0uk2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="Animation" id="Animation_axo3h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qpf7y"]
+resource_name = "hover"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.0872665, 0.0, 0.0872665, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.18921, 1),
+"update": 0,
+"values": [Vector2(1.05, 1.05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_m2nwp"]
+resource_name = "shoot"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333),
+"transitions": PackedFloat32Array(0.159321, 1, 4.14106),
+"update": 0,
+"values": [Vector2(0.9, 1.1), Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h68e1"]
+_data = {
+"RESET": SubResource("Animation_axo3h"),
+"hover": SubResource("Animation_qpf7y"),
+"shoot": SubResource("Animation_m2nwp")
+}
+
+[sub_resource type="Animation" id="Animation_2swfp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7qkde"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.267943, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 0.6), Vector2(1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"setShader"
+}, {
+"args": [false],
+"method": &"setShader"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uyx11"]
+_data = {
+"RESET": SubResource("Animation_2swfp"),
+"hit": SubResource("Animation_7qkde")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mk2sf"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1ny0"]
+size = Vector2(16, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f26d7"]
+size = Vector2(20, 5)
+
+[node name="EnemyHive" type="CharacterBody2D"]
+z_index = -10
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_rpoos")
+bullet = ExtResource("2_mkqff")
+shot_delay = 4.0
+health = 10
+
+[node name="SmokeGenerator" parent="." instance=ExtResource("3_kmcas")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_c8lxd")
+sprite_frames = SubResource("SpriteFrames_8l0nw")
+autoplay = "default"
+offset = Vector2(0, 0.860074)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_h68e1")
+}
+autoplay = "hover"
+speed_scale = 0.5
+
+[node name="SpriteAnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_uyx11")
+}
+autoplay = "RESET"
+
+[node name="BounceTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mk2sf")
+
+[node name="HurtArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+shape = SubResource("RectangleShape2D_i1ny0")
+
+[node name="JumpHitBox" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpHitBox"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_f26d7")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="DetectionCollisionPolygon" type="CollisionPolygon2D" parent="DetectionArea"]
+
+[node name="ShotTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+rotation = -1.5708
+texture = ExtResource("6_7c5f0")
+
+[connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]
+[connection signal="body_exited" from="HurtArea" to="." method="_on_hurt_area_body_exited"]
+[connection signal="body_shape_entered" from="JumpHitBox" to="." method="_on_jump_hit_box_body_shape_entered"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

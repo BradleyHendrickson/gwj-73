@@ -16,5 +16,6 @@ func setShader(value):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if !ACTIVATED:
 		get_parent().destination_zone = self
+		get_parent().health = 6
 		ACTIVATED = true
 		setShader(false)

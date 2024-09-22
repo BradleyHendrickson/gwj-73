@@ -13,6 +13,8 @@ var damagable_targets: Array
 
 @export var hitEffect : PackedScene
 
+
+
 func _ready() -> void:
 	timer.start(time)
 

@@ -11,7 +11,7 @@ extends Node2D
 @export var follow_smoothing = 7
 @export var playerObject : PackedScene
 @export var player_die_pos : Vector2
-@export var health: int = 10:
+@export var health: int = 6:
 	set(value):
 		health = value
 		game_ui.setHealth(health)
@@ -60,7 +60,7 @@ func _process(delta: float) -> void:
 			var p = playerObject.instantiate()
 			add_child(p)
 			player = p
-			health = 10
+			health = 6
 			p.position = Vector2(0, 56)
 	
 	# Smoothly move the camera towards the biased target position
