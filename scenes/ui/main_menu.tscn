@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=4 uid="uid://c3c60k8qta4pn"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_gv4qk"]
-[ext_resource type="FontFile" uid="uid://b0toqnwd8s2fq" path="res://fibberish.ttf" id="2_b4cgi"]
+[ext_resource type="FontFile" uid="uid://oooe47ii0gux" path="res://fibberish.ttf" id="2_b4cgi"]
 [ext_resource type="Texture2D" uid="uid://bcr71ogla1xaw" path="res://sprites/enemy_plant_shoot_base.png" id="3_cty53"]
 [ext_resource type="Texture2D" uid="uid://iaqt2efaoqpt" path="res://sprites/enemy_plant_shooter.png" id="4_bfyll"]
 [ext_resource type="Texture2D" uid="uid://dvhf7dq1dtj4s" path="res://sprites/teleporter.png" id="5_meyx1"]
 [ext_resource type="Texture2D" uid="uid://bar8rebvf2f43" path="res://sprites/spikes_small_left_v2.png" id="6_uctr7"]
 [ext_resource type="TileSet" uid="uid://criiatmkh28jo" path="res://scenes/level/tileset/game.tres" id="7_kplnc"]
-[ext_resource type="PackedScene" uid="uid://bq5rgdrs0o1eb" path="res://scenes/characters/player/faux_player.tscn" id="8_4m3xc"]
+[ext_resource type="PackedScene" path="res://scenes/characters/player/faux_player.tscn" id="8_4m3xc"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

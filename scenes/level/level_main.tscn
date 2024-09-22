@@ -124,22 +124,22 @@ position = Vector2(-112, -2328)
 shot_delay = 0.5
 
 [node name="FollowEnemy" parent="world" instance=ExtResource("12_58yhd")]
-position = Vector2(-160, -2384)
+position = Vector2(-96, -2487)
 
 [node name="FollowEnemy2" parent="world" instance=ExtResource("12_58yhd")]
-position = Vector2(-32, -2432)
+position = Vector2(-32, -2487)
 
 [node name="FollowEnemy3" parent="world" instance=ExtResource("12_58yhd")]
-position = Vector2(80, -2480)
+position = Vector2(152, -2472)
 
 [node name="FollowEnemy4" parent="world" instance=ExtResource("12_58yhd")]
-position = Vector2(40, -1960)
+position = Vector2(88, -2040)
 
 [node name="FollowEnemy5" parent="world" instance=ExtResource("12_58yhd")]
-position = Vector2(0, -1544)
+position = Vector2(8, -1560)
 
 [node name="FollowEnemy6" parent="world" instance=ExtResource("12_58yhd")]
-position = Vector2(168, -1432)
+position = Vector2(152, -1432)
 
 [node name="StaticEnemy5" parent="world" instance=ExtResource("9_wjhrc")]
 position = Vector2(120, -1544)
@@ -172,7 +172,7 @@ position = Vector2(16, -1864)
 position = Vector2(-144, -2264)
 
 [node name="FollowEnemy7" parent="world" instance=ExtResource("12_58yhd")]
-position = Vector2(16, -1208)
+position = Vector2(16, -1224)
 
 [node name="teleporter_destination2" parent="world" instance=ExtResource("10_7gyj4")]
 position = Vector2(248, -3040)

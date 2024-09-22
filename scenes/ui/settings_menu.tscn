@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://d1u3vto1ntkuo" path="res://pixelized.ttf" id="1_e70f1"]
 [ext_resource type="Script" path="res://scenes/ui/settings_menu.gd" id="1_g22pk"]
-[ext_resource type="FontFile" uid="uid://b0toqnwd8s2fq" path="res://fibberish.ttf" id="3_ns4nf"]
+[ext_resource type="FontFile" uid="uid://oooe47ii0gux" path="res://fibberish.ttf" id="3_ns4nf"]
 
 [sub_resource type="Theme" id="Theme_m0ixc"]
 default_font = ExtResource("1_e70f1")

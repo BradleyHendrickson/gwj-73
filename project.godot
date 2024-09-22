@@ -29,6 +29,13 @@ project/assembly_name="GWJ-73"
 
 lock_block="Lock Blocks"
 
+[gui]
+
+theme/custom_font="res://fibberish.ttf"
+theme/default_font_antialiasing=0
+theme/default_font_hinting=0
+theme/default_font_subpixel_positioning=0
+
 [input]
 
 input_jump={
