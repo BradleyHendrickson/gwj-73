@@ -1,0 +1,46 @@
+[gd_scene load_steps=11 format=4 uid="uid://dedxrv8ylmnx3"]
+
+[ext_resource type="PackedScene" uid="uid://ny3hct8guqcu" path="res://scenes/level/state/world.tscn" id="1_su22r"]
+[ext_resource type="Texture2D" uid="uid://0bi40atkbx7y" path="res://sprites/navigation_tile.png" id="2_qqya0"]
+[ext_resource type="PackedScene" uid="uid://dqha0eiactgkx" path="res://scenes/level/background/parallax_background.tscn" id="3_pk8gi"]
+[ext_resource type="TileSet" uid="uid://criiatmkh28jo" path="res://scenes/level/tileset/game.tres" id="4_8mluc"]
+[ext_resource type="PackedScene" uid="uid://cvboky6pqlyk0" path="res://scenes/characters/player/Player.tscn" id="5_afq6t"]
+[ext_resource type="PackedScene" path="res://scenes/level/platform/MovingPlatform_Horizontal.tscn" id="6_8q627"]
+[ext_resource type="PackedScene" uid="uid://drb58nxmshj8k" path="res://scenes/characters/enemies/follow_enemy.tscn" id="7_nildf"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dqrtr"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w6nv5"]
+texture = ExtResource("2_qqya0")
+0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_dqrtr")
+
+[sub_resource type="TileSet" id="TileSet_lxrlk"]
+navigation_layer_0/layers = 1
+sources/0 = SubResource("TileSetAtlasSource_w6nv5")
+
+[node name="Level3" type="Node2D"]
+
+[node name="world" parent="." instance=ExtResource("1_su22r")]
+
+[node name="Navigation" type="TileMapLayer" parent="world"]
+tile_set = SubResource("TileSet_lxrlk")
+
+[node name="ParallaxBackground" parent="world" instance=ExtResource("3_pk8gi")]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="world"]
+tile_map_data = PackedByteArray("AADy/wYAAAAIAAYAAADz/wYAAAAJAAYAAAAMAAYAAAAMAAYAAAANAAYAAAANAAYAAAAMAP7/AAAQAAAAAAAMAPb/AAAQAAAAAAAMAO7/AAAQAAAAAAAMAOb/AAAQAAAAAAAMAN7/AAAQAAAAAAAMALb/AAAQAAAAAAAMAL7/AAAQAAAAAAAMAMb/AAAQAAAAAAAMAM7/AAAQAAAAAAAMANb/AAAQAAAAAAAMAI7/AAAQAAAAAAAMAJb/AAAQAAAAAAAMAJ7/AAAQAAAAAAAMAKb/AAAQAAAAAAAMAK7/AAAQAAAAAAAMAGb/AAAQAAAAAAAMAG7/AAAQAAAAAAAMAHb/AAAQAAAAAAAMAH7/AAAQAAAAAAAMAIb/AAAQAAAAAADk//7/AAAQAAgAAADk//b/AAAQAAgAAADk/+7/AAAQAAgAAADk/+b/AAAQAAgAAADk/97/AAAQAAgAAADk/9b/AAAQAAgAAADk/87/AAAQAAgAAADk/8b/AAAQAAgAAADk/77/AAAQAAgAAADk/7b/AAAQAAgAAADk/67/AAAQAAgAAADk/6b/AAAQAAgAAADk/57/AAAQAAgAAADk/5b/AAAQAAgAAADk/47/AAAQAAgAAADk/4b/AAAQAAgAAADk/37/AAAQAAgAAADk/3b/AAAQAAgAAADk/27/AAAQAAgAAADk/2b/AAAQAAgAAAAOAAYAAAAIAAkAAAAPAAYAAAAJAAkAAAAQAAYAAAAKAAkAAAARAAYAAAALAAkAAAASAAYAAAAIAAkAAAATAAYAAAAJAAkAAAAUAAYAAAAKAAkAAAAVAAYAAAALAAkAAAAWAAYAAAAIAAkAAAAXAAYAAAAJAAkAAAAYAAYAAAAIAAkAAAAZAAYAAAAJAAkAAAAaAAYAAAAKAAkAAAAbAAYAAAALAAkAAADk/wYAAAAIAAkAAADl/wYAAAAJAAkAAADm/wYAAAAKAAkAAADn/wYAAAALAAkAAADo/wYAAAAIAAkAAADp/wYAAAAJAAkAAADq/wYAAAAKAAkAAADr/wYAAAALAAkAAADs/wYAAAAIAAkAAADt/wYAAAAJAAkAAADu/wYAAAAIAAkAAADv/wYAAAAJAAkAAADw/wYAAAAKAAkAAADx/wYAAAALAAkAAAD0/wYAAQAAAAAAAAD1/wYAAQAAAAAAAAD2/wYAAQAAAAAAAAD3/wYAAQAAAAAAAAD4/wYAAQAAAAAAAAD5/wYAAQAAAAAAAAD6/wYAAQAAAAAAAAD7/wYAAQAAAAAAAAD8/wYAAQAAAAAAAAD9/wYAAQAAAAAAAAD+/wYAAQAAAAAAAAD//wYAAQAAAAAAAAAAAAYAAQAAAAAAAAABAAYAAQAAAAAAAAACAAYAAQAAAAAAAAADAAYAAQAAAAAAAAAEAAYAAQAAAAAAAAAFAAYAAQAAAAAAAAAGAAYAAQAAAAAAAAAHAAYAAQAAAAAAAAAIAAYAAQAAAAAAAAAJAAYAAQAAAAAAAAAKAAYAAQAAAAAAAAALAAYAAQAAAAAAAAD0/wQAAAABAAIAAAD0/wUAAAABAAMAAAD1/wQAAAACAAIAAAD1/wUAAAACAAMAAAD2/wQAAAABAAIAAAD2/wUAAAABAAMAAAD3/wQAAAACAAIAAAD3/wUAAAACAAMAAAD0/wIAAAABAAIAAAD0/wMAAAABAAMAAAD1/wIAAAACAAIAAAD1/wMAAAACAAMAAAACAP//AAABAAQAAAADAP//AAACAAQAAAAEAP//AAACAAQAAAAFAP//AAACAAQAAAAGAP//AAACAAQAAAAHAP//AAACAAQAAAAIAP//AAACAAQAAAAJAP//AAACAAQAAAAKAP//AAADAAQAAAA=")
+tile_set = ExtResource("4_8mluc")
+
+[node name="Player" parent="world" instance=ExtResource("5_afq6t")]
+position = Vector2(0, 82)
+
+[node name="Platform" parent="world" instance=ExtResource("6_8q627")]
+position = Vector2(-22, 22)
+
+[node name="FollowEnemy" parent="world" instance=ExtResource("7_nildf")]
+position = Vector2(166, 11)

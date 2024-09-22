@@ -3,32 +3,34 @@
 [ext_resource type="Script" path="res://scenes/characters/enemies/wall_crawl_enemy.gd" id="1_ba1bf"]
 [ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="2_ko3xw"]
 [ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="3_ii0hb"]
-[ext_resource type="Texture2D" uid="uid://dvsisg7ybqgn6" path="res://sprites/enemy_buzz.png" id="4_il253"]
+[ext_resource type="Texture2D" uid="uid://lbtarkstrxvk" path="res://sprites/enemy_cater_body.png" id="4_sxhcu"]
+[ext_resource type="Texture2D" uid="uid://bcg2hwt7b430l" path="res://sprites/enemy_caterpillar_head.png" id="5_881oe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c8lxd"]
 resource_local_to_scene = true
 shader = ExtResource("3_ii0hb")
 shader_parameter/active = false
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_asmu5"]
-atlas = ExtResource("4_il253")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_16g75"]
-atlas = ExtResource("4_il253")
-region = Rect2(24, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_kt4o6"]
+atlas = ExtResource("5_881oe")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8l0nw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_asmu5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_16g75")
+"texture": ExtResource("4_sxhcu")
 }],
 "loop": true,
-"name": &"default",
+"name": &"body",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kt4o6")
+}],
+"loop": true,
+"name": &"head",
 "speed": 15.0
 }]
 
@@ -161,25 +163,23 @@ size = Vector2(20, 5)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_ba1bf")
+segment_count = 10
 
 [node name="SmokeGenerator" parent="." instance=ExtResource("2_ko3xw")]
 
-[node name="UpRay" type="RayCast2D" parent="."]
+[node name="ForwardRay" type="RayCast2D" parent="."]
 target_position = Vector2(0, -16)
 collision_mask = 2
 
 [node name="RightRay" type="RayCast2D" parent="."]
-target_position = Vector2(16, 6)
-collision_mask = 2
-
-[node name="DownRightRay" type="RayCast2D" parent="."]
-target_position = Vector2(16, 16)
+target_position = Vector2(16, 0)
 collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_c8lxd")
 sprite_frames = SubResource("SpriteFrames_8l0nw")
-autoplay = "default"
+animation = &"body"
+autoplay = "head"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {
