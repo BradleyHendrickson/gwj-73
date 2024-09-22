@@ -45,7 +45,6 @@ func _ready() -> void:
 	setShader(false)
 
 func _process(delta: float) -> void:
-	
 	if is_on_floor():
 		position.y += 1
 	
@@ -80,6 +79,7 @@ func _on_hurt_area_body_exited(body: Node2D) -> void:
 
 func hit(dmgTaken):
 	sprite_animation_player.play("hit")
+	get_parent().play_hurt_sound()
 	health -= dmgTaken
 
 

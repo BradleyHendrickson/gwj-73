@@ -7,6 +7,7 @@ extends Node2D
 @onready var player = $Player
 @onready var navigation_layer: TileMapLayer = $Navigation
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
+@onready var hurt_sound: Node = $HurtSound
 
 @export var follow_smoothing = 7
 @export var playerObject : PackedScene
@@ -84,3 +85,11 @@ func generate_navigation():
 		for y in range(get_rekt.position.y, get_rekt.position.y + get_rekt.size.y):
 			if tile_map_layer.get_cell_source_id(Vector2(x,y)) != 0:
 				navigation_layer.set_cell(Vector2(x,y), 0, Vector2i(0, 0))
+
+
+func play_hurt_sound(is_player = false):
+	var new_sound = hurt_sound.sound
+	if is_player:
+		new_sound.volume_db = -100
+		new_sound.pitch_scale = 0.5
+	new_sound.play()

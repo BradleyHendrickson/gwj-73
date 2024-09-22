@@ -126,6 +126,7 @@ func hit(dmgTaken):
 		smoke_generator.smoke(3)
 		sprite.hitAnimation()
 		hit_timer.start(1)
+		get_parent().play_hurt_sound(true)
 		get_parent().health -= dmgTaken
 
 

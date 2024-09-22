@@ -12,10 +12,12 @@ extends CharacterBody2D
 
 @export var start_angle = 180	 # in degrees
 @export var end_angle = 360 # in degrees
-@export var distance = 200	
+@export var distance = 200
 @export var damage: float = 1
-@export var shot_delay: float = 0.75		
+@export var shot_delay: float = 0.75
+@export var shot_delay_variance: float = 0.25
 @export var shot_life: float = 1.2
+@export var shot_angle_variance = 5.0 # in degrees
 
 @onready var aim_target
 @onready var targets: Array
@@ -61,6 +63,8 @@ func _process(delta: float) -> void:
 		# Rotate sprite only if not already aligned
 		if sprite.rotation != rotation_to_target:
 			sprite.rotation = rotation_to_target + PI / 2
+		# Add some variance to the shot aim
+		rotation_to_target += deg_to_rad(randf_range(-shot_angle_variance, shot_angle_variance))
 		
 		# Shoot towards the aim target
 		shoot(delta, rotation_to_target)
@@ -71,6 +75,7 @@ func shoot(delta, rotation_to_target):
 	if shot_timer.is_stopped():
 		animation_player.stop()
 		animation_player.play("shoot")
+		shot_timer.start(shot_delay + randf_range(0, shot_delay_variance))
 		shot_timer.start(shot_delay)
 
 		var newBullet = bullet.instantiate()
@@ -102,6 +107,8 @@ func _on_hurt_area_body_exited(body: Node2D) -> void:
 
 func hit(dmgTaken):
 	sprite_animation_player.play("hit")
+	get_parent().play_hurt_sound()
+	
 	health -= dmgTaken
 
 

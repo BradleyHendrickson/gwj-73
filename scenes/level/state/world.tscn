@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ny3hct8guqcu"]
+[gd_scene load_steps=5 format=3 uid="uid://ny3hct8guqcu"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_0b5r2"]
 [ext_resource type="PackedScene" uid="uid://mwfj8563dv7" path="res://scenes/ui/game_ui.tscn" id="2_dvvyf"]
 [ext_resource type="PackedScene" uid="uid://cvboky6pqlyk0" path="res://scenes/characters/player/Player.tscn" id="2_markn"]
+[ext_resource type="PackedScene" uid="uid://bg7hcm26x646m" path="res://scenes/characters/sounds/hurt_sound.tscn" id="4_ocdwm"]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_0b5r2")
@@ -23,3 +24,5 @@ limit_right = 300
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="HurtSound" parent="." instance=ExtResource("4_ocdwm")]

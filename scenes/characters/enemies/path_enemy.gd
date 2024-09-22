@@ -13,13 +13,6 @@ extends CharacterBody2D
 @onready var targets: Array
 @onready var bounce_velocity = 300
 
-@export var move_to := Vector2(0, -128): 
-	set(value):
-		move_to = value
-		position += value
-	get():
-		return move_to
-
 @export var health: int = 2: 
 	set(value):
 		health = value
@@ -48,13 +41,9 @@ func _process(delta: float) -> void:
 	if ray.is_colliding() and bounce_timer.is_stopped():
 		bounce_timer.start(0.2)
 		ray.target_position = -ray.target_position
-		velocity = -1 * velocity
+		velocity = -velocity
 	else:
 		move_and_slide()
-	
-	#var collision_info = move_and_collide(velocity * delta, false, 0.1)
-	#if collision_info:
-	#	velocity = velocity.bounce(collision_info.get_normal())
 	
 	for target in targets:
 		target.hit(damage)
@@ -71,6 +60,7 @@ func _on_hurt_area_body_exited(body: Node2D) -> void:
 
 func hit(dmgTaken):
 	sprite_animation_player.play("hit")
+	get_parent().play_hurt_sound()
 	health -= dmgTaken
 
 

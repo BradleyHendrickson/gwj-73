@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c714640csmlw" path="res://sprites/player-placeholder.png" id="3_0q0tn"]
 [ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="4_qw646"]
 [ext_resource type="Texture2D" uid="uid://cbik76u8gbrw8" path="res://sprites/player_walk.png" id="5_dkral"]
-[ext_resource type="AudioStream" uid="uid://c7tpg0kc30i12" path="res://scenes/characters/player/player_jump.wav" id="7_qmxs0"]
+[ext_resource type="AudioStream" uid="uid://7nhb57yhbv0j" path="res://scenes/characters/player/player_jump.wav" id="7_qmxs0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vko4j"]
 size = Vector2(12, 13)
