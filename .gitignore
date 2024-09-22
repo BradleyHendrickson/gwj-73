@@ -1,5 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
-sprites/*.import
-Sounds/*.import
+*.import
+*.import
