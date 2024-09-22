@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var INITIAL_ANGLE = 0.0 # in degrees
 @export var FORCE = 50
 @export var damage: float = 1
+@onready var ray: RayCast2D = $RayCast2D
 
 @onready var targets: Array
 @onready var bounce_velocity = 300
@@ -32,6 +33,7 @@ extends CharacterBody2D
 func _ready() -> void:
 	setShader(false)
 	var radAngle = INITIAL_ANGLE * PI / 180
+	ray.global_rotation = radAngle
 	velocity = FORCE * Vector2(cos(radAngle), sin(radAngle))
 
 func setShader(value):
@@ -42,10 +44,17 @@ func _process(delta: float) -> void:
 		animated_sprite_2d.flip_h = true
 	else:
 		animated_sprite_2d.flip_h = false
+		
+	if ray.is_colliding() and bounce_timer.is_stopped():
+		bounce_timer.start(0.2)
+		ray.target_position = -ray.target_position
+		velocity = -1 * velocity
+	else:
+		move_and_slide()
 	
-	var collision_info = move_and_collide(velocity * delta)
-	if collision_info:
-		velocity = velocity.bounce(collision_info.get_normal())
+	#var collision_info = move_and_collide(velocity * delta)
+	#if collision_info:
+	#	velocity = velocity.bounce(collision_info.get_normal())
 	
 	for target in targets:
 		target.hit(damage)

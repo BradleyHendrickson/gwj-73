@@ -200,6 +200,10 @@ collision_layer = 2
 position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_f26d7")
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(8, 0)
+collision_mask = 2
+
 [connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]
 [connection signal="body_exited" from="HurtArea" to="." method="_on_hurt_area_body_exited"]
 [connection signal="body_shape_entered" from="JumpHitBox" to="." method="_on_jump_hit_box_body_shape_entered"]

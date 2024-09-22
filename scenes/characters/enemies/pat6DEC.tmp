@@ -1,56 +1,35 @@
-[gd_scene load_steps=25 format=3 uid="uid://drb58nxmshj8k"]
+[gd_scene load_steps=18 format=3 uid="uid://horxikbid2ne"]
 
-[ext_resource type="Script" path="res://scenes/characters/enemies/follow_enemy.gd" id="1_ixdwh"]
-[ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="2_q3brg"]
-[ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="3_6kpwm"]
-[ext_resource type="Texture2D" uid="uid://b23hbpbijrk1r" path="res://sprites/enemy_buzz_chase.png" id="4_flxbh"]
-[ext_resource type="Script" path="res://scenes/characters/enemies/follow_navigation.gd" id="5_48qvd"]
-[ext_resource type="Texture2D" uid="uid://b36b4hva1v7lt" path="res://sprites/enemy_buzz_chase_resting.png" id="5_t3uc0"]
+[ext_resource type="Script" path="res://scenes/characters/enemies/path_enemy.gd" id="1_r36tq"]
+[ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="2_go5nw"]
+[ext_resource type="Texture2D" uid="uid://dvsisg7ybqgn6" path="res://sprites/enemy_buzz.png" id="2_ke0b2"]
+[ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="2_ok40o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c8lxd"]
 resource_local_to_scene = true
-shader = ExtResource("3_6kpwm")
+shader = ExtResource("2_go5nw")
 shader_parameter/active = false
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_thfq6"]
-atlas = ExtResource("4_flxbh")
+[sub_resource type="AtlasTexture" id="AtlasTexture_asmu5"]
+atlas = ExtResource("2_ke0b2")
 region = Rect2(0, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sytqy"]
-atlas = ExtResource("4_flxbh")
-region = Rect2(24, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m7qm5"]
-atlas = ExtResource("5_t3uc0")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qbrjo"]
-atlas = ExtResource("5_t3uc0")
+[sub_resource type="AtlasTexture" id="AtlasTexture_16g75"]
+atlas = ExtResource("2_ke0b2")
 region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8l0nw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_thfq6")
+"texture": SubResource("AtlasTexture_asmu5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sytqy")
+"texture": SubResource("AtlasTexture_16g75")
 }],
 "loop": true,
 "name": &"default",
 "speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m7qm5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qbrjo")
-}],
-"loop": true,
-"name": &"resting",
-"speed": 1.0
 }]
 
 [sub_resource type="Animation" id="Animation_axo3h"]
@@ -66,18 +45,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_qpf7y"]
@@ -97,28 +64,10 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, 4), Vector2(0, 0), Vector2(0, -4)]
 }
 
-[sub_resource type="Animation" id="Animation_kkid7"]
-resource_name = "resting"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 1.93333),
-"transitions": PackedFloat32Array(0.574349, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 0.8), Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h68e1"]
 _data = {
 "RESET": SubResource("Animation_axo3h"),
-"hover": SubResource("Animation_qpf7y"),
-"resting": SubResource("Animation_kkid7")
+"hover": SubResource("Animation_qpf7y")
 }
 
 [sub_resource type="Animation" id="Animation_2swfp"]
@@ -200,32 +149,30 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mk2sf"]
-size = Vector2(12, 10)
+size = Vector2(12, 12)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p2daj"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1ny0"]
+size = Vector2(16, 11)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pcx7k"]
-radius = 256.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_tnhue"]
-radius = 80.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ompnf"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f26d7"]
 size = Vector2(20, 5)
 
-[node name="FollowEnemy" type="CharacterBody2D"]
+[node name="PathEnemy" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 2
-script = ExtResource("1_ixdwh")
+collision_mask = 0
+script = ExtResource("1_r36tq")
+INITIAL_ANGLE = null
+FORCE = null
+damage = null
+move_to = null
+health = null
 
-[node name="SmokeGenerator" parent="." instance=ExtResource("2_q3brg")]
+[node name="SmokeGenerator" parent="." instance=ExtResource("2_ok40o")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_c8lxd")
 sprite_frames = SubResource("SpriteFrames_8l0nw")
 autoplay = "default"
-frame_progress = 0.483473
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {
@@ -246,43 +193,18 @@ one_shot = true
 shape = SubResource("RectangleShape2D_mk2sf")
 
 [node name="HurtArea" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
-shape = SubResource("CircleShape2D_p2daj")
-
-[node name="DetectionArea" type="Area2D" parent="."]
-visible = false
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_pcx7k")
-
-[node name="WakeArea" type="Area2D" parent="."]
-visible = false
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WakeArea"]
-shape = SubResource("CircleShape2D_tnhue")
-
-[node name="FollowNavigation" type="NavigationAgent2D" parent="."]
-path_postprocessing = 1
-debug_enabled = true
-script = ExtResource("5_48qvd")
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_i1ny0")
 
 [node name="JumpHitBox" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpHitBox"]
 position = Vector2(0, -7.5)
-shape = SubResource("RectangleShape2D_ompnf")
-
-[node name="FollowTimer" type="Timer" parent="."]
-one_shot = true
+shape = SubResource("RectangleShape2D_f26d7")
 
 [connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]
 [connection signal="body_exited" from="HurtArea" to="." method="_on_hurt_area_body_exited"]
-[connection signal="body_entered" from="DetectionArea" to="FollowNavigation" method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="DetectionArea" to="FollowNavigation" method="_on_detection_area_body_exited"]
-[connection signal="body_entered" from="WakeArea" to="." method="_on_wake_area_body_entered"]
 [connection signal="body_shape_entered" from="JumpHitBox" to="." method="_on_jump_hit_box_body_shape_entered"]

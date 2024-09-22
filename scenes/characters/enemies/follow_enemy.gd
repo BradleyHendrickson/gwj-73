@@ -46,6 +46,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
+	if is_on_floor():
+		position.y += 1
+	
 	if follow_navigation and !resting:
 		if follow_timer.is_stopped():
 			follow_navigation.follow(delta)

@@ -64,7 +64,7 @@ func get_input() -> Dictionary:
 	}
 
 func duck_logic(delta):	
-	if get_input()["duck"]:
+	if get_input()["duck"] and is_on_floor():
 		position.y += 2
 
 func _physics_process(delta: float) -> void:
