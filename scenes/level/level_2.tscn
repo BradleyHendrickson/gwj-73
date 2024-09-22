@@ -26,7 +26,7 @@ texture = ExtResource("2_orr0c")
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_q8wlx")
 
-[node name="Level2" type="Node2D"]
+[node name="Level3" type="Node2D"]
 
 [node name="world" parent="." instance=ExtResource("1_4t2pe")]
 
@@ -46,6 +46,7 @@ position = Vector2(-128, 50)
 
 [node name="PathEnemy" parent="world" instance=ExtResource("7_7ek2m")]
 position = Vector2(-48, -44)
+collision_mask = 0
 
 [node name="Platform" parent="world" instance=ExtResource("5_r373u")]
 position = Vector2(-80, -472)
@@ -87,9 +88,11 @@ position = Vector2(96, -464)
 
 [node name="PathEnemy2" parent="world" instance=ExtResource("7_7ek2m")]
 position = Vector2(-128, -928)
+collision_mask = 0
 
 [node name="PathEnemy4" parent="world" instance=ExtResource("7_7ek2m")]
 position = Vector2(0, -976)
+collision_mask = 0
 
 [node name="FollowEnemy" parent="world" instance=ExtResource("9_ju8j0")]
 position = Vector2(168, -72)

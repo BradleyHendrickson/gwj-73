@@ -10,9 +10,9 @@ extends CharacterBody2D
 
 @export var bullet : PackedScene
 
-@export var start_angle = 0.0 # in degrees
-@export var end_angle = 0.0 # in degrees
-@export var distance = 150
+@export var start_angle = 180	 # in degrees
+@export var end_angle = 360 # in degrees
+@export var distance = 200	
 @export var damage: float = 1
 @export var shot_delay: float = 0.75		
 @export var shot_life: float = 1.2

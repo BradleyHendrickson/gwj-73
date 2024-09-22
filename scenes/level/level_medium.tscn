@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://5assfbnhi6p0"]
+[gd_scene load_steps=15 format=4 uid="uid://5assfbnhi6p0"]
 
 [ext_resource type="PackedScene" uid="uid://ny3hct8guqcu" path="res://scenes/level/state/world.tscn" id="1_kpkuu"]
 [ext_resource type="Texture2D" uid="uid://0bi40atkbx7y" path="res://sprites/navigation_tile.png" id="2_r3b0d"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://j6dssgoyjtcg" path="res://scenes/level/state/teleporter_destination.tscn" id="7_vawn3"]
 [ext_resource type="PackedScene" uid="uid://drb58nxmshj8k" path="res://scenes/characters/enemies/follow_enemy.tscn" id="9_egsmj"]
 [ext_resource type="PackedScene" uid="uid://u5qng31o4xat" path="res://scenes/characters/enemies/static_enemy.tscn" id="9_fwlg7"]
+[ext_resource type="PackedScene" uid="uid://bpyuda83ilnfc" path="res://scenes/level/platform/MovingPlatformLocked.tscn" id="11_0f5kh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dqrtr"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -51,15 +52,25 @@ position = Vector2(0, -248)
 
 [node name="PathEnemy" parent="world" instance=ExtResource("7_r7ue5")]
 position = Vector2(-96, -256)
+collision_mask = 0
 
 [node name="PathEnemy2" parent="world" instance=ExtResource("7_r7ue5")]
-position = Vector2(64, -240)
+position = Vector2(64, -232)
+collision_mask = 0
 
 [node name="StaticEnemy2" parent="world" instance=ExtResource("9_fwlg7")]
 position = Vector2(-160, -376)
+distance = 250
 
 [node name="StaticEnemy" parent="world" instance=ExtResource("9_fwlg7")]
 position = Vector2(160, -376)
+distance = 250
 
 [node name="FollowEnemy" parent="world" instance=ExtResource("9_egsmj")]
 position = Vector2(-112, 8)
+
+[node name="LockedPlatform1" parent="world" node_paths=PackedStringArray("enemies") instance=ExtResource("11_0f5kh")]
+position = Vector2(0, -320)
+enemies = [NodePath("../StaticEnemy2"), NodePath("../StaticEnemy")]
+move_to = Vector2(0, -64)
+speed = 20
