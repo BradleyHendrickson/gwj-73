@@ -13,6 +13,8 @@
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_gv4qk")
+metadata/_edit_vertical_guides_ = [576.0]
+metadata/_edit_horizontal_guides_ = [320.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -22,21 +24,21 @@ color = Color(0.0823529, 0.0941176, 0.160784, 1)
 
 [node name="SettingsButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 536.0
-offset_top = 491.0
-offset_right = 794.0
-offset_bottom = 569.0
+offset_left = 486.0
+offset_top = 388.0
+offset_right = 849.0
+offset_bottom = 466.0
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("2_b4cgi")
 theme_override_font_sizes/font_size = 80
-text = "Settings"
+text = "Keybindings"
 
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 518.0
-offset_top = 366.0
-offset_right = 683.0
-offset_bottom = 444.0
+offset_left = 492.0
+offset_top = 280.0
+offset_right = 657.0
+offset_bottom = 358.0
 theme_override_fonts/font = ExtResource("2_b4cgi")
 theme_override_font_sizes/font_size = 80
 text = "Play"

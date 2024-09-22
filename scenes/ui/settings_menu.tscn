@@ -34,10 +34,8 @@ scale = Vector2(0.4, 0.4)
 theme_override_fonts/font = ExtResource("3_ns4nf")
 theme_override_font_sizes/font_size = 80
 current_tab = 0
-tab_count = 2
+tab_count = 1
 tab_0/title = "Keybinding"
-tab_1/title = "Nothing"
-tab_1/disabled = true
 
 [node name="JumpBinding" type="Button" parent="TabBar"]
 layout_mode = 0
