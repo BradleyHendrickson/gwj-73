@@ -77,12 +77,10 @@ position = Vector2(144, -112)
 
 [node name="PathEnemy" parent="world" instance=ExtResource("7_ce3kr")]
 position = Vector2(96, 109)
-collision_mask = 2
 INITIAL_ANGLE = 45.0
 
 [node name="PathEnemy2" parent="world" instance=ExtResource("7_ce3kr")]
 position = Vector2(-7, 108)
-collision_mask = 2
 
 [node name="Teleporter" parent="world" instance=ExtResource("9_e3eip")]
 position = Vector2(-131, 120)
@@ -105,7 +103,6 @@ position = Vector2(119, -405)
 
 [node name="PathEnemy3" parent="world" instance=ExtResource("7_ce3kr")]
 position = Vector2(-129, -496)
-collision_mask = 2
 INITIAL_ANGLE = 45.0
 
 [node name="StaticEnemy2" parent="world" instance=ExtResource("14_iregv")]
