@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3c60k8qta4pn"]
+[gd_scene load_steps=9 format=4 uid="uid://c3c60k8qta4pn"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_gv4qk"]
-[ext_resource type="FontFile" uid="uid://d1u3vto1ntkuo" path="res://pixelized.ttf" id="2_88ekl"]
+[ext_resource type="FontFile" uid="uid://b0toqnwd8s2fq" path="res://fibberish.ttf" id="2_b4cgi"]
+[ext_resource type="Texture2D" uid="uid://bcr71ogla1xaw" path="res://sprites/enemy_plant_shoot_base.png" id="3_cty53"]
+[ext_resource type="Texture2D" uid="uid://iaqt2efaoqpt" path="res://sprites/enemy_plant_shooter.png" id="4_bfyll"]
+[ext_resource type="Texture2D" uid="uid://dvhf7dq1dtj4s" path="res://sprites/teleporter.png" id="5_meyx1"]
+[ext_resource type="Texture2D" uid="uid://bar8rebvf2f43" path="res://sprites/spikes_small_left_v2.png" id="6_uctr7"]
+[ext_resource type="TileSet" uid="uid://criiatmkh28jo" path="res://scenes/level/tileset/game.tres" id="7_kplnc"]
+[ext_resource type="PackedScene" uid="uid://bq5rgdrs0o1eb" path="res://scenes/characters/player/faux_player.tscn" id="8_4m3xc"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -16,23 +22,59 @@ color = Color(0.0823529, 0.0941176, 0.160784, 1)
 
 [node name="SettingsButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 479.0
-offset_top = 399.0
-offset_right = 696.0
-offset_bottom = 455.0
-theme_override_fonts/font = ExtResource("2_88ekl")
-theme_override_font_sizes/font_size = 30
+offset_left = 536.0
+offset_top = 491.0
+offset_right = 794.0
+offset_bottom = 569.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_b4cgi")
+theme_override_font_sizes/font_size = 80
 text = "Settings"
 
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 479.0
-offset_top = 221.0
-offset_right = 696.0
-offset_bottom = 277.0
-theme_override_fonts/font = ExtResource("2_88ekl")
-theme_override_font_sizes/font_size = 30
-text = "PLAY"
+offset_left = 518.0
+offset_top = 366.0
+offset_right = 683.0
+offset_bottom = 444.0
+theme_override_fonts/font = ExtResource("2_b4cgi")
+theme_override_font_sizes/font_size = 80
+text = "Play"
+
+[node name="EnemyPlantShootBase" type="Sprite2D" parent="."]
+position = Vector2(499, 179)
+scale = Vector2(2.75, 1.83333)
+texture = ExtResource("3_cty53")
+
+[node name="EnemyPlantShooter" type="Sprite2D" parent="."]
+position = Vector2(312, 95)
+rotation = 0.785397
+scale = Vector2(1.9375, 1.86805)
+texture = ExtResource("4_bfyll")
+
+[node name="Teleporter" type="Sprite2D" parent="."]
+position = Vector2(951, 69)
+texture = ExtResource("5_meyx1")
+
+[node name="SpikesSmallLeftV2" type="Sprite2D" parent="."]
+position = Vector2(904, 165)
+texture = ExtResource("6_uctr7")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_top = 81.0
+offset_right = 1151.0
+offset_bottom = 226.0
+theme_override_fonts/font = ExtResource("2_b4cgi")
+theme_override_font_sizes/font_size = 160
+text = "FROG FORTRESS"
+horizontal_alignment = 1
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAcAAAABABEAAAABAAcAAAABABEAAAACAAcAAAABABEAAAADAAcAAAABABEAAAAEAAcAAAABABEAAAAFAAcAAAABABEAAAAGAAcAAAABABEAAAD//wcAAAABABEAAAAHAAcAAAABABEAAAAIAAcAAAABABEAAAAJAAcAAAABABEAAAAKAAcAAAABABEAAAD+/wcAAAABABEAAAD9/wcAAAABABEAAAALAAcAAAABABEAAAD7/wcAAAABABEAAAD7/wYAAAABABEAAAD7/wUAAAABABEAAAD7/wQAAAABABEAAAD7/wMAAAABABEAAAD7/wIAAAABABEAAAD7/wEAAAABABEAAAD7/wAAAAABABEAAAAMAAcAAAABABEAAAAMAAYAAAABABEAAAAMAAUAAAABABEAAAAMAAQAAAABABEAAAAMAAMAAAABABEAAAD8/wcAAAABABEAAAAAACgAAAAKAAcAAAABACgAAAAKAAcAAAACACgAAAAKAAcAAAADACgAAAAKAAcAAAAEACgAAAAKAAcAAAAFACgAAAAKAAcAAAAGACgAAAAKAAcAAAAHACgAAAAKAAcAAAAIACgAAAAKAAcAAAAJACgAAAAKAAcAAAAKACgAAAAKAAcAAAALACgAAAAKAAcAAAAMACgAAAAKAAcAAAANACgAAAAKAAcAAAAOACgAAAAKAAcAAAAPACgAAAAKAAcAAAAQACgAAAAKAAcAAAARACgAAAAKAAcAAAASACgAAAAKAAcAAAATACgAAAAKAAcAAAAUACgAAAAKAAcAAAAVACgAAAAKAAcAAAAWACgAAAAKAAcAAAAXACgAAAAKAAcAAAAYACgAAAAKAAcAAAAZACgAAAAKAAcAAAAaACgAAAAKAAcAAAAbACgAAAAKAAcAAAAcACgAAAAKAAcAAAAdACgAAAAKAAcAAAAeACgAAAAKAAcAAAAfACgAAAAKAAcAAAAgACgAAAAKAAcAAAAhACgAAAAKAAcAAAAiACgAAAAKAAcAAAAjACgAAAAKAAcAAAAkACgAAAAKAAcAAAAlACgAAAAKAAcAAAAmACgAAAAKAAcAAAAnACgAAAAKAAcAAAAoACgAAAAKAAcAAAApACgAAAAKAAcAAAAqACgAAAAKAAcAAAArACgAAAAKAAcAAAAsACgAAAAKAAcAAAAtACgAAAAKAAcAAAAuACgAAAAKAAcAAAAvACgAAAAKAAcAAAAwACgAAAAKAAcAAAAxACgAAAAKAAcAAAAyACgAAAAKAAcAAAAzACgAAAAKAAcAAAA0ACgAAAAKAAcAAAA1ACgAAAAKAAcAAAA2ACgAAAAKAAcAAAA3ACgAAAAKAAcAAAA4ACgAAAAKAAcAAAA5ACgAAAAKAAcAAAA6ACgAAAAKAAcAAAA7ACgAAAAKAAcAAAA8ACgAAAAKAAcAAAA9ACgAAAAKAAcAAAA+ACgAAAAKAAcAAAA/ACgAAAAKAAcAAABAACgAAAAKAAcAAABBACgAAAAKAAcAAABCACgAAAAKAAcAAABDACgAAAAKAAcAAABEACgAAAAKAAcAAABFACgAAAAKAAcAAABGACgAAAAKAAcAAABHACgAAAAKAAcAAABIACgAAAAMAAcAAAD//ygAAAAJAAcAAAD//yIAAAAJAAUAAAD//yMAAAAJAAUAAAD//yQAAAAJAAUAAAD//yUAAAAJAAUAAAD//yYAAAAJAAUAAAD//ycAAAAJAAUAAABIACIAAAAMAAUAAABIACMAAAAMAAUAAABIACQAAAAMAAUAAABIACUAAAAMAAUAAABIACYAAAAMAAUAAABIACcAAAAMAAUAAAA=")
+tile_set = ExtResource("7_kplnc")
+
+[node name="FauxPlayer" parent="." instance=ExtResource("8_4m3xc")]
 
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

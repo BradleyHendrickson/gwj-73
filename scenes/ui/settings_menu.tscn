@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dla0jat2guc6l"]
+[gd_scene load_steps=5 format=3 uid="uid://dla0jat2guc6l"]
 
 [ext_resource type="FontFile" uid="uid://d1u3vto1ntkuo" path="res://pixelized.ttf" id="1_e70f1"]
 [ext_resource type="Script" path="res://scenes/ui/settings_menu.gd" id="1_g22pk"]
+[ext_resource type="FontFile" uid="uid://b0toqnwd8s2fq" path="res://fibberish.ttf" id="3_ns4nf"]
 
 [sub_resource type="Theme" id="Theme_m0ixc"]
 default_font = ExtResource("1_e70f1")
@@ -25,10 +26,13 @@ color = Color(0.0823529, 0.0941176, 0.160784, 1)
 
 [node name="TabBar" type="TabBar" parent="."]
 layout_mode = 0
-offset_right = 364.0
-offset_bottom = 48.0
-theme_override_fonts/font = ExtResource("1_e70f1")
-theme_override_font_sizes/font_size = 25
+offset_left = 40.0
+offset_top = 16.0
+offset_right = 717.0
+offset_bottom = 94.0
+scale = Vector2(0.4, 0.4)
+theme_override_fonts/font = ExtResource("3_ns4nf")
+theme_override_font_sizes/font_size = 80
 current_tab = 0
 tab_count = 2
 tab_0/title = "Keybinding"
@@ -37,22 +41,21 @@ tab_1/disabled = true
 
 [node name="JumpBinding" type="Button" parent="TabBar"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 89.0
-offset_right = 91.0
-offset_bottom = 121.0
-theme_override_fonts/font = ExtResource("1_e70f1")
-theme_override_font_sizes/font_size = 15
+offset_left = 6.10352e-05
+offset_top = 500.0
+offset_right = 158.0
+offset_bottom = 578.0
+theme_override_fonts/font = ExtResource("3_ns4nf")
+theme_override_font_sizes/font_size = 80
 text = "Jump"
 
 [node name="ShootBinding" type="Button" parent="TabBar"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 125.0
-offset_right = 91.0
-offset_bottom = 157.0
-theme_override_fonts/font = ExtResource("1_e70f1")
-theme_override_font_sizes/font_size = 15
+offset_top = 600.0
+offset_right = 183.0
+offset_bottom = 678.0
+theme_override_fonts/font = ExtResource("3_ns4nf")
+theme_override_font_sizes/font_size = 80
 text = "Shoot"
 
 [node name="LeftBinding" type="Button" parent="TabBar"]
@@ -62,50 +65,52 @@ anchor_left = 0.115
 anchor_top = 4.125
 anchor_right = 0.115
 anchor_bottom = 4.125
-offset_left = -40.86
-offset_top = -38.0
-offset_right = 49.14
-offset_bottom = -7.0
-theme_override_fonts/font = ExtResource("1_e70f1")
-theme_override_font_sizes/font_size = 15
+offset_left = -77.855
+offset_top = -21.75
+offset_right = 55.145
+offset_bottom = 56.25
+theme_override_fonts/font = ExtResource("3_ns4nf")
+theme_override_font_sizes/font_size = 80
 text = "Left"
 
 [node name="RightBinding" type="Button" parent="TabBar"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 196.0
-offset_right = 92.0
-offset_bottom = 227.0
-theme_override_fonts/font = ExtResource("1_e70f1")
-theme_override_font_sizes/font_size = 15
+offset_top = 400.0
+offset_right = 168.0
+offset_bottom = 478.0
+theme_override_fonts/font = ExtResource("3_ns4nf")
+theme_override_font_sizes/font_size = 80
 text = "Right"
 
 [node name="UpBinding" type="Button" parent="TabBar"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 231.0
-offset_right = 92.0
-offset_bottom = 262.0
-theme_override_fonts/font = ExtResource("1_e70f1")
-theme_override_font_sizes/font_size = 15
+offset_left = 4.57764e-05
+offset_top = 120.0
+offset_right = 90.0
+offset_bottom = 198.0
+theme_override_fonts/font = ExtResource("3_ns4nf")
+theme_override_font_sizes/font_size = 80
 text = "Up"
 
 [node name="DownBinding" type="Button" parent="TabBar"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 265.0
-offset_right = 92.0
-offset_bottom = 296.0
-theme_override_fonts/font = ExtResource("1_e70f1")
-theme_override_font_sizes/font_size = 15
+offset_left = -3.05176e-05
+offset_top = 220.0
+offset_right = 163.0
+offset_bottom = 298.0
+theme_override_fonts/font = ExtResource("3_ns4nf")
+theme_override_font_sizes/font_size = 80
 text = "Down"
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 613.0
-offset_right = 67.0
-offset_bottom = 644.0
+offset_left = 40.0
+offset_top = 328.0
+offset_right = 293.0
+offset_bottom = 406.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("3_ns4nf")
+theme_override_font_sizes/font_size = 80
 text = "<- Back"
 
 [connection signal="pressed" from="TabBar/JumpBinding" to="." method="_on_jump_binding_pressed"]

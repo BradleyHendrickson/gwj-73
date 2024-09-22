@@ -8,7 +8,6 @@ var x_dir := 1
 @onready var smoke_generator: Node2D = $SmokeGenerator
 @onready var animated_sprite_2d = $Sprite/AnimatedSprite2D
 @onready var shot_timer: Timer = $ShotTimer
-@onready var hit_timer: Timer = $HitTimer
 @onready var sprite: Node2D = $Sprite
 @onready var blink_animation_player: AnimationPlayer = $BlinkAnimationPlayer
 
@@ -57,6 +56,7 @@ func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	animations(delta)
 	move_and_slide()
+	shoot(delta)
 
 
 func animations(delta):
@@ -67,6 +67,15 @@ func animations(delta):
 		animated_sprite_2d.frame = 1
 	elif abs(velocity.x) <= 0.1*delta:
 		animated_sprite_2d.frame = 0
+
+func shoot(delta):
+	if get_input()["shoot"] and shot_timer.is_stopped():
+		sprite.shootAnimation()
+		shot_timer.start(0.25)
+		var newBullet = starBullet.instantiate()
+		get_tree().root.add_child(newBullet)
+		var aimVector = Vector2(0,-1)
+		newBullet.transform = Transform2D( aimVector.angle() , position + Vector2(0,-10))
 
 
 func x_movement(delta: float) -> void:

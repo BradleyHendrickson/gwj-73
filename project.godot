@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [display]
 
+window/size/mode=4
 window/stretch/mode="canvas_items"
 window/physics_jitter_fix=0.5
 

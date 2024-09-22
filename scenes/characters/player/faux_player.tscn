@@ -1,0 +1,237 @@
+[gd_scene load_steps=23 format=3 uid="uid://bq5rgdrs0o1eb"]
+
+[ext_resource type="Script" path="res://scenes/level/faux_player.gd" id="1_d2w2f"]
+[ext_resource type="PackedScene" uid="uid://dpjg0ppuwx42t" path="res://scenes/projectiles/bullet.tscn" id="2_lyd46"]
+[ext_resource type="Script" path="res://scenes/characters/player/Sprite.gd" id="2_yd6et"]
+[ext_resource type="Texture2D" uid="uid://c714640csmlw" path="res://sprites/player-placeholder.png" id="3_0q0tn"]
+[ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="4_qw646"]
+[ext_resource type="Texture2D" uid="uid://cbik76u8gbrw8" path="res://sprites/player_walk.png" id="5_dkral"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vko4j"]
+size = Vector2(12, 13)
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_f7gwj"]
+length = 1.0
+
+[sub_resource type="Animation" id="3"]
+resource_name = "Jump"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1.68, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="4"]
+resource_name = "Land"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.241, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.26, 0.9), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bu813"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2lqxj"]
+resource_name = "Shoot"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.0228305, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 0.9), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1lb64"]
+_data = {
+"Jump": SubResource("3"),
+"Land": SubResource("4"),
+"RESET": SubResource("Animation_bu813"),
+"Shoot": SubResource("Animation_2lqxj")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1jmo"]
+resource_local_to_scene = true
+shader = ExtResource("4_qw646")
+shader_parameter/active = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b65lg"]
+atlas = ExtResource("5_dkral")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0tmm"]
+atlas = ExtResource("5_dkral")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trcf0"]
+atlas = ExtResource("5_dkral")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxyx1"]
+atlas = ExtResource("5_dkral")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hw38c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b65lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0tmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trcf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxyx1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_ivcwp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5e0et"]
+resource_name = "hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1.10957, 1),
+"update": 0,
+"values": [-0.261799, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"setShader"
+}, {
+"args": [false],
+"method": &"setShader"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hw1o3"]
+_data = {
+"RESET": SubResource("Animation_ivcwp"),
+"hit": SubResource("Animation_5e0et")
+}
+
+[node name="FauxPlayer" type="CharacterBody2D"]
+position = Vector2(62, 608)
+collision_mask = 2
+script = ExtResource("1_d2w2f")
+starBullet = ExtResource("2_lyd46")
+
+[node name="SquareCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_vko4j")
+
+[node name="RaycastCollider1" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 7)
+shape = SubResource("SeparationRayShape2D_f7gwj")
+
+[node name="RaycastCollider2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+shape = SubResource("SeparationRayShape2D_f7gwj")
+
+[node name="RaycastCollider3" type="CollisionShape2D" parent="."]
+position = Vector2(6, 7)
+shape = SubResource("SeparationRayShape2D_f7gwj")
+
+[node name="Sprite" type="Node2D" parent="."]
+position = Vector2(0, 8)
+script = ExtResource("2_yd6et")
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite"]
+visible = false
+position = Vector2(0, -8)
+color = Color(0.964706, 0.952941, 0.298039, 1)
+polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+libraries = {
+"": SubResource("AnimationLibrary_1lb64")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite"]
+visible = false
+position = Vector2(0, -8)
+texture = ExtResource("3_0q0tn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite"]
+material = SubResource("ShaderMaterial_s1jmo")
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_hw38c")
+
+[node name="SpriteAnimationPlayer" type="AnimationPlayer" parent="Sprite/AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_hw1o3")
+}
+
+[node name="ShotTimer" type="Timer" parent="."]
+one_shot = true
