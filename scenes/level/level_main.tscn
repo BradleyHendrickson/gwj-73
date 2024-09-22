@@ -17,16 +17,16 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
 agent_radius = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tfld7"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mm7r7"]
 texture = ExtResource("2_8vcv4")
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_dqrtr")
 
 [sub_resource type="TileSet" id="TileSet_mcmuw"]
 navigation_layer_0/layers = 1
-sources/0 = SubResource("TileSetAtlasSource_tfld7")
+sources/0 = SubResource("TileSetAtlasSource_mm7r7")
 
-[node name="Level3" type="Node2D"]
+[node name="Level4" type="Node2D"]
 
 [node name="world" parent="." instance=ExtResource("1_2pn28")]
 
@@ -41,7 +41,7 @@ tile_map_data = PackedByteArray("AAD0/wcAAAAKAAcAAAD2/wcAAAAKAAcAAAD4/wcAAAAKAAc
 tile_set = ExtResource("4_yqjsk")
 
 [node name="Player" parent="world" instance=ExtResource("5_nsq4w")]
-position = Vector2(0, -1024)
+position = Vector2(17, 90)
 
 [node name="Platform" parent="world" instance=ExtResource("7_hakr0")]
 position = Vector2(168, 40)

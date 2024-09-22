@@ -1,17 +1,18 @@
-[gd_scene load_steps=27 format=3 uid="uid://cvboky6pqlyk0"]
+[gd_scene load_steps=25 format=4 uid="uid://cwouequtm7kcd"]
 
-[ext_resource type="Script" path="res://scenes/characters/player/Player.gd" id="1"]
-[ext_resource type="Script" path="res://scenes/characters/player/Sprite.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://c714640csmlw" path="res://sprites/player-placeholder.png" id="2_j44xb"]
-[ext_resource type="PackedScene" uid="uid://dpjg0ppuwx42t" path="res://scenes/projectiles/bullet.tscn" id="2_s1ujb"]
-[ext_resource type="PackedScene" uid="uid://dn6dkghyx5fp" path="res://scenes/effects/smoke_generator.tscn" id="3_pi8rx"]
-[ext_resource type="Texture2D" uid="uid://cbik76u8gbrw8" path="res://sprites/player_walk.png" id="4_n8rlu"]
-[ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="5_ofwe1"]
+[ext_resource type="PackedScene" uid="uid://dqha0eiactgkx" path="res://scenes/level/background/parallax_background.tscn" id="1_spxoy"]
+[ext_resource type="TileSet" uid="uid://criiatmkh28jo" path="res://scenes/level/tileset/game.tres" id="3_ioroq"]
+[ext_resource type="Texture2D" uid="uid://cctg667imcnos" path="res://sprites/Tower_Closeup_v2.png" id="5_a6cv5"]
+[ext_resource type="Script" path="res://scenes/level/faux_player.gd" id="7_5p77w"]
+[ext_resource type="Script" path="res://scenes/characters/player/Sprite.gd" id="7_jr44g"]
+[ext_resource type="Texture2D" uid="uid://c714640csmlw" path="res://sprites/player-placeholder.png" id="8_46juc"]
+[ext_resource type="Shader" path="res://scenes/characters/player/hit.gdshader" id="9_vpefv"]
+[ext_resource type="Texture2D" uid="uid://cbik76u8gbrw8" path="res://sprites/player_walk.png" id="10_jdqh8"]
 
-[sub_resource type="RectangleShape2D" id="2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8kh2s"]
 size = Vector2(12, 13)
 
-[sub_resource type="SeparationRayShape2D" id="1"]
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_qd3c4"]
 length = 1.0
 
 [sub_resource type="Animation" id="3"]
@@ -87,28 +88,28 @@ _data = {
 "Shoot": SubResource("Animation_2lqxj")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_we2sv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ypix0"]
 resource_local_to_scene = true
-shader = ExtResource("5_ofwe1")
+shader = ExtResource("9_vpefv")
 shader_parameter/active = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b65lg"]
-atlas = ExtResource("4_n8rlu")
+atlas = ExtResource("10_jdqh8")
 region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u0tmm"]
-atlas = ExtResource("4_n8rlu")
+atlas = ExtResource("10_jdqh8")
 region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_trcf0"]
-atlas = ExtResource("4_n8rlu")
+atlas = ExtResource("10_jdqh8")
 region = Rect2(48, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lxyx1"]
-atlas = ExtResource("4_n8rlu")
+atlas = ExtResource("10_jdqh8")
 region = Rect2(72, 0, 24, 24)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6wa87"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_q4dvw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -182,108 +183,75 @@ _data = {
 "hit": SubResource("Animation_5e0et")
 }
 
-[sub_resource type="Animation" id="Animation_eey0t"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
+[node name="level_start" type="Node2D"]
 
-[sub_resource type="Animation" id="Animation_txt4r"]
-resource_name = "blink"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_spxoy")]
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fkdfx"]
-_data = {
-"RESET": SubResource("Animation_eey0t"),
-"blink": SubResource("Animation_txt4r")
-}
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAcAAAABABEAAAABAAcAAAABABEAAAACAAcAAAABABEAAAADAAcAAAABABEAAAAEAAcAAAABABEAAAAFAAcAAAABABEAAAAGAAcAAAABABEAAAD//wcAAAABABEAAAAHAAcAAAABABEAAAAIAAcAAAABABEAAAAJAAcAAAABABEAAAAKAAcAAAABABEAAAD+/wcAAAABABEAAAD9/wcAAAABABEAAAAIAAIAAAABAAEAAAAJAAIAAAABAAEAAAAKAAIAAAABAAEAAAAIAAEAAAABAAEAAAAJAAEAAAABAAEAAAAKAAEAAAABAAEAAAALAAEAAAABAAEAAAALAAIAAAABAAEAAAAIAAAAAAABAAEAAAAJAAAAAAABAAEAAAAKAAAAAAABAAEAAAALAAAAAAABAAEAAAALAAcAAAABABEAAAD7/wcAAAABABEAAAD7/wYAAAABABEAAAD7/wUAAAABABEAAAD7/wQAAAABABEAAAD7/wMAAAABABEAAAD7/wIAAAABABEAAAD7/wEAAAABABEAAAD7/wAAAAABABEAAAAMAAcAAAABABEAAAAMAAYAAAABABEAAAAMAAUAAAABABEAAAAMAAQAAAABABEAAAAMAAMAAAABABEAAAAMAAIAAAABABEAAAAMAAEAAAABABEAAAAMAAAAAAABABEAAAD8/wcAAAABABEAAAA=")
+tile_set = ExtResource("3_ioroq")
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
-z_index = 10
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(148, 80)
+texture = ExtResource("5_a6cv5")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAcAAAADAAkAAAABAAcAAAADAAkAAAACAAcAAAACAAkAAAADAAcAAAACAAkAAAAEAAcAAAADAAkAAAAFAAcAAAACAAkAAAAGAAcAAAADAAkAAAD//wcAAAADAAkAAAAHAAcAAAACAAkAAAAIAAcAAAADAAkAAAAJAAcAAAACAAkAAAAKAAcAAAACAAkAAAD+/wcAAAADAAkAAAD9/wcAAAADAAkAAAD8/wcAAAADAAkAAAALAAcAAAACAAkAAAA=")
+tile_set = ExtResource("3_ioroq")
+
+[node name="FauxPlayer" type="CharacterBody2D" parent="."]
+position = Vector2(-35, 92)
 collision_mask = 2
-floor_snap_length = 16.0
-script = ExtResource("1")
-starBullet = ExtResource("2_s1ujb")
+script = ExtResource("7_5p77w")
 
-[node name="SquareCollisionShape" type="CollisionShape2D" parent="."]
+[node name="SquareCollisionShape" type="CollisionShape2D" parent="FauxPlayer"]
 position = Vector2(0, 0.5)
-shape = SubResource("2")
+shape = SubResource("RectangleShape2D_8kh2s")
 
-[node name="RaycastCollider1" type="CollisionShape2D" parent="."]
+[node name="RaycastCollider1" type="CollisionShape2D" parent="FauxPlayer"]
 position = Vector2(-6, 7)
-shape = SubResource("1")
+shape = SubResource("SeparationRayShape2D_qd3c4")
 
-[node name="RaycastCollider2" type="CollisionShape2D" parent="."]
+[node name="RaycastCollider2" type="CollisionShape2D" parent="FauxPlayer"]
 position = Vector2(0, 7)
-shape = SubResource("1")
+shape = SubResource("SeparationRayShape2D_qd3c4")
 
-[node name="RaycastCollider3" type="CollisionShape2D" parent="."]
+[node name="RaycastCollider3" type="CollisionShape2D" parent="FauxPlayer"]
 position = Vector2(6, 7)
-shape = SubResource("1")
+shape = SubResource("SeparationRayShape2D_qd3c4")
 
-[node name="Sprite" type="Node2D" parent="."]
+[node name="Sprite" type="Node2D" parent="FauxPlayer"]
 position = Vector2(0, 8)
-script = ExtResource("2")
-player_path = NodePath("..")
+script = ExtResource("7_jr44g")
 
-[node name="Polygon2D" type="Polygon2D" parent="Sprite"]
+[node name="Polygon2D" type="Polygon2D" parent="FauxPlayer/Sprite"]
 visible = false
 position = Vector2(0, -8)
 color = Color(0.964706, 0.952941, 0.298039, 1)
 polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FauxPlayer/Sprite"]
 libraries = {
 "": SubResource("AnimationLibrary_1lb64")
 }
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprite"]
+[node name="Sprite2D" type="Sprite2D" parent="FauxPlayer/Sprite"]
 visible = false
 position = Vector2(0, -8)
-texture = ExtResource("2_j44xb")
+texture = ExtResource("8_46juc")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite"]
-material = SubResource("ShaderMaterial_we2sv")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FauxPlayer/Sprite"]
+material = SubResource("ShaderMaterial_ypix0")
 position = Vector2(0, -8)
-sprite_frames = SubResource("SpriteFrames_6wa87")
+sprite_frames = SubResource("SpriteFrames_q4dvw")
 
-[node name="SpriteAnimationPlayer" type="AnimationPlayer" parent="Sprite/AnimatedSprite2D"]
+[node name="SpriteAnimationPlayer" type="AnimationPlayer" parent="FauxPlayer/Sprite/AnimatedSprite2D"]
 libraries = {
 "": SubResource("AnimationLibrary_hw1o3")
 }
 
-[node name="ShotTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="HitTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="SmokeGenerator" parent="." instance=ExtResource("3_pi8rx")]
-
-[node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_fkdfx")
-}
-speed_scale = 3.0
+[node name="Camera" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+position = Vector2(65, 63)
+zoom = Vector2(5, 5)
+position_smoothing_speed = 10.0
