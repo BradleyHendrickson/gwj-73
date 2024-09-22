@@ -138,7 +138,6 @@ func x_movement(delta: float) -> void:
 		else:
 			# apply current knockback
 			velocity += knockback_value
-			print(knockback_value, delta)
 			# REDUCE KNOCKBACK VALUE
 			knockback_value *= delta
 			return
