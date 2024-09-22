@@ -15,20 +15,19 @@ func _input(event: InputEvent) -> void:
 	if "" != input_key and event.is_pressed():
 		InputMap.action_erase_events(input_key)
 		InputMap.action_add_event(input_key, event)
-		print(event.as_text())
 		match input_key:
 			"input_jump":
 				jump_binding.text = "Jump - " + event.as_text()
 			"input_shoot":
 				shoot_binding.text = "Shoot - " + event.as_text()
 			"input_left":
-				shoot_binding.text = "Left - " + event.as_text()
+				left_binding.text = "Left - " + event.as_text()
 			"input_right":
-				shoot_binding.text = "Right - " + event.as_text()
+				right_binding.text = "Right - " + event.as_text()
 			"input_up":
-				shoot_binding.text = "Up - " + event.as_text()
+				up_binding.text = "Up - " + event.as_text()
 			"input_down":
-				shoot_binding.text = "Down - " + event.as_text()
+				down_binding.text = "Down - " + event.as_text()
 		
 		input_key = ""
 
